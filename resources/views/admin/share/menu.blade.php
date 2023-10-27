@@ -19,56 +19,128 @@
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                    <a href="/admin/khu-vuc/index" class="nav-link">
-                        <i class="fa-solid fa-chart-area"></i>
+                    <a href="/admin/khach-hang" class="nav-link">
+                        <i class="fa-solid fa-users"></i>
                         <p>
-                            Quản Lý Khu Vực Ajax
+                            Quản Lý Khách Hàng
                         </p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/admin/khu-vuc/" class="nav-link">
-                        <i class="fa-solid fa-chart-area"></i>
+                    <a href="/admin/admin" class="nav-link">
+                        <i class="fa-solid fa-user"></i>
                         <p>
-                            Quản Lý Khu Vực
+                            Quản Lý Admin
                         </p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/admin/phong" class="nav-link">
-                        <i class="fa-solid fa-people-roof"></i>
+                    <a href="/admin/chuc-nang" class="nav-link">
+                        <i class="fa-solid fa-bars-progress"></i>
                         <p>
-                            Quản Lý Phòng
+                            Quản Lý Chức Năng
                         </p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/admin/gia-phong" class="nav-link">
-                        <i class="fa-solid fa-money-check"></i>
+                    <a href="/admin/hoa-don" class="nav-link">
+                        <i class="fa-solid fa-check-to-slot"></i>
                         <p>
-                            Quản Lý Giá Phòng
+                            Quản Lý Hóa Đơn
                         </p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/admin/chi-tiet-phong" class="nav-link">
+                    <a href="/admin/tour" class="nav-link">
                         <i class="fa-solid fa-circle-info"></i>
                         <p>
-                            Quản Lý Chi Tiết Phòng
+                            Quản Lý Tours
                         </p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/admin/review" class="nav-link">
-                        <i class="fa-solid fa-star"></i>
+                    <a href="/admin/chi-tiet-tour" class="nav-link">
+                        <i class="fa-solid fa-circle-info"></i>
                         <p>
-                            Quản Lý Review
+                            Quản Lý Chi Tiết Tours
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/tinh-thanh" class="nav-link">
+                        <i class="fa-solid fa-mountain-city"></i>
+                        <p>
+                            Quản Lý Tỉnh Thành
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/dia-diem" class="nav-link">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <p>
+                            Quản Lý Địa Điểm
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/tai-khoan" class="nav-link">
+                        <i class="fa-solid fa-right-to-bracket"></i>
+                        <p>
+                            Quản Lý Tài Khoản
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/quyen" class="nav-link">
+                        <i class="fa-solid fa-key"></i>
+                        <p>
+                            Quản Lý Quyền
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/phuong-tien" class="nav-link">
+                        <i class="fa-solid fa-truck-plane"></i>
+                        <p>
+                            Quản Lý Phương Tiện
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/khach-san" class="nav-link">
+                        <i class="fa-solid fa-hotel"></i>
+                        <p>
+                            Quản Lý Khách Sạn
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/danh-gia" class="nav-link">
+                        <i class="fa-solid fa-comment"></i>
+                        <p>
+                            Quản Lý Đánh Giá
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/quoc-tich" class="nav-link">
+                        <i class="fa-solid fa-globe"></i>
+                        <p>
+                            Quản Lý Quốc Tịch
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/cau-hinh" class="nav-link">
+                        <i class="fa-solid fa-image"></i>
+                        <p>
+                            Quản Lý Cấu Hình
                         </p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
                         <p>
                             Đăng Xuất
                         </p>

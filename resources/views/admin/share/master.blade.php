@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Starter</title>
+  <title>Admin Website Tour</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet"
@@ -19,7 +19,7 @@
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
   <script src="https://js.pusher.com/7.2/pusher.min.js"></script>
-  @toastr_css
+  {{-- @toastr_css --}}
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -223,9 +223,9 @@
 
   <!-- REQUIRED SCRIPTS -->
 
-  @jquery
+  {{-- @jquery
   @toastr_js
-  @toastr_render
+  @toastr_render --}}
   <!-- jQuery -->
   <script src="/admin/plugins/jquery/jquery.min.js"></script>
   <!-- Bootstrap 4 -->
@@ -234,24 +234,13 @@
   <script src="/admin/dist/js/adminlte.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-  <script src="/js/app.js"></script>
+  {{-- <script src="/js/app.js"></script> --}}
+
+
   @yield('js')
-  {{-- <script>
-    // realTime();
-    // function realTime()
-    // {
-    //     Echo.channel('phong')
-    //         .listen('event_phong', (e) => {
-    //             if(e.status == 1) {
-    //                 toastr.success('Có người thêm mới phòng');
-    //             } else if(e.status == 2) {
-    //                 toastr.error('Có người xóa phòng');
-    //             } else if(e.status == 3) {
-    //                 toastr.warning('Có người đổi trạng thái!');
-    //             }
-    //         });
-    // }
-  </script> --}}
+  <script>
+
+  </script>
 </body>
 
 </html>
