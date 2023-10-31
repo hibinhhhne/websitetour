@@ -11,7 +11,6 @@ return new class extends Migration
     {
         Schema::create('tai_khoan', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_tai_khoan')->unique();
             $table->string('ten_tai_khoan');
             $table->string('password');
             $table->string('ho_va_ten');

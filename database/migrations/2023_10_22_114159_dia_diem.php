@@ -11,7 +11,6 @@ return new class extends Migration
     {
         Schema::create('dia_diem', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_dia_diem')->unique();
             $table->string('ten_dia_diem');
             $table->string('slug');
             $table->integer('id_tinh_thanh');

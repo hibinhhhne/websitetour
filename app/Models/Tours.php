@@ -12,10 +12,9 @@ class Tours extends Model
     protected $table = 'tours';
 
     protected $fillable = [
-        'id_tour'                ,
         'ten_tour'               ,
-        'mo_ta'               ,
         'slug'              ,
+        'mo_ta'               ,
         'id_khach_san'           ,
         'list_dia_diem_tham_quan',
         'id_phuong_tien'         ,

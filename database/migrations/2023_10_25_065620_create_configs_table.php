@@ -11,8 +11,8 @@ return new class extends Migration
     {
         Schema::create('configs', function (Blueprint $table) {
             $table->id();
-            $table->string('slide')->nullable();
-            $table->string('images')->nullable();
+            $table->longText('slide')->nullable();
+            $table->longText('images')->nullable();
             $table->timestamps();
         });
     }

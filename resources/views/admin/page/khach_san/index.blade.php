@@ -11,10 +11,6 @@
                 </div>
                 <div class="card-body">
                     <div class="form-group">
-                        <label>ID </label>
-                        <input v-model="add.id_khach_san" type="text" class="form-control">
-                    </div>
-                    <div class="form-group">
                         <label>Tên Khách Sạn</label>
                         <input v-model="add.ten_khach_san" v-on:keyup="toSlug(add.ten_khach_san)" type="text" class="form-control">
                     </div>
@@ -24,7 +20,12 @@
                     </div>
                     <div class="form-group">
                         <label>ID Tỉnh Thành</label>
-                        <input v-model="add.id_tinh_thanh" type="text" class="form-control">
+                        <select v-model="add.id_tinh_thanh" class="form-control">
+                            <option value="0">Chọn Tỉnh Thành</option>
+                            <template v-for="(v,k) in list_tt">
+                                <option v-bind:value="v.id">@{{v.ten_tinh_thanh}}</option>
+                            </template>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label>Thông Tin</label>
@@ -67,7 +68,6 @@
                         <thead>
                             <tr>
                                 <th class="text-center">#</th>
-                                <th class="text-center">ID</th>
                                 <th class="text-center">Tên Khách Sạn</th>
                                 <th class="text-center">Slug Tên Khách Sạn</th>
                                 <th class="text-center">ID Tỉnh Thành</th>
@@ -80,7 +80,6 @@
                         <tbody>
                             <tr v-for="(value, key) in list_khachsan">
                                 <th class="text-center align-middle">@{{ key + 1 }}</th>
-                                    <td class="align-middle">@{{ value.id_khach_san }}</<td>
                                     <td class="align-middle">@{{ value.ten_khach_san }}</td>
                                     <td class="align-middle">@{{ value.slug }}</td>
                                     <td class="align-middle">@{{ value.id_tinh_thanh }}</td>
@@ -110,10 +109,6 @@
                                 <div class="modal-body">
                                     <div class="card-body">
                                         <div class="form-group">
-                                            <label>ID </label>
-                                            <input v-model="edit.id_khach_san" type="text" class="form-control">
-                                        </div>
-                                        <div class="form-group">
                                             <label>Tên Khách Sạn</label>
                                             <input v-model="edit.ten_khach_san" v-on:keyup="toSlug(edit.ten_khach_san)" type="text" class="form-control">
                                         </div>
@@ -123,7 +118,12 @@
                                         </div>
                                         <div class="form-group">
                                             <label>ID Tỉnh Thành</label>
-                                            <input v-model="edit.id_tinh_thanh" type="text" class="form-control">
+                                            <select v-model="edit.id_tinh_thanh" class="form-control">
+                                                <option value="0">Chọn Tỉnh Thành</option>
+                                                <template v-for="(v,k) in list_tt">
+                                                    <option v-bind:value="v.id">@{{v.ten_tinh_thanh}}</option>
+                                                </template>
+                                            </select>
                                         </div>
                                         <div class="form-group">
                                             <label>Thông Tin</label>
@@ -192,12 +192,17 @@
             el      :   '#app',
             data    :   {
                 list_khachsan      :   [],
-                add                 :   {},
+                add                 :   {
+                    id_tinh_thanh: 0
+                },
                 edit                :   {},
                 del                 :   {},
+                list_tt             :   [],
+
             },
             created() {
                 this.loadKhachSan();
+                this.loadTinhThanh();
             },
             methods :   {
                 click_edit(value) {
@@ -210,6 +215,13 @@
                         .get('/admin/khach-san/data')
                         .then((res) => {
                             this.list_khachsan = res.data.data;
+                        });
+                },
+                loadTinhThanh() {
+                    axios
+                        .get('/admin/tinh-thanh/data')
+                        .then((res) => {
+                            this.list_tt = res.data.data;
                         });
                 },
                 themMoi(){

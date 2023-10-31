@@ -11,7 +11,6 @@ return new class extends Migration
     {
         Schema::create('danh_gia', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_danh_gia')->unique();
             $table->integer('id_tour');
             $table->integer('id_khach_hang');
             $table->string('noi_dung');

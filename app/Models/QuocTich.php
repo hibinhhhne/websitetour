@@ -12,7 +12,6 @@ class QuocTich extends Model
     protected $table = 'quoc_tich';
 
     protected $fillable = [
-        'id_quoc_tich',
         'ten_quoc_tich',
         'slug',
     ];

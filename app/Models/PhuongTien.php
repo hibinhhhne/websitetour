@@ -13,7 +13,6 @@ class PhuongTien extends Model
 
     protected $fillable = [
 
-        'id_phuong_tien',
         'ten_phuong_tien',
         'loai_phuong_tien',
         'cho_ngoi',

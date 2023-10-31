@@ -11,10 +11,6 @@
                 </div>
                 <div class="card-body">
                     <div class="form-group">
-                        <label>ID Tỉnh Thành</label>
-                        <input v-model="add.id_tinh_thanh" type="text" class="form-control">
-                    </div>
-                    <div class="form-group">
                         <label>Tên Tỉnh Thành</label>
                         <input v-model="add.ten_tinh_thanh" v-on:keyup="toSlug(add.ten_tinh_thanh)" type="text" class="form-control">
                     </div>
@@ -39,7 +35,6 @@
                         <thead>
                             <tr>
                                 <th class="text-center">#</th>
-                                <th class="text-center">ID </th>
                                 <th class="text-center">Tên Tỉnh Thành</th>
                                 <th class="text-center">Slug Tỉnh Thành</th>
                                 <th class="text-center">Action</th>
@@ -48,7 +43,6 @@
                         <tbody>
                             <tr v-for="(value, key) in list">
                                 <th>@{{ key + 1 }}</th>
-                                <td>@{{ value.id_tinh_thanh }}</td>
                                 <td>@{{ value.ten_tinh_thanh }}</td>
                                 <td>@{{ value.slug}}</td>
                                 <td class="text-center text-nowrap">
@@ -67,10 +61,6 @@
                                   </button>
                                 </div>
                                 <div class="modal-body">
-                                    <div class="form-group">
-                                        <label>ID Tỉnh Thành</label>
-                                        <input v-model="edit.id_tinh_thanh" type="text" class="form-control">
-                                    </div>
                                     <div class="form-group">
                                         <label>Tên Tỉnh Thành</label>
                                         <input v-model="edit.ten_tinh_thanh" v-on:keyup="toSlug(edit.ten_tinh_thanh)" type="text" class="form-control">

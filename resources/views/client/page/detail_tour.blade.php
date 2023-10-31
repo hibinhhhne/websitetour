@@ -116,68 +116,24 @@
                             <li class="nav-item">
                                 <a class="nav-link active" id="description-tab" data-toggle="tab"
                                     href="#description" role="tab" aria-controls="description"
-                                    aria-selected="true">Description</a>
+                                    aria-selected="true">Mô Tả Chi Tiết</a>
                             </li>
                             <!-- TAB -->
-                            <li class="nav-item">
-                                <a class="nav-link" id="additional-information-tab" data-toggle="tab"
-                                    href="#additional-information" role="tab"
-                                    aria-controls="additional-information" aria-selected="false">Additional
-                                    Information</a>
-                            </li>
+
                             <!-- TAB -->
                             <li class="nav-item">
                                 <a class="nav-link" id="reviews-tab" data-toggle="tab" href="#reviews"
-                                    role="tab" aria-controls="reviews" aria-selected="false">Reviews (4)</a>
+                                    role="tab" aria-controls="reviews" aria-selected="false">Đánh Giá</a>
                             </li>
                         </ul>
                         <div class="tab-content" id="product-tab-content">
                             <!-- TAB -->
                             <div class="tab-pane fade show active" id="description" role="tabpanel"
                                 aria-labelledby="description-tab">
-                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
-                                    euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad
-                                    minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut
-                                    aliquip
-                                    ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate
-                                    velit esse molestie consequat, vel illum dolore eu feugiat nulla</p>
-                                <ul class="list mt30 mb15">
-                                    <li>Lorem ipsum dolor sit amet</li>
-                                    <li>Lorem ipsum dolor sit amet</li>
-                                    <li>Lorem ipsum dolor sit amet</li>
-                                    <li>Lorem ipsum dolor sit amet</li>
-                                    <li>Lorem ipsum dolor sit amet</li>
-                                    <li>Lorem ipsum dolor sit amet</li>
-                                </ul>
+                                <p>@{{detail_addres.mo_ta}}</p>
                             </div>
                             <!-- TAB -->
-                            <div class="tab-pane fade" id="additional-information" role="tabpanel"
-                                aria-labelledby="additional-information-tab">
-                                <table class="product-attributes">
-                                    <tbody>
-                                        <tr>
-                                            <th>Weight</th>
-                                            <td>0.5 kg</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Dimensions</th>
-                                            <td>25cm x 15cm x 5cm</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Size</th>
-                                            <td>Large, Medium, Small</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Material</th>
-                                            <td>Tissue</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Wash</th>
-                                            <td>Mchine Wash</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+
                             <!-- TAB -->
                             <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
                                 <!-- ITEM -->
@@ -316,7 +272,7 @@
                                         </figure>
                                         <div class="product-details">
                                             <h4 class="product-title">
-                                                <a v-bind:href="'/detail-tour/'+ value.id_tour">@{{value.ten_tour}}</a>
+                                                <a v-bind:href="'/detail-tour/'+ value.id">@{{value.ten_tour}}</a>
                                             </h4>
                                             <div class="product-price">@{{numberFormat(value.don_gia)}}</div>
                                         </div>

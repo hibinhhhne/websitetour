@@ -11,10 +11,6 @@
                 </div>
                 <div class="card-body">
                     <div class="form-group">
-                        <label>ID</label>
-                        <input v-model="add.id_tai_khoan" type="text" class="form-control" placeholder="Nhập vào ID">
-                    </div>
-                    <div class="form-group">
                         <label>Tên Tài Khoản</label>
                         <input v-model="add.ten_tai_khoan" type="text" class="form-control" placeholder="Nhập vào Tên Tài Khoản">
                     </div>
@@ -47,7 +43,6 @@
                             <thead>
                                 <tr class="text-center text-nowrap">
                                     <th class="text-center">#</th>
-                                    <th class="text-center">ID</th>
                                     <th class="text-center">Tên Tài Khoản</th>
                                     <th class="text-center">Password</th>
                                     <th class="text-center">Họ và Tên</th>
@@ -58,7 +53,6 @@
                             <tbody>
                                 <tr v-for="(value, key) in list_taikhoan">
                                     <th class="text-center align-middle">@{{ key + 1 }}</th>
-                                        <td class="align-middle">@{{ value.id_tai_khoan }}</td>
                                         <td class="align-middle">@{{ value.ten_tai_khoan }}</td>
                                         <td class="align-middle">@{{ value.password }}</td>
                                         <td class="align-middle">@{{ value.ho_va_ten }}</td>
@@ -80,10 +74,6 @@
                                     </div>
                                     <div class="modal-body">
                                     <input type="hidden" id="edit_id" class="form-control">
-                                        <div class="form-group">
-                                            <label>ID</label>
-                                            <input v-model="edit.id_tai_khoan" type="text" class="form-control" placeholder="Nhập vào ID">
-                                        </div>
                                         <div class="form-group">
                                             <label>Tên Tài Khoản</label>
                                             <input v-model="edit.ten_tai_khoan" type="text" class="form-control" placeholder="Nhập vào Tên Tài Khoản">

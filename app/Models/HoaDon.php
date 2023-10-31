@@ -12,7 +12,6 @@ class HoaDon extends Model
     protected $table = 'hoa_don';
 
     protected $fillable = [
-        'id_hoa_don',
         'id_tour',
         'id_khach_hang',
         'id_nhan_vien',

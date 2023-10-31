@@ -10,9 +10,9 @@ class KhachHangController extends Controller
 {
     public function index()
     {
-        $data = KhachHang::get();
 
-        return view('admin.page.khach_hang.index', compact('data'));
+
+        return view('admin.page.khach_hang.index');
     }
 
     public function data()

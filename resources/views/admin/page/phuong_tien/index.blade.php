@@ -11,10 +11,6 @@
                 </div>
                 <div class="card-body">
                     <div class="form-group">
-                        <label>ID </label>
-                        <input v-model="add.id_phuong_tien" type="text" class="form-control">
-                    </div>
-                    <div class="form-group">
                         <label>Tên Phương Tiện</label>
                         <input v-model="add.ten_phuong_tien" type="text" class="form-control">
                     </div>
@@ -28,7 +24,12 @@
                     </div>
                     <div class="form-group">
                         <label>ID Tỉnh Thành</label>
-                        <input v-model="add.id_tinh_thanh" type="text" class="form-control">
+                        <select v-model="add.id_tinh_thanh" class="form-control">
+                            <option value="0">Chọn Tỉnh Thành</option>
+                            <template v-for="(v,k) in list_tt">
+                                <option v-bind:value="v.id">@{{v.ten_tinh_thanh}}</option>
+                            </template>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label>Trạng Thái</label>
@@ -54,7 +55,6 @@
                         <thead>
                             <tr>
                                 <th class="text-center">#</th>
-                                <th class="text-center">ID</th>
                                 <th class="text-center">Tên Phương Tiện</th>
                                 <th class="text-center">Loại Phương Tiện</th>
                                 <th class="text-center">Chỗ Ngồi</th>
@@ -66,7 +66,6 @@
                         <tbody>
                             <tr v-for="(value, key) in list_phuongtien">
                                 <th class="text-center align-middle">@{{ key + 1 }}</th>
-                                    <td class="align-middle">@{{ value.id_phuong_tien }}</<td>
                                     <td class="align-middle">@{{ value.ten_phuong_tien }}</td>
                                     <td class="align-middle">@{{ value.loai_phuong_tien }}</td>
                                     <td class="align-middle">@{{ value.cho_ngoi }}</td>
@@ -93,10 +92,6 @@
                                 <div class="modal-body">
                                     <div class="card-body">
                                         <div class="form-group">
-                                            <label>ID </label>
-                                            <input v-model="edit.id_phuong_tien" type="text" class="form-control">
-                                        </div>
-                                        <div class="form-group">
                                             <label>Tên Phương Tiện</label>
                                             <input v-model="edit.ten_phuong_tien" type="text" class="form-control">
                                         </div>
@@ -110,7 +105,12 @@
                                         </div>
                                         <div class="form-group">
                                             <label>ID Tỉnh Thành</label>
-                                            <input v-model="edit.id_tinh_thanh" type="text" class="form-control">
+                                            <select v-model="edit.id_tinh_thanh" class="form-control">
+                                                <option value="0">Chọn Tỉnh Thành</option>
+                                                <template v-for="(v,k) in list_tt">
+                                                    <option v-bind:value="v.id">@{{v.ten_tinh_thanh}}</option>
+                                                </template>
+                                            </select>
                                         </div>
                                         <div class="form-group">
                                             <label>Trạng Thái</label>
@@ -166,12 +166,18 @@
             el      :   '#app',
             data    :   {
                 list_phuongtien      :   [],
-                add                 :   {},
+                add                 :   {
+                    id_tinh_thanh: 0
+
+                },
                 edit                :   {},
                 del                 :   {},
+                list_tt             :   [],
             },
             created() {
                 this.loadPhuongTien();
+                this.loadTinhThanh();
+
             },
             methods :   {
                 loadPhuongTien(){
@@ -179,6 +185,13 @@
                         .get('/admin/phuong-tien/data')
                         .then((res) => {
                             this.list_phuongtien = res.data.data;
+                        });
+                },
+                loadTinhThanh() {
+                    axios
+                        .get('/admin/tinh-thanh/data')
+                        .then((res) => {
+                            this.list_tt = res.data.data;
                         });
                 },
                 themMoi(){

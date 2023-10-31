@@ -12,7 +12,6 @@ class TaiKhoan extends Model
     protected $table = 'tai_khoan';
 
     protected $fillable = [
-        'id_tai_khoan',
         'ten_tai_khoan',
         'password',
         'ho_va_ten',

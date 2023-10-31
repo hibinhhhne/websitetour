@@ -12,20 +12,16 @@
             <div class="card-body">
                 <form id="form_create">
                     <div class="form-group">
-                        <label>ID</label>
-                        <input v-model="add.id_tour" type="text" class="form-control" placeholder="Nhập vào ID Tour">
-                    </div>
-                    <div class="form-group">
                         <label>Tên Tour</label>
                         <input v-model="add.ten_tour" type="text" class="form-control" placeholder="Nhập vào Tên Tour">
                     </div>
                     <div class="form-group">
-                        <label>Mô Tả</label>
-                        <textarea v-model="add.mo_ta" class="form-control" cols="30" rows="5"></textarea>
-                    </div>
-                    <div class="form-group">
                         <label>Slug Tour</label>
                         <input v-model="add.slug" type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Mô Tả</label>
+                        <textarea v-model="add.mo_ta" class="form-control" cols="30" rows="5"></textarea>
                     </div>
                     <div class="form-group">
                         <label>ID Khách Sạn</label>
@@ -41,7 +37,12 @@
                     </div>
                     <div class="form-group">
                         <label>ID Tỉnh Thành</label>
-                        <input v-model="add.id_tinh_thanh" type="text" class="form-control" placeholder="Nhập vào ID Tỉnh Thành">
+                        <select v-model="add.id_tinh_thanh" class="form-control">
+                            <option value="0">Chọn Tỉnh Thành</option>
+                            <template v-for="(v,k) in list_tt">
+                                <option v-bind:value="v.id">@{{v.ten_tinh_thanh}}</option>
+                            </template>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label>Số Ngày</label>
@@ -100,9 +101,8 @@
                             <thead>
                                 <tr class="text-center text-nowrap">
                                     <th class="text-center">#</th>
-                                    <th class="text-center">ID</th>
-                                    <th class="text-center">Tên Tour</th>
                                     <th class="text-center">Slug Tour</th>
+                                    <th class="text-center">Tên Tour</th>
                                     <th class="text-center">Mô Tả</th>
                                     <th class="text-center">ID Khách Sạn</th>
                                     <th class="text-center">Địa Điểm</th>
@@ -121,10 +121,9 @@
                             <tbody>
                                 <tr v-for="(value, key) in list">
                                     <th class="text-center align-middle">@{{ key + 1 }}</th>
-                                        <td class="align-middle">@{{ value.id_tour }}</td>
                                         <td class="align-middle">@{{ value.ten_tour }}</td>
-                                        <td class="align-middle">@{{ value.mo_ta }}</td>
                                         <td class="align-middle">@{{ value.slug }}</td>
+                                        <td class="align-middle">@{{ value.mo_ta }}</td>
                                         <td class="align-middle">@{{ value.id_khach_san }}</td>
                                         <td class="align-middle">@{{ value.list_dia_diem_tham_quan }}</td>
                                         <td class="align-middle">@{{ value.id_phuong_tien }}</td>
@@ -159,21 +158,18 @@
                                     </div>
                                     <div class="modal-body">
                                         <input type="hidden" v-model="edit.id" class="form-control">
-                                            <div class="form-group">
-                                                <label>ID</label>
-                                                <input v-model="edit.id_tour" type="text" class="form-control" placeholder="Nhập vào ID Tour">
-                                            </div>
+
                                             <div class="form-group">
                                                 <label>Tên Tour</label>
                                                 <input v-model="edit.ten_tour" type="text" class="form-control" placeholder="Nhập vào Tên Tour">
                                             </div>
                                             <div class="form-group">
-                                                <label>Mô Tả</label>
-                                                <textarea v-model="edit.mo_ta" class="form-control" cols="30" rows="5"></textarea>
-                                            </div>
-                                            <div class="form-group">
                                                 <label>Slug Tour</label>
                                                 <input v-model="edit.slug" type="text" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Mô Tả</label>
+                                                <textarea v-model="edit.mo_ta" class="form-control" cols="30" rows="5"></textarea>
                                             </div>
                                             <div class="form-group">
                                                 <label>ID Khách Sạn</label>
@@ -189,7 +185,12 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>ID Tỉnh Thành</label>
-                                                <input v-model="edit.id_tinh_thanh" type="text" class="form-control" placeholder="Nhập vào ID Tỉnh Thành">
+                                                <select v-model="edit.id_tinh_thanh" class="form-control">
+                                                    <option value="0">Chọn Tỉnh Thành</option>
+                                                    <template v-for="(v,k) in list_tt">
+                                                        <option v-bind:value="v.id">@{{v.ten_tinh_thanh}}</option>
+                                                    </template>
+                                                </select>
                                             </div>
                                             <div class="form-group">
                                                 <label>Số Ngày</label>
@@ -272,12 +273,16 @@
             el      :   '#app',
             data    :   {
                 list            :   [],
-                add             :   {},
+                add             :   {
+                    id_tinh_thanh: 0
+                },
                 edit            :   {},
                 del             :   {},
             },
             created() {
                 this.loadTour();
+                this.loadTinhThanh();
+
             },
             methods :   {
                 click_edit(value) {
@@ -290,6 +295,13 @@
                         .get('/admin/tour/data')
                         .then((res) => {
                             this.list = res.data.data;
+                        });
+                },
+                 loadTinhThanh() {
+                    axios
+                        .get('/admin/tinh-thanh/data')
+                        .then((res) => {
+                            this.list_tt = res.data.data;
                         });
                 },
                 themMoi()   {

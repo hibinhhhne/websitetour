@@ -12,7 +12,6 @@ class Diadiem extends Model
     protected $table = 'dia_diem';
 
     protected $fillable = [
-            'id_dia_diem',
             'ten_dia_diem',
             'slug',
             'id_tinh_thanh',

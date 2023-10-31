@@ -11,7 +11,6 @@ return new class extends Migration
     {
         Schema::create('hoa_don', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_hoa_don')->unique();
             $table->integer('id_tour');;
             $table->integer('id_khach_hang');
             $table->integer('id_nhan_vien');

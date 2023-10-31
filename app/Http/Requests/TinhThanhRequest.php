@@ -17,7 +17,6 @@ class TinhThanhRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id_tinh_thanh'         =>'required',
             'ten_tinh_thanh'        =>'required',
             'slug'                  =>'required',
         ];

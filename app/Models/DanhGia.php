@@ -12,7 +12,6 @@ class DanhGia extends Model
     protected $table = 'danh_gia';
 
     protected $fillable = [
-        'id_danh_gia',
         'id_tour',
         'id_khach_hang',
         'noi_dung',

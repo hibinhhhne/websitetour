@@ -16,7 +16,6 @@ class ChucNangRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id_chuc_nang'                  =>'required',
             'ten_chuc_nang'                 =>'required',
             'slug'                          =>'required',
         ];

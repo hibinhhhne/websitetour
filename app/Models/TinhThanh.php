@@ -12,7 +12,6 @@ class TinhThanh extends Model
     protected $table = 'tinh_thanh';
 
     protected $fillable = [
-        'id_tinh_thanh',
         'ten_tinh_thanh',
         'slug',
     ];

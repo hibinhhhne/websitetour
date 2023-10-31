@@ -13,18 +13,16 @@ return new class extends Migration
     {
         Schema::create('khach_hang', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_khach_hang')->unique();
             $table->string('ho_va_ten');
             $table->string('email');
             $table->string('password');
             $table->string('so_dien_thoai');
             $table->string('dia_chi');
             $table->string('quoc_tich');
-            $table->string('hash_mail');
             $table->string('ngay_sinh');
             $table->string('gioi_tinh');
-            $table->string('loai_tai_khoan');
-            $table->string('hash_reset');
+            $table->string('loai_tai_khoan')->default(0);
+            $table->string('hash_reset')->nullable();
             $table->timestamps();
         });
     }

@@ -11,13 +11,12 @@ return new class extends Migration
     {
         Schema::create('admin', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_admin')->unique();
             $table->string('ho_va_ten');
             $table->string('email');
             $table->string('password');
             $table->string('so_dien_thoai');
             $table->string('dia_chi');
-            $table->string('ngay_sinh');
+            $table->date('ngay_sinh');
             $table->string('gioi_tinh');
             $table->integer('id_quyen');
             $table->timestamps();

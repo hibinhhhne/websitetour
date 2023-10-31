@@ -17,10 +17,9 @@ class TourRequest extends FormRequest
     {
 
         return [
-            'id_tour'                   => 'required',
             'ten_tour'                  => 'required',
-            'mo_ta'                  => 'required',
             'slug'                      => 'required',
+            'mo_ta'                  => 'required',
             'id_khach_san'              => 'required',
             'list_dia_diem_tham_quan'   => 'required',
             'id_phuong_tien'            => 'required',

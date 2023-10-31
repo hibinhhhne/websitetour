@@ -16,7 +16,6 @@ class HoaDonRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id_hoa_don'                => 'required',
             'id_tour'                   => 'required',
             'id_khach_hang'             => 'required',
             'id_nhan_vien'              => 'required',

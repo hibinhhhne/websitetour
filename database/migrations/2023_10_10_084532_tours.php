@@ -11,20 +11,20 @@ return new class extends Migration
     {
         Schema::create('tours', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_tour')->unique();
             $table->string('ten_tour');
             $table->string('slug');
+            $table->string('mo_ta');
             $table->string('id_khach_san');
             $table->string('list_dia_diem_tham_quan');
             $table->string('id_phuong_tien');
             $table->string('id_tinh_thanh');
             $table->string('so_ngay');
             $table->string('so_dem');
-            $table->string('so_nguoi');
+            $table->integer('so_nguoi');
             $table->string('ghi_chu');
-            $table->string('don_gia');
+            $table->integer('don_gia');
             $table->string('hinh_anh');
-            $table->string('trang_thai');
+            $table->integer('trang_thai');
             $table->timestamps();
         });
     }

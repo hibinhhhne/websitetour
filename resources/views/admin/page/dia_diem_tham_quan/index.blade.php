@@ -11,10 +11,6 @@
                 </div>
                 <div class="card-body">
                     <div class="form-group">
-                        <label>ID Địa Điểm</label>
-                        <input v-model="add.id_dia_diem" type="text" class="form-control">
-                    </div>
-                    <div class="form-group">
                         <label>Tên Địa Điểm</label>
                         <input v-model="add.ten_dia_diem" v-on:keyup="toSlug(add.ten_dia_diem)" type="text" class="form-control">
                     </div>
@@ -63,7 +59,6 @@
                         <thead>
                             <tr>
                                 <th class="text-center">#</th>
-                                <th class="text-center">ID </th>
                                 <th class="text-center">Tên Địa Điểm</th>
                                 <th class="text-center">Slug Tên Địa Điểm</th>
                                 <th class="text-center">ID Tỉnh Thành</th>
@@ -75,7 +70,6 @@
                         <tbody>
                             <tr v-for="(value, key) in list">
                                 <th>@{{ key + 1 }}</th>
-                                <td>@{{ value.id_dia_diem }}</td>
                                 <td>@{{ value.ten_dia_diem }}</td>
                                 <td>@{{ value.slug }}</td>
                                 <td>@{{ value.id_tinh_thanh}}</td>

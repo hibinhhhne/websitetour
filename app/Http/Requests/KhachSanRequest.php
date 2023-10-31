@@ -16,7 +16,6 @@ class KhachSanRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id_khach_san'              =>'required',
             'ten_khach_san'             =>'required',
             'slug'                      =>'required',
             'id_tinh_thanh'             =>'required',

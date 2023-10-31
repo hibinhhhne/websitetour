@@ -16,7 +16,6 @@ class DiadiemRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id_dia_diem'           =>'required',
             'ten_dia_diem'          =>'required',
             'slug'                  =>'required',
             'id_tinh_thanh'         =>'required',

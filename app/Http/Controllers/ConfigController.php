@@ -32,4 +32,13 @@ class ConfigController extends Controller
             'data'    => $data,
         ]);
     }
+
+    public function getAllData()
+    {
+        $data = Config::get();
+
+        return response()->json([
+            'data'    => $data,
+        ]);
+    }
 }

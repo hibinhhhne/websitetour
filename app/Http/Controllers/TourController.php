@@ -82,7 +82,7 @@ class TourController extends Controller
     {
         $data = Tours::where('trang_thai', 1)->get();
 
-        return view('client.share.master', compact('data'));
+        return view('client.page.tour_list', compact('data'));
     }
 
     public function getDataDetailTour(Request $request)

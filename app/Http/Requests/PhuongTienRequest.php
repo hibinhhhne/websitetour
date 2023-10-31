@@ -16,7 +16,6 @@ class PhuongTienRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id_phuong_tien'              =>'required',
             'ten_phuong_tien'             =>'required',
             'loai_phuong_tien'            =>'required',
             'cho_ngoi'                    =>'required',
@@ -25,5 +24,5 @@ class PhuongTienRequest extends FormRequest
         ];
     }
 
-   
+
 }

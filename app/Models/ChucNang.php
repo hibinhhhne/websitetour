@@ -12,7 +12,6 @@ class ChucNang extends Model
     protected $table = 'chuc_nang';
 
     protected $fillable = [
-        'id_chuc_nang',
         'ten_chuc_nang',
         'slug',
     ];

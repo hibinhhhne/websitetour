@@ -12,7 +12,6 @@ class KhachSan extends Model
     protected $table = 'khach_san';
 
     protected $fillable = [
-        'id_khach_san',
         'ten_khach_san',
         'slug',
         'id_tinh_thanh',

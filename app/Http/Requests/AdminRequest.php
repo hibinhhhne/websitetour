@@ -18,13 +18,12 @@ class AdminRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id_admin'          =>'required',
             'ho_va_ten'         =>'required|min:5|max:50',
-            'email'             =>'required|email',
+            'email'             =>'required|email|unique:admin,email',
             'password'          =>'required|min:6|max:30',
-            'so_dien_thoai'     =>'required|digits:10',
+            'so_dien_thoai'     =>'required|digits:10|unique:admin,so_dien_thoai',
             'dia_chi'           =>'required',
-            'ngay_sinh'         =>'required',
+            'ngay_sinh'         =>'required|date',
             'gioi_tinh'         =>'required',
             'id_quyen'          =>'required',
         ];
@@ -33,11 +32,27 @@ class AdminRequest extends FormRequest
     public function messages()
     {
         return [
-            'ho_va_ten.*'           => 'Họ và tên phải dài hơn 5',
-            'email.*'               => 'Nhập đúng Email',
-            'password.*'            => 'Password phải dài hơn 6',
-            'so_dien_thoai.*'       => 'Số điện thoại chỉ 10 chữ số',
+            'required'       => ':attribute phải nhập',
+            'max'            => ':attribute quá dài',
+            'min'            => ':attribute quá ngắn',
+            'email'          => ':attribute phải đúng định dạng',
+            'unique'          => ':attribute đã tồn tại',
+            'digits'          => ':attribute bắt buộc 10 số',
+            'date'            => ':attribute phải đúng dịnh dạng',
         ];
 
+    }
+    public function attributes()
+    {
+        return [
+            'ho_va_ten'     =>'Họ và tên',
+            'email'         =>'Email',
+            'password'      =>'Mật khẩu',
+            'so_dien_thoai' =>'Số Điện Thoại',
+            'dia_chi'       =>'Địa Chỉ',
+            'ngay_sinh'     =>'Ngày Sinh',
+            'gioi_tinh'     =>'Giới Tính',
+            'id_quyen'      =>'Quyền',
+        ];
     }
 }

@@ -152,6 +152,7 @@ Route::group(['prefix' => '/admin'], function (){
     Route::group(['prefix' => '/cau-hinh'], function() {
         Route::get('/', [ConfigController::class, 'index']);
         Route::get('/data', [ConfigController::class, 'getData']);
+        Route::get('/all-data', [ConfigController::class, 'getAllData']);
 
         Route::post('/', [ConfigController::class, 'store']);
     });
@@ -161,7 +162,14 @@ Route::group(['prefix' => '/admin'], function (){
 Route::group(['prefix' => 'laravel-filemanager'], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
+
+Route::group(['prefix' => '/client'], function (){
+    Route::post('/register', [HomepageController::class, 'actionRegister']);
+    Route::post('/login', [HomepageController::class, 'actionLogin']);
+    Route::get('/get-data-quoc-tich', [HomepageController::class, 'getDataQuocTich']);
+});
 Route::get('/', [TestController::class, 'index']);
+Route::get('/login-register', [HomepageController::class, 'indexLoginRegister']);
 Route::post('/tour/data', [TourController::class, 'getDataTour']);
 Route::get('/list-tour', [TourController::class, 'viewListRoom']);
 Route::get('/detail-tour/{id}', [TourController::class, 'viewDetailTour']);

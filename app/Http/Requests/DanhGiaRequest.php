@@ -15,7 +15,6 @@ class DanhGiaRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id_danh_gia'       =>'required',
             'id_tour'           =>'required',
             'id_khach_hang'     =>'required',
             'noi_dung'          =>'required',

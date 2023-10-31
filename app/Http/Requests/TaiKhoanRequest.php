@@ -15,7 +15,6 @@ class TaiKhoanRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id_tai_khoan'          =>'required',
             'ten_tai_khoan'         =>'required',
             'password'              =>'required|min:6|max:30',
             'ho_va_ten'             =>'required|min:5|max:50',

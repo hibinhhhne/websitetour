@@ -11,10 +11,6 @@
                 </div>
                 <div class="card-body">
                     <div class="form-group">
-                        <label>ID</label>
-                        <input v-model="add.id_hoa_don" type="text" class="form-control" placeholder="Nhập vào ID Hóa Đơn">
-                    </div>
-                    <div class="form-group">
                         <label>ID Tour</label>
                         <input v-model="add.id_tour" type="text" class="form-control" placeholder="Nhập vào ID tour">
                     </div>
@@ -51,19 +47,19 @@
                         <input v-model="add.tong_tien" type="text" class="form-control" >
                     </div>
                     <div class="form-group">
-                        <label>Trạng Thái</label>
-                        <select v-model="add.trang_thai_thanh_toan" class="form-control">
-                            <option value="1">Đã Thanh Toán</option>
-                            <option value="0">Chưa Thanh Toán</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
                         <label>Mã Thanh Toán</label>
                         <input v-model="add.ma_thanh_toan" type="text" class="form-control" placeholder="Nhập vào Mã Thanh Toán">
                     </div>
                     <div class="form-group">
                         <label>ID Bill Thanh Toán</label>
                         <input v-model="add.id_bill_thanh_toan" type="text" class="form-control" placeholder="Nhập vào Bill Thanh Toán">
+                    </div>
+                    <div class="form-group">
+                        <label>Trạng Thái</label>
+                        <select v-model="add.trang_thai_thanh_toan" class="form-control">
+                            <option value="1">Đã Thanh Toán</option>
+                            <option value="0">Chưa Thanh Toán</option>
+                        </select>
                     </div>
                 </div>
                 <div class="card-footer text-right">
@@ -82,7 +78,6 @@
                             <thead>
                                 <tr class="text-center text-nowrap">
                                     <th class="text-center">#</th>
-                                    <th class="text-center">ID</th>
                                     <th class="text-center">ID Tour</th>
                                     <th class="text-center">ID Khách Hàng</th>
                                     <th class="text-center">ID Nhân Viên</th>
@@ -92,16 +87,15 @@
                                     <th class="text-center">Ngày Kết Thúc</th>
                                     <th class="text-center">Số Người</th>
                                     <th class="text-center">Tổng Tiền</th>
-                                    <th class="text-center">Trạng Thái</th>
                                     <th class="text-center">Mã Thanh Toán</th>
                                     <th class="text-center">ID Bill Thanh Toán</th>
+                                    <th class="text-center">Trạng Thái</th>
                                     <th class="text-center">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr v-for="(value, key) in list_hoadon">
                                     <th class="text-center align-middle">@{{ key + 1 }}</th>
-                                        <td class="align-middle">@{{ value.id_hoa_don }}</td>
                                         <td class="align-middle">@{{ value.id_tour }}</td>
                                         <td class="align-middle">@{{ value.id_khach_hang }}</td>
                                         <td class="align-middle">@{{ value.id_nhan_vien }}</td>
@@ -111,12 +105,12 @@
                                         <td class="align-middle">@{{ value.ngay_ket_thuc }}</td>
                                         <td class="align-middle">@{{ value.so_nguoi }}</td>
                                         <td class="align-middle">@{{ value.tong_tien }}</td>
+                                        <td class="align-middle">@{{ value.ma_thanh_toan }}</td>
+                                        <td class="align-middle">@{{ value.id_bill_thanh_toan }}</td>
                                         <td class="text-center text-nowrap">
                                             <button v-on:click="doiTrangThai(value)" v-if="value.trang_thai_thanh_toan == 1" class="btn btn-success">Đã Đặt</button>
                                             <button v-on:click="doiTrangThai(value)" v-else class="btn btn-warning">Chưa Đặt</button>
                                         </td>
-                                        <td class="align-middle">@{{ value.ma_thanh_toan }}</td>
-                                        <td class="align-middle">@{{ value.id_bill_thanh_toan }}</td>
                                         <td class="align-middle text-center">
                                             <button class="btn btn-primary" v-on:click="edit = value " data-toggle="modal" data-target="#editModal">Cập Nhật</button>
                                             <button class="btn btn-danger" v-on:click="del = value " data-toggle="modal" data-target="#deleteModal">Xóa</button>
@@ -134,10 +128,6 @@
                                     </div>
                                     <div class="modal-body">
                                         <input type="hidden" v-model="edit.id" class="form-control">
-                                        <div class="form-group">
-                                            <label>ID</label>
-                                            <input v-model="edit.id_hoa_don" type="text" class="form-control" placeholder="Nhập vào id tour">
-                                        </div>
                                         <div class="form-group">
                                             <label>ID Tour</label>
                                             <input v-model="edit.id_tour" type="text" class="form-control" placeholder="Nhập vào ID Tour">
@@ -175,19 +165,19 @@
                                             <input v-model="edit.tong_tien" type="text" class="form-control" placeholder="Nhập vào Tổng Tiền">
                                         </div>
                                         <div class="form-group">
-                                            <label>Trạng Thái</label>
-                                            <select v-model="edit.trang_thai_thanh_toan" class="form-control">
-                                                <option value="1">Đã Thanh Toán</option>
-                                                <option value="0">Chưa Thanh Toán</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
                                             <label>Mã Thanh Toán</label>
                                             <input v-model="edit.ma_thanh_toan" type="text" class="form-control" placeholder="Nhập vào Mã Thanh Toán">
                                         </div>
                                         <div class="form-group">
                                             <label>ID Bill Thanh Toán</label>
                                             <input v-model="edit.id_bill_thanh_toan" type="text" class="form-control" placeholder="Nhập vào ID Bill Thanh Toán">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Trạng Thái</label>
+                                            <select v-model="edit.trang_thai_thanh_toan" class="form-control">
+                                                <option value="1">Đã Thanh Toán</option>
+                                                <option value="0">Chưa Thanh Toán</option>
+                                            </select>
                                         </div>
                                         </div>
                                     </div>

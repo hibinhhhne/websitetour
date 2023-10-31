@@ -17,7 +17,10 @@ class DanhGiaController extends Controller
 
     public function data()
     {
-        $danhGia = DanhGia::all();
+        $danhGia = DanhGia::join('khach_hang', 'danh_gia.id_khach_hang', 'khach_hang.id')
+                            ->where('trang_thai', 1)
+                            ->select('khach_hang.ho_va_ten', 'khach_hang.dia_chi', 'danh_gia.*')
+                            ->get();
 
         return response()->json([
             'data'  => $danhGia,
