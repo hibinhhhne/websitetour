@@ -58,4 +58,11 @@ class HomepageController extends Controller
             ]);
         }
     }
+
+    public function actionLogout()
+    {
+        Auth::guard('client')->logout();
+        toastr()->success("Tài khoản đã đăng xuất!");
+        return redirect('/');
+    }
 }

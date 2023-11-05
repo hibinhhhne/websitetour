@@ -104,7 +104,7 @@
                                                     </button>
                                                 </div>
                                             </div> --}}
-                                            <button class="btn add-to-cart">Add to Cart</button>
+                                            <button v-on:click="addToCart()" class="btn add-to-cart">Add to Cart</button>
                                         </div>
                                     </div>
                                 </div>
@@ -341,6 +341,23 @@
             },
             numberFormat(number) {
                 return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(number).replace("₫", "VNĐ")
+            },
+            addToCart() {
+                this.detail_addres.so_luong_mua = 1;
+                axios
+                    .post('/client/add-card-tour', this.detail_addres)
+                    .then((res) => {
+                        if(res.data.status) {
+                            toastr.success(res.data.message);
+                        } else {
+                            toastr.error(res.data.message);
+                        }
+                    })
+                    .catch((res) => {
+                        $.each(res.response.data.errors, function(k, v) {
+                            toastr.error(v[0]);
+                        });
+                    });
             }
         },
     });

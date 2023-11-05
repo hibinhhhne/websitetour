@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\KhachHangRequest;
 use App\Models\KhachHang;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class KhachHangController extends Controller
 {
