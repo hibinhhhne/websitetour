@@ -320,7 +320,7 @@
                 <div class="section-title">
                     <h4>TOURS</h4>
                     <p class="section-subtitle">Thông tin tour của chúng tôi</p>
-                    <a href="/list-tour" class="view-all">Tất Cả</a>
+                    <a href="/tour" class="view-all">Tất Cả</a>
                 </div>
                 <div class="row">
                     <!-- ITEM -->
@@ -353,11 +353,11 @@
                 </div>
                 <div class="gallery-owl owl-carousel image-gallery">
                     <!-- ITEM -->
-                    @foreach ($listConfig as $item)
+                    @foreach ($list_anh as $item)
                         <div class="gallery-item">
                             <figure class="gradient-overlay image-icon">
-                                <a href="images/gallery/gallery2.jpg">
-                                    <img style="width: 210px; height: 280px;" src="{{ $item->images }}"
+                                <a href="{{ $item }}">
+                                    <img style="width: 210px; height: 280px;" src="{{ $item }}"
                                         alt="Image">
                                 </a>
                             </figure>

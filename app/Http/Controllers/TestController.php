@@ -22,6 +22,7 @@ class TestController extends Controller
         $listConfig = Config::orderByDESC('id')->take(9)->get();
         $config = Config::orderByDESC('id')->first();
         $slide = explode(",", $config->slide);
+        $list_anh = explode(",", $listConfig[0]['images']);
         $danhGia = DanhGia::join('khach_hang', 'khach_hang.id', 'danh_gia.id_khach_hang')
                         ->join('tours', 'tours.id', 'danh_gia.id_tour')
                         ->where('danh_gia.trang_thai', 1)
@@ -29,9 +30,13 @@ class TestController extends Controller
                         ->select('danh_gia.*', 'khach_hang.ho_va_ten', 'tours.ten_tour')
                         ->take(10)->get();
 
+        return view('client.share.master',compact('data', 'list_anh', 'slide', 'danhGia'));
 
-        return view('client.share.master',compact('data', 'listConfig', 'slide', 'danhGia'));
+    }
 
+    public function indexLienHe()
+    {
+        return view();
     }
 
 }

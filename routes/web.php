@@ -175,6 +175,7 @@ Route::group(['prefix' => '/client'], function (){
 });
 Route::get('/logout', [HomepageController::class, 'actionLogout']);
 Route::get('/', [TestController::class, 'index']);
+Route::get('/lien-he', [TestController::class, 'indexLienHe']);
 Route::get('/login-register', [HomepageController::class, 'indexLoginRegister']);
 Route::post('/tour/data', [TourController::class, 'getDataTour']);
 Route::get('/tour', [TourController::class, 'indexTour']);
