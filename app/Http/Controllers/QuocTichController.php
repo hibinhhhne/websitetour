@@ -29,7 +29,10 @@ class QuocTichController extends Controller
         $data  = $request->all();
         QuocTich::create($data);
 
-        return response()->json(['status' => true]);
+        return response()->json([
+            'status'    => 1,
+            'message'   => 'Đã thêm mới thành công!',
+        ]);
     }
 
     public function destroy(Request $request)
@@ -37,9 +40,27 @@ class QuocTichController extends Controller
         $quocTich = QuocTich::where('id', $request->id)->first();
         if($quocTich) {
             $quocTich->delete();
-            return response()->json(['status' => true]);
+            return response()->json([
+            'status'    => 1,
+            'message'   => 'Đã xóa thành công!',
+        ]);
         }
-        return response()->json(['status' => false]);
+        return response()->json([
+            'status'    => 1,
+            'message'   => 'Đã gặp lỗi!',
+        ]);
 
+    }
+
+    public function update(Request $request)
+    {
+        $quocTich = QuocTich::where('id', $request->id)->first();
+
+        $quocTich->update($request->all());
+
+        return response()->json([
+            'status'    => 1,
+            'message'   => 'Đã cập nhật thành công!',
+        ]);
     }
 }

@@ -66,18 +66,18 @@
                         <tbody>
                             <tr v-for="(value, key) in list_phuongtien">
                                 <th class="text-center align-middle">@{{ key + 1 }}</th>
-                                    <td class="align-middle">@{{ value.ten_phuong_tien }}</td>
-                                    <td class="align-middle">@{{ value.loai_phuong_tien }}</td>
-                                    <td class="align-middle">@{{ value.cho_ngoi }}</td>
-                                    <td class="align-middle">@{{ value.id_tinh_thanh }}</td>
-                                    <td class="text-center text-nowrap">
-                                        <button v-on:click="doiTrangThai(value)" v-if="value.trang_thai == 1" class="btn btn-success">Đã </button>
-                                        <button v-on:click="doiTrangThai(value)" v-else class="btn btn-warning">Chưa </button>
-                                    </td>
-                                    <td class="text-center text-nowrap">
-                                        <button class="btn btn-info" v-on:click="click_edit(value)" data-toggle="modal" data-target="#editModal">Cập Nhật</button>
-                                        <button class="btn btn-danger" v-on:click="dele = value" data-toggle="modal" data-target="#deleteModal">Xóa</button>
-                                    </td>
+                                <td class="align-middle">@{{ value.ten_phuong_tien }}</td>
+                                <td class="align-middle">@{{ value.loai_phuong_tien }}</td>
+                                <td class="align-middle">@{{ value.cho_ngoi }}</td>
+                                <td class="align-middle">@{{ value.id_tinh_thanh }}</td>
+                                <td class="text-center text-nowrap">
+                                    <button v-on:click="doiTrangThai(value)" v-if="value.trang_thai == 1" class="btn btn-success">Đã </button>
+                                    <button v-on:click="doiTrangThai(value)" v-else class="btn btn-warning">Chưa </button>
+                                </td>
+                                <td class="text-center text-nowrap">
+                                    <button class="btn btn-info" v-on:click="edit = value" data-toggle="modal" data-target="#editModal">Cập Nhật</button>
+                                    <button class="btn btn-danger" v-on:click="del = value" data-toggle="modal" data-target="#deleteModal">Xóa</button>
+                                </td>
                             </tr>
                         </tbody>
                         <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-hidden="true">
@@ -119,10 +119,6 @@
                                                 <option value="0">Chưa </option>
                                             </select>
                                         </div>
-                                    <div class="card-footer text-right">
-                                        <button class="btn btn-primary" v-on:click="themMoi()">Thêm Mới</button>
-                                    </div>
-                                        <div id="edit_holder" style="margin-top:15px;max-height:100px;"></div>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -198,9 +194,11 @@
                     axios
                         .post('/admin/phuong-tien/create', this.add)
                         .then((res) => {
-                            if(res.data.status == true) {
-                                // toastr.success("Đã thêm mới tour thành công!");toastr chưa dung
+                            if(res.data.status) {
+                                toastr.success(res.data.message);
                                 this.loadPhuongTien();
+                            } else {
+                                toastr.error(res.data.message);
                             }
                         })
                         .catch((res) => {
@@ -215,8 +213,10 @@
                         .post('/admin/phuong-tien/change-status', payload )
                         .then((res) => {
                             if(res.data.status) {
-                                // toastr.success('Đã thay đổi trạng thái thành công!');
+                                toastr.success(res.data.message);
                                 this.loadPhuongTien();
+                            } else {
+                                toastr.error(res.data.message);
                             }
 
                         })
@@ -231,9 +231,11 @@
                     axios
                         .post('/admin/phuong-tien/update', this.edit)
                         .then((res) => {
-                            if(res.data.status == true) {
-                                // toastr.success("Đã cập nhật tour thành công!");toastr chưa dung
+                            if(res.data.status) {
+                                toastr.success(res.data.message);
                                 this.loadPhuongTien();
+                            } else {
+                                toastr.error(res.data.message);
                             }
                         })
                         .catch((res) => {
@@ -247,9 +249,11 @@
                     axios
                         .post('/admin/phuong-tien/delete', this.del)
                         .then((res) => {
-                            if(res.data.status == true) {
-                                // toastr.success("Đã xóa tour thành công!");toastr chưa dung
+                            if(res.data.status) {
+                                toastr.success(res.data.message);
                                 this.loadPhuongTien();
+                            } else {
+                                toastr.error(res.data.message);
                             }
                         })
                         .catch((res) => {

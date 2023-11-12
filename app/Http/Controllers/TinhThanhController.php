@@ -29,7 +29,10 @@ class TinhThanhController extends Controller
         $data  = $request->all();
         TinhThanh::create($data);
 
-        return response()->json(['status' => true]);
+        return response()->json([
+            'status'    => 1,
+            'message'   => 'Đã thêm mới thành công!',
+        ]);
     }
 
     public function destroy(Request $request)
@@ -37,8 +40,31 @@ class TinhThanhController extends Controller
         $tinhThanh = TinhThanh::where('id', $request->id)->first();
         if($tinhThanh) {
             $tinhThanh->delete();
-            return response()->json(['status' => true]);
+            return response()->json([
+                'status'    => 1,
+                'message'   => 'Đã xóa thành công!',
+            ]);
         }
-        return response()->json(['status' => false]);
+        return response()->json([
+            'status'    => 0,
+            'message'   => 'Đã gặp lỗi!!',
+        ]);
+    }
+
+    public function update(Request $request)
+    {
+        $data = $request->all();
+        $tinhThanh = TinhThanh::where('id', $request->id)->first();
+        if($tinhThanh) {
+            $tinhThanh->update($data);
+            return response()->json([
+                'status'    => 1,
+                'message'   => 'Đã cập nhật thành công!',
+            ]);
+        }
+        return response()->json([
+            'status'    => 0,
+            'message'   => 'Đã gặp sự cố!',
+        ]);
     }
 }

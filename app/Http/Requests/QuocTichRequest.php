@@ -15,7 +15,6 @@ class QuocTichRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id_quoc_tich'                  =>'required',
             'ten_quoc_tich'                 =>'required',
             'slug'                          =>'required',
         ];

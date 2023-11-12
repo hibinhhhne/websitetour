@@ -9,6 +9,7 @@ use App\Models\GioHang;
 use App\Models\Tours;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redis;
 
 class TourController extends Controller
 {
@@ -84,27 +85,37 @@ class TourController extends Controller
         Tours::create($data);
 
         return response()->json([
-            'status'    => true,
+            'status'    => 1,
+            'message'   => 'Đã thêm mới thành công!',
         ]);
 
     }
-    public function update(TourRequest $request)
+    public function update(Request $request)
     {
         $Tours = Tours::where('id', $request->id)->first();
 
         $Tours->update($request->all());
 
-        return response()->json(['status' => true]);
+        return response()->json([
+            'status'    => 1,
+            'message'   => 'Đã cập nhật thành công!',
+        ]);
     }
 
-    public function destroy(TourRequest $request)
+    public function destroy(Request $request)
     {
         $Tours = Tours::where('id', $request->id)->first();
         if($Tours) {
             $Tours->delete();
-            return response()->json(['status' => true]);
+            return response()->json([
+                'status'    => 1,
+                'message'   => 'Đã xóa thành công!',
+            ]);
         }
-        return response()->json(['status' => false]);
+        return response()->json([
+            'status'    => 0,
+            'message'   => 'Đã gặp lỗi!',
+        ]);
 
     }
 
@@ -114,9 +125,15 @@ class TourController extends Controller
         if($Tours) {
             $Tours->trang_thai = !$Tours->trang_thai;
             $Tours->save();
-            return response()->json(['status' => true]);
+            return response()->json([
+                'status'    => 1,
+                'message'   => 'Đã đổi trạng thái thành công!',
+            ]);
         }
-        return response()->json(['status' => false]);
+        return response()->json([
+            'status'    => 0,
+            'message'   => 'Đã gặp lỗi gì đó!',
+        ]);
 
     }
     public function viewDetailTour($id)

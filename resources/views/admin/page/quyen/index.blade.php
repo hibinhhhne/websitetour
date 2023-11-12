@@ -16,11 +16,11 @@
                     </div>
                     <div class="form-group">
                         <label>Tên Quyền</label>
-                        <input v-model="add.ten_quyen" v-on:keyup="toSlug(add.ten_quyen)" type="text" class="form-control" placeholder="Nhập Quyền">
+                        <input v-model="add.ten_quyen" v-on:keyup="slugAdd()" type="text" class="form-control" placeholder="Nhập Quyền">
                     </div>
                     <div class="form-group">
                         <label>Slug Quyền</label>
-                        <input v-model="add.slug" type="text" class="form-control">
+                        <input v-model="slug" type="text" class="form-control">
                     </div>
                     <div class="form-group">
                         <label>Danh Sách Chức Năng</label>
@@ -58,8 +58,8 @@
                                     <td class="align-middle">@{{ value.slug }}</td>
                                     <td class="align-middle">@{{ value.danh_sach_chuc_nang }}</td>
                                     <td class="text-center text-nowrap">
-                                        <button class="btn btn-info" v-on:click="click_edit(value)" data-toggle="modal" data-target="#editModal">Cập Nhật</button>
-                                        <button class="btn btn-danger" v-on:click="dele = value" data-toggle="modal" data-target="#deleteModal">Xóa</button>
+                                        <button class="btn btn-info" v-on:click="edit = value" data-toggle="modal" data-target="#editModal">Cập Nhật</button>
+                                        <button class="btn btn-danger" v-on:click="del = value" data-toggle="modal" data-target="#deleteModal">Xóa</button>
                                     </td>
                             </tr>
                         </tbody>
@@ -83,7 +83,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Tên Quyền</label>
-                                            <input v-model="edit.ten_quyen" v-on:keyup="toSlug(edit.ten_quyen)" type="text" class="form-control" placeholder="Nhập Quyền">
+                                            <input v-model="edit.ten_quyen" v-on:keyup="slug_edit()" type="text" class="form-control" placeholder="Nhập Quyền">
                                         </div>
                                         <div class="form-group">
                                             <label>Slug Quyền</label>
@@ -135,15 +135,35 @@
         new Vue({
             el      :   '#app',
             data    :   {
-                list_quyen      :   [],
-                add                 :   {},
-                edit                :   {},
-                del                 :   {},
+                list_quyen:   [],
+                add       :   {},
+                edit      :   {},
+                del       :   {},
+                slug      :   "",
             },
             created() {
                 this.loadQuyen();
             },
             methods :   {
+                toSlug(str) {
+                    str = str.toLowerCase();
+                    str = str
+                        .normalize('NFD') // chuyển chuỗi sang unicode tổ hợp
+                        .replace(/[\u0300-\u036f]/g, ''); // xóa các ký tự dấu sau khi tách tổ hợp
+                    str = str.replace(/[đĐ]/g, 'd');
+                    str = str.replace(/([^0-9a-z-\s])/g, '');
+                    str = str.replace(/(\s+)/g, '-');
+                    str = str.replace(/-+/g, '-');
+                    str = str.replace(/^-+|-+$/g, '');
+                    return str;
+                },
+                slugAdd() {
+                    this.slug = this.toSlug(this.add.ten_quyen);
+                    this.add.slug = this.slug;
+                },
+                slug_edit() {
+                    this.edit.slug = this.toSlug(this.edit.ten_quyen);
+                },
                 loadQuyen(){
                     axios
                         .get('/admin/quyen/data')
@@ -155,9 +175,11 @@
                     axios
                         .post('/admin/quyen/create', this.add)
                         .then((res) => {
-                            if(res.data.status == true) {
-                                // toastr.success("Đã thêm mới tour thành công!");toastr chưa dung
+                            if(res.data.status) {
                                 this.loadQuyen();
+                                toastr.success(res.data.message);
+                            } else {
+                                toastr.error(res.data.message);
                             }
                         })
                         .catch((res) => {
@@ -172,9 +194,11 @@
                     axios
                         .post('/admin/quyen/update', this.edit)
                         .then((res) => {
-                            if(res.data.status == true) {
-                                // toastr.success("Đã cập nhật tour thành công!");toastr chưa dung
+                            if(res.data.status) {
                                 this.loadQuyen();
+                                toastr.success(res.data.message);
+                            } else {
+                                toastr.error(res.data.message);
                             }
                         })
                         .catch((res) => {
@@ -188,9 +212,11 @@
                     axios
                         .post('/admin/quyen/delete', this.del)
                         .then((res) => {
-                            if(res.data.status == true) {
-                                // toastr.success("Đã xóa tour thành công!");toastr chưa dung
+                            if(res.data.status) {
                                 this.loadQuyen();
+                                toastr.success(res.data.message);
+                            } else {
+                                toastr.error(res.data.message);
                             }
                         })
                         .catch((res) => {

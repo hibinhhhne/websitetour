@@ -44,7 +44,10 @@ class AdminController extends Controller
         $Admin = Admin::where('id', $request->id)->first();
         if($Admin) {
             $Admin->delete();
-            return response()->json(['status' => true]);
+            return response()->json([
+                'status'    => 1,
+                'message'   => 'Đã xóa thành công!',
+            ]);
         }
         return response()->json(['status' => false]);
     }
