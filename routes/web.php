@@ -178,12 +178,8 @@ Route::group(['prefix' => '/client'], function (){
 
 });
 Route::get('/logout', [HomepageController::class, 'actionLogout']);
-<<<<<<< HEAD
 Route::get('/', [TestController::class, 'index'])->name('home');
-=======
-Route::get('/', [TestController::class, 'index']);
 Route::get('/lien-he', [TestController::class, 'indexLienHe']);
->>>>>>> 52b4dce9bd899d69f9a0f3367dd6d309859a24bb
 Route::get('/login-register', [HomepageController::class, 'indexLoginRegister']);
 Route::get('/contact', [HomepageController::class, 'contactindex']);
 Route::get('/gioi-thieu', [HomepageController::class, 'gioithieuindex']);

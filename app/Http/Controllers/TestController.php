@@ -33,14 +33,7 @@ class TestController extends Controller
                         ->orderByDESC('id')
                         ->select('danh_gia.*', 'khach_hang.ho_va_ten', 'tours.ten_tour')
                         ->take(10)->get();
-
-<<<<<<< HEAD
-
         return view('client.share.master',compact('data', 'listConfig', 'slide', 'danhGia', 'tour'));
-=======
-        return view('client.share.master',compact('data', 'list_anh', 'slide', 'danhGia'));
->>>>>>> 52b4dce9bd899d69f9a0f3367dd6d309859a24bb
-
     }
 
     public function indexLienHe()
