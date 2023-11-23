@@ -100,7 +100,17 @@
                                     <td class="align-middle">@{{ value.dia_chi }}</td>
                                     <td class="align-middle">@{{ value.quoc_tich }}</td>
                                     <td class="align-middle text-nowrap">@{{ value.ngay_sinh }}</td>
-                                    <td class="align-middle">@{{ value.gioi_tinh }}</td>
+                                    <td class="align-middle">
+                                        <template v-if="value.gioi_tinh == 1">
+                                            Nam
+                                        </template>
+                                        <template v-if="value.gioi_tinh == 0">
+                                            Nữ
+                                        </template>
+                                        <template v-else>
+                                            Khác
+                                        </template>
+                                    </td>
                                     <td class="text-center text-nowrap ">
                                         <button v-on:click="doiTrangThai(value)" v-if="value.loai_tai_khoan == 1"
                                             class="btn btn-success">Khách Hàng Mới</button>
@@ -115,20 +125,61 @@
                                     </td>
                                 </tr>
                             </tbody>
-                            <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                                aria-hidden="true">
-                                <div class="modal-dialog modal-lg">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Cập Nhật</h5>
-                                            <button type="button" class="close" data-dismiss="modal"
-                                                aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <input type="hidden" id="edit_id" class="form-control">
-
+                        </table>
+                    </div>
+                    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Cập Nhật</h5>
+                                    <button type="button" class="close" data-dismiss="modal"
+                                        aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label>Họ và Tên</label>
+                                        <input v-model="edit.ho_va_ten" type="text" class="form-control"
+                                            placeholder="Nhập vào ID">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Email</label>
+                                        <input v-model="edit.email" type="email" class="form-control"
+                                            placeholder="Nhập vào ID">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Số Điện Thoại</label>
+                                        <input v-model="edit.so_dien_thoai" type="tel" class="form-control"
+                                            placeholder="Nhập vào bình luận">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Địa Chỉ</label>
+                                        <input v-model="edit.dia_chi" type="text" class="form-control"
+                                            placeholder="Nhập vào bình luận">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Quốc Tịch</label>
+                                        <select v-model="edit.quoc_tich" class="form-control">
+                                            <option value="0">Chọn Quốc Tịch</option>
+                                            <template v-for="(v,k) in list_qt">
+                                                <option v-bind:value="v.id">@{{v.ten_quoc_tich}}</option>
+                                            </template>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Ngày Sinh</label>
+                                        <input v-model="edit.ngay_sinh" type="date" class="form-control"
+                                            placeholder="Nhập vào bình luận">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Giới Tính</label>
+                                        <select v-model="edit.gioi_tinh" class="form-control">
+                                            <option value="">Chọn Giới Tinh</option>
+                                            <option value="1">Nam</option>
+                                            <option value="0">Nũ</option>
+                                            <option value="2">Khác</option>
                                             <div class="form-group">
                                                 <label>Họ và Tên</label>
                                                 <input v-model="edit.ho_va_ten" type="text" class="form-control"
@@ -194,9 +245,25 @@
                                             <button v-on:click="capNhatKhachHang()" class="btn btn-primary"
                                                 data-dismiss="modal">Cập Nhật</button>
                                         </div>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Loại Tài Khoản</label>
+                                        <select v-model="edit.loai_tai_khoan" class="form-control">
+                                            <option value="">Chọn Loại Tài Khoản</option>
+                                            <option value="1">Khách Hàng Mới</option>
+                                            <option value="0">Khách Hàng Thân Thiết</option>
+                                        </select>
                                     </div>
                                 </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-dismiss="modal">Đóng</button>
+                                    <button v-on:click="capNhatKhachHang()" class="btn btn-primary"
+                                        data-dismiss="modal">Cập Nhật</button>
+                                </div>
                             </div>
+                        </div>
                     </div>
                     <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                         aria-hidden="true">
@@ -219,7 +286,6 @@
                             </div>
                         </div>
                     </div>
-                    </table>
                 </div>
             </div>
         </div>
@@ -268,6 +334,11 @@
                             if (res.data.status == true) {
                                 // toastr.success("Đã thêm mới tour thành công!");toastr chưa dung
                                 this.loadKhachHang();
+                                if(res.data.status) {
+                                    toastr.success(res.data.message);
+                                } else {
+                                    toastr.error(res.data.message);
+                                }
                             }
                         })
                         .catch((res) => {
@@ -282,8 +353,12 @@
                         .post('/admin/khach-hang/change-status', payload)
                         .then((res) => {
                             if (res.data.status) {
-                                // toastr.success('Đã thay đổi trạng thái thành công!');
                                 this.loadKhachHang();
+                                if(res.data.status) {
+                                    toastr.success(res.data.message);
+                                } else {
+                                    toastr.error(res.data.message);
+                                }
                             }
 
                         })
@@ -301,6 +376,11 @@
                             if (res.data.status == true) {
                                 // toastr.success("Đã cập nhật tour thành công!");toastr chưa dung
                                 this.loadKhachHang();
+                                if(res.data.status) {
+                                    toastr.success(res.data.message);
+                                } else {
+                                    toastr.error(res.data.message);
+                                }
                             }
                         })
                         .catch((res) => {
@@ -315,8 +395,12 @@
                         .post('/admin/khach-hang/delete', this.del)
                         .then((res) => {
                             if (res.data.status == true) {
-                                // toastr.success("Đã xóa tour thành công!");toastr chưa dung
                                 this.loadKhachHang();
+                                if(res.data.status) {
+                                    toastr.success(res.data.message);
+                                } else {
+                                    toastr.error(res.data.message);
+                                }
                             }
                         })
                         .catch((res) => {

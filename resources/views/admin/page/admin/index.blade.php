@@ -232,8 +232,12 @@
                         .post('/admin/admin/create', this.add)
                         .then((res) => {
                             if (res.data.status == true) {
-                                toastr.success(res.data.message);
                                 this.loadAdmin();
+                                if(res.data.status) {
+                                    toastr.success(res.data.message);
+                                } else {
+                                    toastr.error(res.data.message);
+                                }
                                 this.add = {};
                             }
                         })
@@ -249,7 +253,11 @@
                         .post('/admin/admin/update', this.edit)
                         .then((res) => {
                             if (res.data.status == true) {
-                                toastr.success("Đã cập nhật tour thành công!");
+                                if(res.data.status) {
+                                    toastr.success(res.data.message);
+                                } else {
+                                    toastr.error(res.data.message);
+                                }
                                 this.loadAdmin();
                             }
                         })
@@ -264,7 +272,11 @@
                         .post('/admin/admin/delete', this.del)
                         .then((res) => {
                             if (res.data.status == true) {
-                                toastr.success("Đã xóa tour thành công!");
+                                if(res.data.status) {
+                                    toastr.success(res.data.message);
+                                } else {
+                                    toastr.error(res.data.message);
+                                }
                                 this.loadAdmin();
                             }
                         })

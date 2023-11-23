@@ -321,6 +321,7 @@
                 },
                 edit            :   {},
                 del             :   {},
+                list_tt         : [],
             },
             created() {
                 this.loadTour();
@@ -340,7 +341,7 @@
                             this.list = res.data.data;
                         });
                 },
-                 loadTinhThanh() {
+                loadTinhThanh() {
                     axios
                         .get('/admin/tinh-thanh/data')
                         .then((res) => {
@@ -358,9 +359,11 @@
                     axios
                         .post('/admin/tour/create', this.add)
                         .then((res) => {
-                            if(res.data.status == true) {
-                                // toastr.success("Đã thêm mới tour thành công!");toastr chưa dung
-                                this.loadTour();
+                            this.loadTour();
+                            if(res.data.status) {
+                                toastr.success(res.data.message);
+                            } else {
+                                toastr.error(res.data.message);
                             }
                         })
                         .catch((res) => {
@@ -375,8 +378,10 @@
                         .post('/admin/tour/change-status', payload )
                         .then((res) => {
                             if(res.data.status) {
-                                // toastr.success('Đã thay đổi trạng thái thành công!');
+                                toastr.success(res.data.message);
                                 this.loadTour();
+                            } else {
+                                toastr.error(res.data.message);
                             }
 
                         })
@@ -392,9 +397,11 @@
                     axios
                         .post('/admin/tour/update', this.edit)
                         .then((res) => {
-                            if(res.data.status == true) {
-                                // toastr.success("Đã cập nhật tour thành công!");toastr chưa dung
+                            if(res.data.status) {
                                 this.loadTour();
+                                toastr.success(res.data.message);
+                            } else {
+                                toastr.error(res.data.message);
                             }
                         })
                         .catch((res) => {
@@ -408,9 +415,11 @@
                     axios
                         .post('/admin/tour/delete', this.del)
                         .then((res) => {
-                            if(res.data.status == true) {
-                                // toastr.success("Đã xóa tour thành công!");toastr chưa dung
+                            if(res.data.status) {
+                                toastr.success(res.data.message);
                                 this.loadTour();
+                            } else {
+                                toastr.error(res.data.message);
                             }
                         })
                         .catch((res) => {

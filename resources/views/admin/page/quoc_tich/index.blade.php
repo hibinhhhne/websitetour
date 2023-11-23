@@ -11,16 +11,12 @@
                 </div>
                 <div class="card-body">
                     <div class="form-group">
-                        <label>ID Quốc Tịch</label>
-                        <input v-model="add.id_quoc_tich" type="text" class="form-control">
-                    </div>
-                    <div class="form-group">
                         <label>Tên Quốc Tịch</label>
-                        <input v-model="add.ten_quoc_tich" v-on:keyup="toSlug(add.ten_quoc_tich)" type="text" class="form-control">
+                        <input v-model="add.ten_quoc_tich" v-on:keyup="slugAdd()" type="text" class="form-control">
                     </div>
                     <div class="form-group">
                         <label>Slug Quốc Tịch</label>
-                        <input v-model="add.slug" type="text" class="form-control">
+                        <input v-model="slug" type="text" class="form-control">
                     </div>
                 </div>
                 <div class="card-footer text-right">
@@ -39,7 +35,6 @@
                         <thead>
                             <tr>
                                 <th class="text-center">#</th>
-                                <th class="text-center">ID </th>
                                 <th class="text-center">Tên Quốc Tịch</th>
                                 <th class="text-center">Slug Quốc Tịch</th>
                                 <th class="text-center">Action</th>
@@ -48,11 +43,10 @@
                         <tbody>
                             <tr v-for="(value, key) in list">
                                 <th>@{{ key + 1 }}</th>
-                                <td>@{{ value.id_quoc_tich }}</td>
                                 <td>@{{ value.ten_quoc_tich }}</td>
                                 <td>@{{ value.slug}}</td>
                                 <td class="text-center text-nowrap">
-                                    <button class="btn btn-primary" v-on:click="click_edit(value)" data-toggle="modal" data-target="#editModal">Cập Nhật</button>
+                                    <button class="btn btn-primary" v-on:click="edit = value" data-toggle="modal" data-target="#editModal">Cập Nhật</button>
                                     <button class="btn btn-danger" v-on:click="dele = value" data-toggle="modal" data-target="#deleteModal">Xóa</button>
                                 </td>
                             </tr>
@@ -68,12 +62,8 @@
                                 </div>
                                 <div class="modal-body">
                                     <div class="form-group">
-                                        <label>ID Quốc Tịch</label>
-                                        <input v-model="edit.id_quoc_tich" type="text" class="form-control">
-                                    </div>
-                                    <div class="form-group">
                                         <label>Tên Quốc Tịch</label>
-                                        <input v-model="edit.ten_quoc_tich" v-on:keyup="toSlug(edit.ten_quoc_tich)" type="text" class="form-control">
+                                        <input v-model="edit.ten_quoc_tich" v-on:keyup="slug_edit()" type="text" class="form-control">
                                     </div>
                                     <div class="form-group">
                                         <label>Slug Quốc Tịch</label>
@@ -121,27 +111,45 @@
             el  :   '#app',
             data:   {
                 add :   {
-                    slug     : '',
+
                 },
                 list:   [],
                 edit:   {},
                 dele:   {},
+                slug     : '',
             },
             created() {
                 this.loadQuocTich();
             },
             methods : {
-                click_edit(value) {
-                    this.edit = value;
-
+                toSlug(str) {
+                    str = str.toLowerCase();
+                    str = str
+                        .normalize('NFD') // chuyển chuỗi sang unicode tổ hợp
+                        .replace(/[\u0300-\u036f]/g, ''); // xóa các ký tự dấu sau khi tách tổ hợp
+                    str = str.replace(/[đĐ]/g, 'd');
+                    str = str.replace(/([^0-9a-z-\s])/g, '');
+                    str = str.replace(/(\s+)/g, '-');
+                    str = str.replace(/-+/g, '-');
+                    str = str.replace(/^-+|-+$/g, '');
+                    return str;
+                },
+                slugAdd() {
+                    this.slug = this.toSlug(this.add.ten_quoc_tich);
+                    this.add.slug = this.slug;
+                },
+                slug_edit() {
+                    this.edit.slug = this.toSlug(this.edit.ten_quoc_tich);
                 },
                 themMoi() {
                     axios
                         .post('/admin/quoc-tich/create', this.add)
                         .then((res) => {
                             if(res.data.status) {
-                                // toastr.success("Đã thêm mới thành công!");
                                 this.loadQuocTich();
+                                toastr.success(res.data.message);
+                            } else {
+                                toastr.error(res.data.message);
                             }
                         })
                         .catch((res) => {
@@ -163,8 +171,10 @@
                         .post('/admin/quoc-tich/update', this.edit)
                         .then((res) => {
                             if(res.data.status) {
-                                // toastr.success("Đã cập nhật thành công!");
                                 this.loadQuocTich();
+                                toastr.success(res.data.message);
+                            } else {
+                                toastr.error(res.data.message);
                             }
                         })
                         .catch((res) => {
@@ -179,8 +189,10 @@
                         .post('/admin/quoc-tich/delete', this.dele)
                         .then((res) => {
                             if(res.data.status) {
-                                // toastr.success("Đã xóa thành công!");
                                 this.loadQuocTich();
+                                toastr.success(res.data.message);
+                            } else {
+                                toastr.error(res.data.message);
                             }
                         })
                         .catch((res) => {
@@ -189,18 +201,6 @@
                                 // toastr.error(v[0]);
                             });
                         });
-                },
-                toSlug(str) {
-                    str = str.toLowerCase();
-                    str = str
-                        .normalize('NFD')
-                        .replace(/[\u0300-\u036f]/g, '');
-                    str = str.replace(/[đĐ]/g, 'd');
-                    str = str.replace(/([^0-9a-z-\s])/g, '');
-                    str = str.replace(/(\s+)/g, '-');
-                    str = str.replace(/-+/g, '-');
-                    str = str.replace(/^-+|-+$/g, '');
-                    this.add.slug = str;
                 },
             },
         });

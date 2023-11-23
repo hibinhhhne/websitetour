@@ -12,11 +12,11 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Tên Chức Năng</label>
-                        <input v-model="add.ten_chuc_nang" v-on:keyup="toSlug(add.ten_chuc_nang)" type="text" class="form-control">
+                        <input v-model="add.ten_chuc_nang" v-on:keyup="slugAdd()" type="text" class="form-control">
                     </div>
                     <div class="form-group">
                         <label>Slug Chức Năng</label>
-                        <input v-model="add.slug" type="text" class="form-control">
+                        <input v-model="slug" type="text" class="form-control">
                     </div>
                 </div>
                 <div class="card-footer text-right">
@@ -31,75 +31,75 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th class="text-center">#</th>
-                                <th class="text-center">Tên Chức Năng</th>
-                                <th class="text-center">Slug Chức Năng</th>
-                                <th class="text-center">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr v-for="(value, key) in list">
-                                <th>@{{ key + 1 }}</th>
-                                <td>@{{ value.ten_chuc_nang }}</td>
-                                <td>@{{ value.slug}}</td>
-                                <td class="text-center text-nowrap">
-                                    <button class="btn btn-primary" v-on:click="click_edit(value)" data-toggle="modal" data-target="#editModal">Cập Nhật</button>
-                                    <button class="btn btn-danger" v-on:click="dele = value" data-toggle="modal" data-target="#deleteModal">Xóa</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                        <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-hidden="true">
-                            <div class="modal-dialog modal-xl" role="document">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <h5 class="modal-title" id="exampleModalLabel">Cập Nhật Chức Năng</h5>
-                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                  </button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="form-group">
-                                        <label>Tên Chức Năng</label>
-                                        <input v-model="edit.ten_chuc_nang" v-on:keyup="toSlug(edit.ten_chuc_nang)" type="text" class="form-control">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">#</th>
+                                    <th class="text-center">Tên Chức Năng</th>
+                                    <th class="text-center">Slug Chức Năng</th>
+                                    <th class="text-center">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="(value, key) in list">
+                                    <th>@{{ key + 1 }}</th>
+                                    <td>@{{ value.ten_chuc_nang }}</td>
+                                    <td>@{{ value.slug}}</td>
+                                    <td class="text-center text-nowrap">
+                                        <button class="btn btn-primary" v-on:click="edit = value" data-toggle="modal" data-target="#editModal">Cập Nhật</button>
+                                        <button class="btn btn-danger" v-on:click="dele = value" data-toggle="modal" data-target="#deleteModal">Xóa</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog modal-xl" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Cập Nhật Chức Năng</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
                                     </div>
-                                    <div class="form-group">
-                                        <label>Slug Chức Năng</label>
-                                        <input v-model="edit.slug" type="text" class="form-control">
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label>Tên Chức Năng</label>
+                                            <input v-model="edit.ten_chuc_nang" v-on:keyup="slug_edit()" type="text" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Slug Chức Năng</label>
+                                            <input v-model="edit.slug" type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" v-on:click="capNhatChucNang()" class="btn btn-primary" data-dismiss="modal">Cập Nhật</button>
                                     </div>
                                 </div>
-                                <div class="modal-footer">
-                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                  <button type="button" v-on:click="capNhatChucNang()" class="btn btn-primary" data-dismiss="modal">Cập Nhật</button>
                                 </div>
-                              </div>
                             </div>
-                        </div>
-                        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <h5 class="modal-title" id="exampleModalLabel">Xóa Chức Năng</h5>
-                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                  </button>
-                                </div>
-                                <div class="modal-body">
-                                    <div>
-                                        Bạn có chắc chắn muốn xóa chức năng: "@{{ dele.ten_chuc_nang }}" này không ?
+                            <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Xóa Chức Năng</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div>
+                                            Bạn có chắc chắn muốn xóa chức năng: "@{{ dele.ten_chuc_nang }}" này không ?
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" v-on:click="xoaChucNang()" class="btn btn-danger" data-dismiss="modal">Xóa</button>
                                     </div>
                                 </div>
-                                <div class="modal-footer">
-                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                  <button type="button" v-on:click="xoaChucNang()" class="btn btn-danger" data-dismiss="modal">Xóa</button>
                                 </div>
-                              </div>
                             </div>
-                        </div>
-                    </table>
-                </div>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -110,29 +110,45 @@
         new Vue({
             el  :   '#app',
             data:   {
-                add :   {
-                    slug     : '',
-                },
+                add :   {},
                 list:   [],
                 edit:   {},
                 dele:   {},
+                slug:   '',
             },
             created() {
                 this.loadChucNang();
             },
             methods : {
-                click_edit(value) {
-                    this.edit = value;
-
+                toSlug(str) {
+                    str = str.toLowerCase();
+                    str = str
+                        .normalize('NFD') // chuyển chuỗi sang unicode tổ hợp
+                        .replace(/[\u0300-\u036f]/g, ''); // xóa các ký tự dấu sau khi tách tổ hợp
+                    str = str.replace(/[đĐ]/g, 'd');
+                    str = str.replace(/([^0-9a-z-\s])/g, '');
+                    str = str.replace(/(\s+)/g, '-');
+                    str = str.replace(/-+/g, '-');
+                    str = str.replace(/^-+|-+$/g, '');
+                    return str;
+                },
+                slugAdd() {
+                    this.slug = this.toSlug(this.add.ten_chuc_nang);
+                    this.add.slug = this.slug;
+                },
+                slug_edit() {
+                    this.edit.slug = this.toSlug(this.edit.ten_chuc_nang);
                 },
                 themMoi() {
                     axios
                         .post('/admin/chuc-nang/create', this.add)
                         .then((res) => {
-                            if(res.data.status) {
-                                // toastr.success("Đã thêm mới thành công!");
-                                this.loadChucNang();
-                            }
+                                if(res.data.status) {
+                                    this.loadChucNang();
+                                    toastr.success(res.data.message);
+                                } else {
+                                    toastr.error(res.data.message);
+                                }
                         })
                         .catch((res) => {
                             var errors = res.response.data.errors;
@@ -153,8 +169,10 @@
                         .post('/admin/chuc-nang/update', this.edit)
                         .then((res) => {
                             if(res.data.status) {
-                                // toastr.success("Đã cập nhật thành công!");
                                 this.loadChucNang();
+                                toastr.success(res.data.message);
+                            } else {
+                                toastr.error(res.data.message);
                             }
                         })
                         .catch((res) => {
@@ -169,8 +187,10 @@
                         .post('/admin/chuc-nang/delete', this.dele)
                         .then((res) => {
                             if(res.data.status) {
-                                // toastr.success("Đã xóa thành công!");
                                 this.loadChucNang();
+                                toastr.success(res.data.message);
+                            } else {
+                                toastr.error(res.data.message);
                             }
                         })
                         .catch((res) => {
@@ -180,18 +200,7 @@
                             });
                         });
                 },
-                toSlug(str) {
-                    str = str.toLowerCase();
-                    str = str
-                        .normalize('NFD')
-                        .replace(/[\u0300-\u036f]/g, '');
-                    str = str.replace(/[đĐ]/g, 'd');
-                    str = str.replace(/([^0-9a-z-\s])/g, '');
-                    str = str.replace(/(\s+)/g, '-');
-                    str = str.replace(/-+/g, '-');
-                    str = str.replace(/^-+|-+$/g, '');
-                    this.add.slug = str;
-                },
+
             },
         });
     </script>

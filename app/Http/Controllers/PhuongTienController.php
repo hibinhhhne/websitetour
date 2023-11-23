@@ -29,7 +29,10 @@ class PhuongTienController extends Controller
         $data  = $request->all();
         PhuongTien::create($data);
 
-        return response()->json(['status' => true]);
+        return response()->json([
+            'status'    => 1,
+            'message'   => 'Đã thêm mới thành công!',
+        ]);
     }
 
     public function destroy(Request $request)
@@ -37,9 +40,15 @@ class PhuongTienController extends Controller
         $phuongTien = PhuongTien::where('id', $request->id)->first();
         if($phuongTien) {
             $phuongTien->delete();
-            return response()->json(['status' => true]);
+            return response()->json([
+                'status'    => 1,
+                'message'   => 'Đã xóa thành công!',
+            ]);
         }
-        return response()->json(['status' => false]);
+        return response()->json([
+            'status'    => 0,
+            'message'   => 'Đã gặp lỗi!',
+        ]);
     }
     public function changeStatus(PhuongTienRequest $request)
     {
@@ -47,8 +56,30 @@ class PhuongTienController extends Controller
         if($phuongTien) {
             $phuongTien->trang_thai = !$phuongTien->trang_thai;
             $phuongTien->save();
-            return response()->json(['status' => true]);
+            return response()->json([
+                'status'    => 1,
+                'message'   => 'Đã đổi trạng thái thành công!',
+            ]);
         }
-        return response()->json(['status' => false]);
+        return response()->json([
+            'status'    => 0,
+            'message'   => 'Đã gặp lỗi!',
+        ]);
+    }
+
+    public function update(Request $request)
+    {
+        $phuongTien = PhuongTien::where('id', $request->id)->first();
+        if($phuongTien) {
+            $phuongTien->update($request->all());
+            return response()->json([
+                'status'    => 1,
+                'message'   => 'Đã cập nhật thành công!',
+            ]);
+        }
+        return response()->json([
+            'status'    => 0,
+            'message'   => 'Đã gặp lỗi!',
+        ]);
     }
 }

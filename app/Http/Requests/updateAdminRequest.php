@@ -24,7 +24,6 @@ class updateAdminRequest extends FormRequest
             'dia_chi'           =>'required',
             'ngay_sinh'         =>'required|date',
             'gioi_tinh'         =>'required',
-            'id_quyen'          =>'required',
         ];
     }
 
@@ -50,7 +49,6 @@ class updateAdminRequest extends FormRequest
             'dia_chi'       =>'Địa Chỉ',
             'ngay_sinh'     =>'Ngày Sinh',
             'gioi_tinh'     =>'Giới Tính',
-            'id_quyen'      =>'Quyền',
         ];
     }
 }

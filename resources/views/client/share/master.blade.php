@@ -200,7 +200,7 @@
                 <div class="section-title">
                     <h4>TOURS</h4>
                     <p class="section-subtitle">Thông tin tour của chúng tôi</p>
-                    <a href="/list-tour" class="view-all">Tất Cả</a>
+                    <a href="/tour" class="view-all">Tất Cả</a>
                 </div>
                 <div class="row">
                     <!-- ITEM -->
@@ -224,7 +224,28 @@
                 </div>
             </div>
         </section>
-
+        <section class="gallery">
+            <div class="container">
+                <div class="section-title">
+                    <h4>HÌNH ẢNH</h4>
+                    <p class="section-subtitle">HÌnh Ảnh Về Tour</p>
+                    <a href="gallery.html" class="view-all">View gallery images</a>
+                </div>
+                <div class="gallery-owl owl-carousel image-gallery">
+                    <!-- ITEM -->
+                    @foreach ($list_anh as $item)
+                        <div class="gallery-item">
+                            <figure class="gradient-overlay image-icon">
+                                <a href="{{ $item }}">
+                                    <img style="width: 210px; height: 280px;" src="{{ $item }}"
+                                        alt="Image">
+                                </a>
+                            </figure>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </section>
         <!-- ========== TESTIMONIALS ========== -->
         <section class="testimonials gray">
             <div class="container">
