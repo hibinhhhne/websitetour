@@ -16,8 +16,10 @@ class GioHang extends Model
         'id_don_hang',
         'don_gia',
         'so_luong',
+        'so_luong_2',
         'thanh_tien',
-        'tinh_trang'
+        'tinh_trang',
+        'start_date'
     ];
 
     CONST DANG_CHO_THANH_TOAN   =  1;   // warning

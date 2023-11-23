@@ -37,86 +37,7 @@
                                 </div>
                         </li>
                     @endforeach
-                    {{-- <!-- ảnh 2 -->
-                    <li data-transition="crossfade">
-                        <!-- MAIN IMAGE -->
-                        <img src="/client/images/slidetour/2.jpg" alt="Image" title="Image"
-                            data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat"
-                            data-bgparallax="10" class="rev-slidebg" data-no-retina="">
-                        <!-- LAYER NR. 1 -->
-                        <div class="tp-caption tp-resizeme" data-x="center" data-hoffset="" data-y="320"
-                            data-voffset="" data-responsive_offset="on" data-fontsize="['70','50','40','25']"
-                            data-lineheight="['60','50','40','25']" data-whitespace="nowrap"
-                            data-frames='[{"delay":1000,"speed":1500,"frame":"0","from":"y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":500,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
-                            style="z-index: 5; color: #000; font-weight: 900;">
-                        </div>
-                    </li>
-                    <!-- anh3  -->
-                    <li data-transition="crossfade">
-                        <!-- MAIN IMAGE -->
-                        <img src="/client/images/slidetour/3.jpg" alt="Image" title="Image"
-                            data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat"
-                            data-bgparallax="10" class="rev-slidebg" data-no-retina="">
-                        <!-- LAYER NR. 1 -->
-                        <div class="tp-caption tp-resizeme" data-x="center" data-hoffset="" data-y="305"
-                            data-voffset="" data-responsive_offset="on" data-fontsize="['80','70','60','40']"
-                            data-lineheight="['80','70','60','40']" data-whitespace="nowrap"
-                            data-frames='[{"delay":1000,"speed":1500,"frame":"0","from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","to":"o:1;","ease":"Power2.easeInOut"},{"delay":"wait","speed":500,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
-                            style="z-index: 5; color: #fff; font-weight: 900;">
-                        </div>
-                    </li>
-                    <li data-transition="crossfade">
-                        <!-- MAIN IMAGE -->
-                        <img src="/client/images/slidetour/3.jpg" alt="Image" title="Image"
-                            data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat"
-                            data-bgparallax="10" class="rev-slidebg" data-no-retina="">
-                        <!-- LAYER NR. 1 -->
-                        <div class="tp-caption tp-resizeme" data-x="center" data-hoffset="" data-y="305"
-                            data-voffset="" data-responsive_offset="on" data-fontsize="['80','70','60','40']"
-                            data-lineheight="['80','70','60','40']" data-whitespace="nowrap"
-                            data-frames='[{"delay":1000,"speed":1500,"frame":"0","from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","to":"o:1;","ease":"Power2.easeInOut"},{"delay":"wait","speed":500,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
-                            style="z-index: 5; color: #000; font-weight: 900;">
-                        </div>
-                    </li>
-                    <li data-transition="crossfade">
-                        <!-- MAIN IMAGE -->
-                        <img src="/client/images/slidetour/4.jpg" alt="Image" title="Image"
-                            data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat"
-                            data-bgparallax="10" class="rev-slidebg" data-no-retina="">
-                        <!-- LAYER NR. 1 -->
-                        <div class="tp-caption tp-resizeme" data-x="center" data-hoffset="" data-y="305"
-                            data-voffset="" data-responsive_offset="on" data-fontsize="['80','70','60','40']"
-                            data-lineheight="['80','70','60','40']" data-whitespace="nowrap"
-                            data-frames='[{"delay":1000,"speed":1500,"frame":"0","from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","to":"o:1;","ease":"Power2.easeInOut"},{"delay":"wait","speed":500,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
-                            style="z-index: 5; color: #000; font-weight: 900;">
-                        </div>
-                    </li>
-                    <li data-transition="crossfade">
-                        <!-- MAIN IMAGE -->
-                        <img src="/client/images/slidetour/5.jpg" alt="Image" title="Image"
-                            data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat"
-                            data-bgparallax="10" class="rev-slidebg" data-no-retina="">
-                        <!-- LAYER NR. 1 -->
-                        <div class="tp-caption tp-resizeme" data-x="center" data-hoffset="" data-y="305"
-                            data-voffset="" data-responsive_offset="on" data-fontsize="['80','70','60','40']"
-                            data-lineheight="['80','70','60','40']" data-whitespace="nowrap"
-                            data-frames='[{"delay":1000,"speed":1500,"frame":"0","from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","to":"o:1;","ease":"Power2.easeInOut"},{"delay":"wait","speed":500,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
-                            style="z-index: 5; color: #000; font-weight: 900;">
-                        </div>
-                    </li>
-                    <li data-transition="crossfade">
-                        <!-- MAIN IMAGE -->
-                        <img src="/client/images/slidetour/6.jpg" alt="Image" title="Image"
-                            data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat"
-                            data-bgparallax="10" class="rev-slidebg" data-no-retina="">
-                        <!-- LAYER NR. 1 -->
-                        <div class="tp-caption tp-resizeme" data-x="center" data-hoffset="" data-y="305"
-                            data-voffset="" data-responsive_offset="on" data-fontsize="['80','70','60','40']"
-                            data-lineheight="['80','70','60','40']" data-whitespace="nowrap"
-                            data-frames='[{"delay":1000,"speed":1500,"frame":"0","from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","to":"o:1;","ease":"Power2.easeInOut"},{"delay":"wait","speed":500,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
-                            style="z-index: 5; color: #000; font-weight: 900;">
-                        </div>
-                    </li> --}}
+
                 </ul>
             </div>
             <!-- ========== BOOKING FORM ========== -->
@@ -129,7 +50,7 @@
                             @csrf
                             <!-- NAME -->
                             <div class="row">
-                                <div class="col-md-2">
+                                {{-- <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Tên
                                             <a href="/client/#" title="Nhập Tên" data-toggle="popover"
@@ -141,23 +62,23 @@
                                         <input class="form-control" name="booking-name" type="text"
                                             data-trigger="hover" placeholder="Nhập Tên">
                                     </div>
-                                </div>
+                                </div> --}}
                                 <!-- EMAIL -->
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label>Email
-                                            <a href="/client/#" title="Nhập Email" data-toggle="popover"
-                                                data-placement="top" data-trigger="hover"
-                                                data-content="Nhập địa chỉ Email">
-                                                <i class="fa fa-info-circle"></i>
-                                            </a>
-                                        </label>
-                                        <input class="form-control" name="booking-email" type="email"
-                                            placeholder="Nhập Email">
-                                    </div>
-                                </div>
+{{--                                <div class="col-md-2">--}}
+{{--                                    <div class="form-group">--}}
+{{--                                        <label>Email--}}
+{{--                                            <a href="/client/#" title="Nhập Email" data-toggle="popover"--}}
+{{--                                                data-placement="top" data-trigger="hover"--}}
+{{--                                                data-content="Nhập địa chỉ Email">--}}
+{{--                                                <i class="fa fa-info-circle"></i>--}}
+{{--                                            </a>--}}
+{{--                                        </label>--}}
+{{--                                        <input class="form-control" name="booking-email" type="email"--}}
+{{--                                            placeholder="Nhập Email">--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
 
-                                <div class="col-md-2">
+                                <div class="col-md-8">
                                     <div class="form-group">
                                         <label>Địa Điểm
                                             <a href="/client/#" title="" data-toggle="popover"
@@ -167,106 +88,65 @@
                                             </a>
                                         </label>
                                         <div class="btn-group bootstrap-select form-control">
-                                            <button v-on:click="callLoadAddres()" type="button"
-                                                class="btn dropdown-toggle bs-placeholder btn-info"
-                                                data-toggle="dropdown" role="button" title="Chọn Địa Điểm"
-                                                aria-expanded="true">
-                                                {{-- <span class="filter-option pull-left">Chọn Địa Điểm</span> --}}
-                                                <span class="filter-option pull-left">@{{ option_addres.ten_tour }}</span>
-                                                <span class="bs-caret">
-                                                    <span class="caret"></span>
-                                                </span>
-                                            </button>
-                                            <div class="dropdown-menu open" role="combobox" x-placement="bottom-start"
-                                                style="padding-top: 0px; position: absolute; transform: translate3d(0px, 44px, 0px); top: 0px; left: 0px; will-change: transform;">
-                                                <div class="popover-title">
-                                                    <button type="button" class="close"
-                                                        aria-hidden="true">×</button>Tour Type
-                                                </div>
-                                                <div class="dropdown-menu inner" role="listbox" aria-expanded="true">
-                                                    <template v-for="(value, key) in list_dia_diem">
-                                                        <a v-on:click="option_addres = value" tabindex="0"
-                                                            class="dropdown-item" data-original-index="2">
-                                                            <span class="dropdown-item-inner " data-tokens="null"
-                                                                role="option" tabindex="0" aria-disabled="false"
-                                                                aria-selected="false">
-                                                                <span class="text">@{{ value.ten_tour }}</span>
-                                                                <span class="fa fa-check check-mark"></span>
-                                                            </span>
-                                                        </a>
-                                                    </template>
-                                                </div>
-                                            </div>
+                                            <select name="tour_location" class="form-control">
+                                                @foreach($tour as $item)
+
+                                                    <option value="{{$item->id}}">{{$item->ten_tinh_thanh}}</option>
+
+                                                @endforeach
+                                            </select>
+{{--                                            <button v-on:click="callLoadAddres()" type="button"--}}
+{{--                                                class="btn dropdown-toggle bs-placeholder btn-info"--}}
+{{--                                                data-toggle="dropdown" role="button" title="Chọn Địa Điểm"--}}
+{{--                                                aria-expanded="true">--}}
+{{--                                                --}}{{-- <span class="filter-option pull-left">Chọn Địa Điểm</span> --}}
+
+{{--                                                <span class="filter-option pull-left">@{{ option_addres.ten_tour }}</span>--}}
+{{--                                                <span class="bs-caret">--}}
+{{--                                                    <span class="caret"></span>--}}
+{{--                                                </span>--}}
+{{--                                            </button>--}}
+{{--                                            <div class="dropdown-menu open" role="combobox" x-placement="bottom-start"--}}
+{{--                                                style="padding-top: 0px; position: absolute; transform: translate3d(0px, 44px, 0px); top: 0px; left: 0px; will-change: transform;">--}}
+{{--                                                <div class="popover-title">--}}
+{{--                                                    <button type="button" class="close"--}}
+{{--                                                        aria-hidden="true">×</button>Tour Type--}}
+{{--                                                </div>--}}
+{{--                                                <div class="dropdown-menu inner" role="listbox" aria-expanded="true">--}}
+{{--                                                    <template v-for="(value, key) in list_dia_diem">--}}
+{{--                                                        <a v-on:click="option_addres = value" tabindex="0"--}}
+{{--                                                            class="dropdown-item" data-original-index="2">--}}
+{{--                                                            <span class="dropdown-item-inner " data-tokens="null"--}}
+{{--                                                                role="option" tabindex="0" aria-disabled="false"--}}
+{{--                                                                aria-selected="false">--}}
+{{--                                                                <span class="text">@{{ value.ten_tour }}</span>--}}
+{{--                                                                <span class="fa fa-check check-mark"></span>--}}
+{{--                                                            </span>--}}
+{{--                                                        </a>--}}
+{{--                                                    </template>--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
                                         </div>
                                     </div>
                                 </div>
                                 <!-- DATE -->
-                                <div class="col-md-2">
+                                {{-- <div class="col-md-3">
                                     <div class="form-group">
-                                        <label>Check-In/Out
+                                        <label>Ngày Đi
                                             <a href="/client/#" title="Check-In / Check-Out" data-toggle="popover"
                                                 data-placement="top" data-trigger="hover"
                                                 data-content="Please select check-in and check-out date <br>*Check In from 11:00am">
                                                 <i class="fa fa-info-circle"></i>
                                             </a>
                                         </label>
-                                        <input type="text" class="datepicker form-control" name="booking-date"
-                                            placeholder="Arrival & Departure" readonly="readonly">
+                                        <input type="date" class="datepicker form-control" name="booking-date"
+                                            placeholder="Ngày " readonly="readonly">
                                     </div>
-                                </div>
+                                </div> --}}
                                 <!-- GUESTS -->
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label>Khách
-                                            <a href="/client/#" title="Guests" data-toggle="popover"
-                                                data-placement="top" data-trigger="hover"
-                                                data-content="Please Select Adults / Children">
-                                                <i class="fa fa-info-circle"></i>
-                                            </a>
-                                        </label>
-                                        <div class="panel-dropdown">
-                                            <div class="form-control guestspicker">Số Khách
-                                                <span class="gueststotal"></span>
-                                            </div>
-                                            <div class="panel-dropdown-content">
-                                                <div class="guests-buttons">
-                                                    <label>Người Lớn
-                                                        <a href="/client/#" title="" data-toggle="popover"
-                                                            data-placement="top" data-trigger="hover"
-                                                            data-content="18+ years" data-original-title="Adults">
-                                                            <i class="fa fa-info-circle"></i>
-                                                        </a>
-                                                    </label>
-                                                    <div class="guests-button">
-                                                        <div class="minus"></div>
-                                                        <input type="text" name="booking-adults"
-                                                            class="booking-guests" value="0">
-                                                        <div class="plus"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="guests-buttons">
-                                                    <label>Trẻ Em
-                                                        <a href="/client/#" title="" data-toggle="popover"
-                                                            data-placement="top" data-trigger="hover"
-                                                            data-content="Under 18 years"
-                                                            data-original-title="Children">
-                                                            <i class="fa fa-info-circle"></i>
-                                                        </a>
-                                                    </label>
-                                                    <div class="guests-button">
-                                                        <div class="minus"></div>
-                                                        <input type="text" name="booking-children"
-                                                            class="booking-guests" value="0">
-                                                        <div class="plus"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                                 <!-- BOOKING BUTTON -->
-                                <div class="col-md-2">
-                                    <button type="submit" class="btn btn-book">Đặt Tour</button>
+                                <div class="col-md-4">
+                                    <button type="submit" class="btn btn-book">Tìm Kiếm</button>
                                     <div class="advanced-form-link">
                                         <a href="/client/booking-form.html">
                                             Advanced Booking Form
@@ -324,11 +204,11 @@
                 </div>
                 <div class="row">
                     <!-- ITEM -->
-                    <div class="col-md-4 d-flex" v-for="(value, key) in list_dia_diem">
+                    <div class="col-md-4 d-flex " style="margin-bottom:20px" v-for="(value, key) in list_dia_diem">
                         <div class="room-grid-item">
                             <figure class="gradient-overlay-hover link-icon">
                                 <a v-bind:href="'/detail-tour/' + value.id">
-                                    <img v-bind:src="value.hinh_anh" class="img-fluid" alt="Image">
+                                    <img v-bind:src="value.hinh_anh ? value.hinh_anh : '/tour_default.jpg'" class="img-fluid" alt="Image">
                                 </a>
                                 <div class="room-price">@{{ numberFormat(value.don_gia) }}</div>
                             </figure>
@@ -344,28 +224,7 @@
                 </div>
             </div>
         </section>
-        <section class="gallery">
-            <div class="container">
-                <div class="section-title">
-                    <h4>HÌNH ẢNH</h4>
-                    <p class="section-subtitle">HÌnh Ảnh Về Tour</p>
-                    <a href="gallery.html" class="view-all">View gallery images</a>
-                </div>
-                <div class="gallery-owl owl-carousel image-gallery">
-                    <!-- ITEM -->
-                    @foreach ($listConfig as $item)
-                        <div class="gallery-item">
-                            <figure class="gradient-overlay image-icon">
-                                <a href="images/gallery/gallery2.jpg">
-                                    <img style="width: 210px; height: 280px;" src="{{ $item->images }}"
-                                        alt="Image">
-                                </a>
-                            </figure>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-        </section>
+
         <!-- ========== TESTIMONIALS ========== -->
         <section class="testimonials gray">
             <div class="container">
@@ -414,6 +273,9 @@
                 option_addres: {
                     "ten_tour": "Chọn địa điểm"
                 },
+                option_id:{
+                    'id': 0
+                }
             },
             created() {
                 this.loadDiaDiem();

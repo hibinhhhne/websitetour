@@ -27,22 +27,6 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/admin/admin" class="nav-link">
-                        <i class="fa-solid fa-user"></i>
-                        <p>
-                            Quản Lý Admin
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="/admin/chuc-nang" class="nav-link">
-                        <i class="fa-solid fa-bars-progress"></i>
-                        <p>
-                            Quản Lý Chức Năng
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
                     <a href="/admin/hoa-don" class="nav-link">
                         <i class="fa-solid fa-check-to-slot"></i>
                         <p>
@@ -59,14 +43,6 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/admin/chi-tiet-tour" class="nav-link">
-                        <i class="fa-solid fa-circle-info"></i>
-                        <p>
-                            Quản Lý Chi Tiết Tours
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
                     <a href="/admin/tinh-thanh" class="nav-link">
                         <i class="fa-solid fa-mountain-city"></i>
                         <p>
@@ -79,22 +55,6 @@
                         <i class="fa-solid fa-location-dot"></i>
                         <p>
                             Quản Lý Địa Điểm
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="/admin/tai-khoan" class="nav-link">
-                        <i class="fa-solid fa-right-to-bracket"></i>
-                        <p>
-                            Quản Lý Tài Khoản
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="/admin/quyen" class="nav-link">
-                        <i class="fa-solid fa-key"></i>
-                        <p>
-                            Quản Lý Quyền
                         </p>
                     </a>
                 </li>

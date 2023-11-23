@@ -16,9 +16,9 @@
                     <a href="/tour">TOURS</a>
                 </li>
                 <li class="menu-item dropdown">
-                    <a href="/client/#">TIN TỨC</a>
+                    <a href="/gioi-thieu">GIỚI THIỆU</a>
                 <li class="menu-item">
-                    <a href="/client/contact.html">LIÊN HỆ</a>
+                    <a href="/contact">LIÊN HỆ</a>
                 </li>
                 @php
                     $user = Auth::guard('client')->check();
@@ -30,8 +30,7 @@
                     <ul class="submenu">
                       <li class="menu-item">
                         <a href="/client/checkout">
-                            <i class="fa fa-calendar"></i>
-                            BOOK ONLINE</a>
+                            CART</a>
                       </li>
                       <li class="menu-item">
                         <a href="/logout">LOGOUT</a>

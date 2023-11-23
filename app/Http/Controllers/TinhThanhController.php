@@ -41,4 +41,13 @@ class TinhThanhController extends Controller
         }
         return response()->json(['status' => false]);
     }
+
+    public function update(TinhThanhRequest $request)
+    {
+        $Tours = TinhThanh::where('id', $request->id)->first();
+
+        $Tours->update($request->all());
+
+        return response()->json(['status' => true]);
+    }
 }

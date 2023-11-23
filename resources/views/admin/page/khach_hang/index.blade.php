@@ -146,11 +146,6 @@
                                                     placeholder="Nhập vào bình luận">
                                             </div>
                                             <div class="form-group">
-                                                <label>Nhập Lại Password</label>
-                                                <input v-model="edit.hash_reset" type="password" class="form-control"
-                                                    placeholder="Nhập vào bình luận">
-                                            </div>
-                                            <div class="form-group">
                                                 <label>Số Điện Thoại</label>
                                                 <input v-model="edit.so_dien_thoai" type="tel" class="form-control"
                                                     placeholder="Nhập vào bình luận">

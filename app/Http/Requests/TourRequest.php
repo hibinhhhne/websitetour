@@ -25,11 +25,12 @@ class TourRequest extends FormRequest
             'id_phuong_tien'            => 'required',
             'id_tinh_thanh'             => 'required',
             'so_ngay'                   => 'required',
+            'ngay_khoi_hanh'                   => 'required',
             'so_dem'                    => 'required',
             'so_nguoi'                  => 'required',
             'ghi_chu'                   => 'required',
             'don_gia'                   => 'required',
-            'hinh_anh'                   => 'required',
+            'don_gia_2'                   => 'required',
             'trang_thai'                => 'required',
         ];
     }

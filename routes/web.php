@@ -16,6 +16,7 @@ use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\KhachHangController;
 use App\Http\Controllers\KhachSanController;
 use App\Http\Controllers\MaGiamGiaController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PhuongTienController;
 use App\Http\Controllers\QuocTichController;
 use App\Http\Controllers\QuyenController;
@@ -25,6 +26,9 @@ use App\Http\Controllers\TinhThanhController;
 use App\Http\Controllers\TourController;
 use App\Http\Controllers\ToursController;
 use Illuminate\Support\Facades\Route;
+use UniSharp\LaravelFilemanager\Lfm;
+
+//use UniSharp\LaravelFilemanager\Lfm;
 
 
 Route::group(['prefix' => '/admin'], function (){
@@ -145,7 +149,7 @@ Route::group(['prefix' => '/admin'], function (){
         Route::get('/', [KhachSanController::class, 'index']);
         Route::post('/create', [KhachSanController::class, 'store']);
         Route::get('/data', [KhachSanController::class, 'data']);
-        Route::post('/update', [KhachSanController::class, 'update']);
+        Route::post('/update_data', [KhachSanController::class, 'update']);
         Route::post('/delete', [KhachSanController::class, 'destroy']);
         Route::post('/change-status', [KhachSanController::class, 'changeStatus']);
     });
@@ -160,25 +164,33 @@ Route::group(['prefix' => '/admin'], function (){
 });
 
 
-Route::group(['prefix' => 'laravel-filemanager'], function () {
-    \UniSharp\LaravelFilemanager\Lfm::routes();
+Route::group(['prefix' => '/laravel-filemanager'], function () {
+    Lfm::routes();
 });
-
 Route::group(['prefix' => '/client'], function (){
     Route::post('/register', [HomepageController::class, 'actionRegister']);
-    Route::post('/login', [HomepageController::class, 'actionLogin']);
+    Route::post('/login', [HomepageController::class, 'actionLogin'])->name('login');
     Route::get('/get-data-quoc-tich', [HomepageController::class, 'getDataQuocTich']);
     Route::post('/dat-hang', [TourController::class, 'datHang'])->name('datHang');
     Route::post('/add-card-tour', [TourController::class, 'addToCart']);
     Route::get('/checkout', [TourController::class, 'indexCheckout']);
     Route::post('/data-list-cart', [DonHangController::class, 'dataListCart']);
+
 });
 Route::get('/logout', [HomepageController::class, 'actionLogout']);
-Route::get('/', [TestController::class, 'index']);
+Route::get('/', [TestController::class, 'index'])->name('home');
 Route::get('/login-register', [HomepageController::class, 'indexLoginRegister']);
+Route::get('/contact', [HomepageController::class, 'contactindex']);
+Route::get('/gioi-thieu', [HomepageController::class, 'gioithieuindex']);
+
 Route::post('/tour/data', [TourController::class, 'getDataTour']);
 Route::get('/tour', [TourController::class, 'indexTour']);
 Route::get('/detail-tour/{id}', [TourController::class, 'viewDetailTour']);
+Route::get('/delete-tour/{id}', [TourController::class, 'deleteTour']);
+
 Route::post('/detail-tour/data', [TourController::class, 'getDataDetailTour']);
 Route::post('/booking-process', [BookingController::class, 'processBooking']);
+Route::get('/confirm/order', [TourController::class, 'confirm'])->name('confirmOrder');
 
+Route::post('payment/vnpay', [PaymentController::class, 'vnpay'])->name('payment.vnpay');
+Route::get('payment/vnpay', [PaymentController::class, 'vnpayReturn'])->name('payment.vnpay.return');

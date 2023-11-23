@@ -14,8 +14,8 @@ class DonHangController extends Controller
         $data = GioHang::where('id_khach_hang', $user->id)
                         ->where('tinh_trang',0)
                         ->join('tours', 'tours.id', 'gio_hangs.id_tour')
-                        ->select('gio_hangs.id', 'gio_hangs.don_gia', 'gio_hangs.so_luong', 'gio_hangs.thanh_tien', 'tours.ten_tour', 'tours.hinh_anh', 'gio_hangs.id_tour')
-                        ->groupBy('gio_hangs.id', 'gio_hangs.don_gia', 'gio_hangs.so_luong', 'gio_hangs.thanh_tien', 'tours.ten_tour', 'tours.hinh_anh', 'gio_hangs.id_tour')
+                        ->select('gio_hangs.id', 'gio_hangs.don_gia', 'gio_hangs.so_luong','gio_hangs.so_luong_2', 'gio_hangs.thanh_tien', 'tours.ten_tour', 'tours.hinh_anh', 'gio_hangs.id_tour','gio_hangs.start_date')
+                        ->groupBy('gio_hangs.id', 'gio_hangs.don_gia', 'gio_hangs.so_luong','gio_hangs.so_luong_2', 'gio_hangs.thanh_tien', 'tours.ten_tour', 'tours.hinh_anh', 'gio_hangs.id_tour','gio_hangs.start_date')
                         ->get();
         $total = 0;
         foreach ($data as $value) {

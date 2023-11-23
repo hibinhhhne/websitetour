@@ -14,6 +14,16 @@ class HomepageController extends Controller
         return view('client.page.register_login');
     }
 
+    public function contactindex()
+    {
+        return view('client.page.contact');
+    }
+
+    public function gioithieuindex()
+    {
+        return view('client.page.gioi_thieu');
+    }
+
     public function actionRegister(Request $request){
         $data = $request->all();
 

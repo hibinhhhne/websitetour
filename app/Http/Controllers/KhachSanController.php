@@ -51,4 +51,13 @@ class KhachSanController extends Controller
         }
         return response()->json(['status' => false]);
     }
+
+    public function update(KhachSanRequest $request){
+        $khachSan = KhachSan::where('id', $request->id)->first();
+        if($khachSan) {
+            $khachSan->update($request->all());
+            return response()->json(['status' => true]);
+        }
+        return response()->json(['status' => false]);
+    }
 }

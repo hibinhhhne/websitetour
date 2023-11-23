@@ -20,10 +20,12 @@ class Tours extends Model
         'id_phuong_tien'         ,
         'id_tinh_thanh'          ,
         'so_ngay'                ,
+        'ngay_khoi_hanh',
         'so_dem'                 ,
         'so_nguoi'               ,
         'ghi_chu'                ,
         'don_gia'                ,
+        'don_gia_2'                ,
         'hinh_anh'              ,
         'trang_thai'              ,
     ];

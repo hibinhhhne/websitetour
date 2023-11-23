@@ -3,6 +3,21 @@
 
 <head>
     @include('client.share.css')
+    <style>
+        .detail-info-key{
+            list-style-type: none;
+        }
+        .detail-info-key li{
+            color: #333;
+        }
+        .detail-info-key li i{
+            color: #6500de;
+            font-size:20px;
+            margin-right: 4px;
+            width: 25px;
+        }
+
+    </style>
 </head>
 
 <body>
@@ -41,7 +56,7 @@
                                         <div class="item">
                                             <figure class="color-overlay-hover image-icon">
                                                 <a>
-                                                    <img v-bind:src="detail_addres.hinh_anh" class="img-fluid" alt="Image">
+                                                    <img v-bind:src="detail_addres.hinh_anh ? detail_addres.hinh_anh : '/tour_default.jpg' " class="img-fluid" alt="Image">
                                                 </a>
                                             </figure>
                                         </div>
@@ -90,10 +105,17 @@
                                                 </a>
                                             </div>
                                         </div>
-                                        <div class="product-cart mt50">
-                                            {{-- <div class="input-group spinner product-quantity">
-                                                <label class="">Quantity:</label>
-                                                <input type="text" class="form-control" value="1" min="1"
+                                        <div class="product-cart mt50 w-100">
+
+                                        </div>
+                                        <div class="product-cart mt50 d-flex flex-column">
+{{--                                            <div class="input-group spinner product-quantity">--}}
+{{--                                                <label class="">Ngày khởi hành:</label>--}}
+{{--                                                <input style="width:160px" type="date" name="start_date" class="form-control">--}}
+{{--                                            </div>--}}
+                                             <div class="input-group spinner product-quantity">
+                                                <label class="">Số lượng vé người lớn:</label>
+                                                <input type="text" name="quality1" class="form-control" value="0" min="0"
                                                     max="10">
                                                 <div class="input-group-btn-vertical">
                                                     <button class="btn" type="button">
@@ -103,7 +125,21 @@
                                                         <i class="fa fa-angle-down" aria-hidden="true"></i>
                                                     </button>
                                                 </div>
-                                            </div> --}}
+                                            </div>
+                                            <div class="input-group spinner product-quantity">
+                                                <label class="">Số lượng vé trẻ em:</label>
+                                                <input type="text" name="quality2" class="form-control" value="0" min="0"
+                                                       max="10">
+                                                <div class="input-group-btn-vertical">
+                                                    <button class="btn" type="button">
+                                                        <i class="fa fa-angle-up" aria-hidden="true"></i>
+                                                    </button>
+                                                    <button class="btn" type="button">
+                                                        <i class="fa fa-angle-down" aria-hidden="true"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+
                                             <button v-on:click="addToCart()" class="btn add-to-cart">Add to Cart</button>
                                         </div>
                                     </div>
@@ -123,7 +159,7 @@
                             <!-- TAB -->
                             <li class="nav-item">
                                 <a class="nav-link" id="reviews-tab" data-toggle="tab" href="#reviews"
-                                    role="tab" aria-controls="reviews" aria-selected="false">Đánh Giá</a>
+                                    role="tab" aria-controls="reviews" aria-selected="false">Thông tin chi tiết</a>
                             </li>
                         </ul>
                         <div class="tab-content" id="product-tab-content">
@@ -136,123 +172,84 @@
 
                             <!-- TAB -->
                             <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
-                                <!-- ITEM -->
-                                <div class="review mt20 mb20">
-                                    <div class="reviewer-avatar">
-                                        <img src="/client/images/users/user1.jpg" class="img-fluid" alt="Image">
-                                    </div>
-                                    <h4 class="review-title">Review by Jane Doe</h4>
-                                    <div class="rating">
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star-o" aria-hidden="true"></i>
-                                    </div>
-                                    <p class="review-details">Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                                        sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
-                                        volutpat.</p>
-                                </div>
-                                <!-- ITEM -->
-                                <div class="review mt20 mb20">
-                                    <div class="reviewer-avatar">
-                                        <img src="/client/images/users/user2.jpg" class="img-fluid" alt="Image">
-                                    </div>
-                                    <h4 class="review-title">Review by Ina Aldrich</h4>
-                                    <div class="rating">
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                    </div>
-                                    <p class="review-details">Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                                        sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
-                                        volutpat.</p>
-                                </div>
-                                <!-- ITEM -->
-                                <div class="review mt20 mb20">
-                                    <div class="reviewer-avatar">
-                                        <img src="/client/images/users/user3.jpg" class="img-fluid" alt="Image">
-                                    </div>
-                                    <h4 class="review-title">Review by Jane Doe</h4>
-                                    <div class="rating">
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star-o" aria-hidden="true"></i>
-                                        <i class="fa fa-star-o" aria-hidden="true"></i>
-                                    </div>
-                                    <p class="review-details">Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                                        sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
-                                        volutpat.</p>
-                                </div>
-                                <!-- ITEM -->
-                                <div class="review mt20 mb20">
-                                    <div class="reviewer-avatar">
-                                        <img src="/client/images/users/user4.jpg" class="img-fluid" alt="Image">
-                                    </div>
-                                    <h4 class="review-title">Review by Penny Widget</h4>
-                                    <div class="rating">
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star-o" aria-hidden="true"></i>
-                                    </div>
-                                    <p class="review-details">Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                                        sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
-                                        volutpat.</p>
-                                </div>
-                                <h4 class="mt80">Write a Review</h4>
-                                <form class="mt30">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <input type="text" class="form-control" name="name"
-                                                placeholder="Your Name">
-                                        </div>
-                                        <div class="col-md-6">
-                                            <input type="text" class="form-control" name="name"
-                                                placeholder="Your Email">
-                                        </div>
-                                        <div class="col-md-12">
-                                            <textarea class="form-control" name="message" placeholder="Your Review..."></textarea>
-                                        </div>
-                                        <div class="col-md-6 col-sm-6">
-                                            <div class="user-rating">
-                                                <span>Your Rating:</span>
-                                                <label>
-                                                    <input type="radio" name="rating" value="5"
-                                                        title="5 stars">
-                                                    5
-                                                </label>
-                                                <label>
-                                                    <input type="radio" name="rating" value="4"
-                                                        title="4 stars">
-                                                    4
-                                                </label>
-                                                <label>
-                                                    <input type="radio" name="rating" value="3"
-                                                        title="3 stars">
-                                                    3
-                                                </label>
-                                                <label>
-                                                    <input type="radio" name="rating" value="2"
-                                                        title="2 stars">
-                                                    2
-                                                </label>
-                                                <label>
-                                                    <input type="radio" name="rating" value="1"
-                                                        title="1 star">
-                                                    1
-                                                </label>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <div class="footer-widget">
+                                            <div class="inner">
+                                                <ul class="contact-details detail-info-key">
+                                                    {{-- <li>
+                                                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                                        Địa điểm:
+                                                    </li> --}}
+                                                    <li>
+                                                        <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                                        Thời gian:
+                                                    </li>
+                                                    <li>
+                                                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                                                        Ngày khởi hành:
+                                                    </li>
+                                                    <li>
+                                                        <i class="fa fa-money" aria-hidden="true"></i>
+                                                        Giá vé:
+                                                    </li>
+                                                    <li>
+                                                        <i class="fa fa-location-arrow" aria-hidden="true"></i>
+                                                        Địa điểm tham quan:
+                                                    </li>
+                                                    <li>
+                                                        <i class="fa fa-car" aria-hidden="true"></i>
+                                                        Phương tiện:
+                                                    </li>
+                                                    <li>
+                                                        <i class="fa fa-building-o" aria-hidden="true"></i>
+                                                        Khách sạn:
+                                                    </li>
+                                                    <li>
+                                                        <i class="fa fa-ticket" aria-hidden="true"></i>
+
+                                                        Khuyến mãi:</li>
+                                                </ul>
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-sm-6">
-                                            <button class="btn pull-right mt20 mb20">Post Your Review</button>
+                                    </div>
+                                    <div class="col-9">
+                                        <div class="footer-widget">
+                                            <div class="inner">
+                                                <ul style="list-style-type: none" class="contact-details detail-info-item">
+                                                    {{-- <li>
+                                                        - @{{detail_addres.ten_tinh_thanh}}
+                                                    </li> --}}
+
+                                                    <li>
+                                                        - @{{detail_addres.so_ngay}} ngày - @{{detail_addres.so_dem}} đêm
+                                                    </li>
+                                                    <li>
+                                                        - @{{detail_addres.ngay_khoi_hanh}}
+                                                    </li>
+                                                    <li>
+                                                        - Người lớn: @{{numberFormat(detail_addres.don_gia)}} |
+                                                        Trẻ em: @{{numberFormat(detail_addres.don_gia_2)}}
+                                                    </li>
+                                                    <li>
+                                                        - @{{detail_addres.list_dia_diem_tham_quan}}
+                                                    </li>
+                                                    <li>
+                                                        - @{{detail_addres.phuong_tien}}
+                                                    </li>
+                                                    <li>
+                                                        - @{{detail_addres.khach_san}}
+                                                    </li>
+                                                    <li>
+                                                        - 10% cho khách hàng quen
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
-                                </form>
+                                </div>
+
+
                             </div>
                         </div>
                         <!-- RELATED PRODUCTS -->
@@ -266,7 +263,7 @@
                                     <div class="shop-item">
                                         <figure class="color-overlay-hover">
                                             <a>
-                                                <img v-bind:src="value.hinh_anh" class="img-fluid" alt="Image">
+                                                <img v-bind:src="value.hinh_anh ? value.hinh_anh : '/tour_default.jpg'" class="img-fluid" alt="Image">
                                             </a>
                                             {{-- <button class="btn btn-sm add-to-cart">Add to Cart</button> --}}
                                         </figure>
@@ -343,7 +340,9 @@
                 return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(number).replace("₫", "VNĐ")
             },
             addToCart() {
-                this.detail_addres.so_luong_mua = 1;
+                this.detail_addres.so_luong_mua_1 = $("input[name='quality1']").val();
+                this.detail_addres.so_luong_mua_2 = $("input[name='quality2']").val();
+                // this.detail_addres.start_date = $("input[name='start_date']").val();
                 axios
                     .post('/client/add-card-tour', this.detail_addres)
                     .then((res) => {

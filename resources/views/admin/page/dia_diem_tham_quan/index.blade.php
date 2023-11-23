@@ -21,9 +21,10 @@
                     <div class="form-group">
                         <label>ID Tỉnh Thành</label>
                         <select v-model="add.id_tinh_thanh" class="form-control">
-                            @foreach ($TinhThanh as $key => $value)
-                            <option value="{{ $value->id_tinh_thanh }}">{{ $value->ten_tinh_thanh }}</option>
-                            @endforeach
+                            <option value="0">Chọn Tỉnh Thành</option>
+                            <template v-for="(v,k) in list_tt">
+                                <option v-bind:value="v.id">@{{v.ten_tinh_thanh}}</option>
+                            </template>
                         </select>
                     </div>
                     <div class="form-group">
@@ -69,7 +70,7 @@
                         </thead>
                         <tbody>
                             <tr v-for="(value, key) in list">
-                                <th>@{{ key + 1 }}</th>
+                                <th>@{{ value.id }}</th>
                                 <td>@{{ value.ten_dia_diem }}</td>
                                 <td>@{{ value.slug }}</td>
                                 <td>@{{ value.id_tinh_thanh}}</td>
@@ -94,8 +95,8 @@
                                 </div>
                                 <div class="modal-body">
                                     <div class="form-group">
-                                        <label>ID Địa Điểm</label>
-                                        <input v-model="edit.id_dia_diem" type="text" class="form-control">
+{{--                                        <label>ID Địa Điểm</label>--}}
+                                        <input v-model="edit.id_dia_diem" type="hidden" class="form-control">
                                     </div>
                                     <div class="form-group">
                                         <label>Tên Địa Điểm</label>
@@ -108,9 +109,10 @@
                                     <div class="form-group">
                                         <label>ID Tỉnh Thành</label>
                                         <select v-model="edit.id_tinh_thanh" class="form-control">
-                                            @foreach ($TinhThanh as $key => $value)
-                                            <option value="{{ $value->id_tinh_thanh }}">{{ $value->ten_tinh_thanh }}</option>
-                                            @endforeach
+                                            <option value="0">Chọn Tỉnh Thành</option>
+                                            <template v-for="(v,k) in list_tt">
+                                                <option v-bind:value="v.id">@{{v.ten_tinh_thanh}}</option>
+                                            </template>
                                         </select>
                                     </div>
                                     <div class="form-group">
@@ -172,19 +174,29 @@
             data:   {
                 add :   {
                     slug     : '',
+                    id_tinh_thanh: 0
                 },
                 list:   [],
                 edit:   {},
                 del:   {},
+                list_tt             :   [],
             },
             created() {
                 this.loadDiaDiem();
+                this.loadTinhThanh();
             },
             methods : {
                 click_edit(value) {
                     this.edit = value;
                     $("#edit_hinh_anh").val(value.hinh_anh);
                     $("#edit_holder").html('<img src="' + value.hinh_anh +'" style="max-height:300px;">');
+                },
+                loadTinhThanh() {
+                    axios
+                        .get('/admin/tinh-thanh/data')
+                        .then((res) => {
+                            this.list_tt = res.data.data;
+                        });
                 },
                 themMoi() {
                     this.add.hinh_anh = $("#hinh_anh").val();

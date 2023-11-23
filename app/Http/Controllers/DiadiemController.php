@@ -42,4 +42,15 @@ class DiadiemController extends Controller
         }
         return response()->json(['status' => false]);
     }
+
+    public function update(Request $request){
+        Diadiem::where('id', $request->id)->update([
+            'ten_dia_diem' => $request->ten_dia_diem,
+            'slug' => $request->slug,
+            'id_tinh_thanh' => $request->id_tinh_thanh,
+            'thong_tin' => $request->thong_tin,
+            'hinh_anh' => $request->hinh_anh,
+        ]);
+        return response()->json(['status' => true]);
+    }
 }

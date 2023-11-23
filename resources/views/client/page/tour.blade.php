@@ -30,22 +30,41 @@
         <div class="container">
           <div class="row">
             <!-- ITEM -->
-                <div class="col-lg-4 col-md-6 d-flex" v-for="(value, key) in list">
-                  <div class="room-grid-item">
-                    <figure class="gradient-overlay-hover link-icon">
-                      <a v-bind:href="'/detail-tour/' + value.id">
-                        <img v-bind:src="value.hinh_anh" class="img-fluid" alt="Image">
-                      </a>
-                      <div class="room-price">@{{numberFormat(value.don_gia)}}</div>
-                    </figure>
-                    <div class="room-info">
-                      <h2 class="room-title">
-                        <a v-bind:href="'/detail-tour/' + value.id">@{{value.ten_tour}}</a>
-                      </h2>
-                      <p>Enjoy our single room</p>
-                    </div>
+              @if(isset($tour))
+                  @foreach($tour as $item)
+                      <div class="col-lg-4 col-md-6 d-flex">
+                          <div class="room-grid-item">
+                              <a href="/detail-tour/{{$item->id}}">
+                                  <img src="{{$item->hinh_anh ?? 'tour_default.jpg'}} " class="img-fluid" alt="Image">
+                              </a>
+                              <div class="room-info">
+                                  <h2 class="room-title">
+                                      <a href="/detail-tour/{{$item->id}}"></a>
+                                  </h2>
+                                  <p>Enjoy our single room</p>
+                              </div>
+                          </div>
+                      </div>
+                  @endforeach
+              @else
+                  <div class="col-lg-4 col-md-6 d-flex" v-for="(value, key) in list">
+                      <div class="room-grid-item">
+                          <figure class="gradient-overlay-hover link-icon">
+                              <a v-bind:href="'/detail-tour/' + value.id">
+                                  <img v-bind:src="value.hinh_anh ? value.hinh_anh : '/tour_default.jpg'" class="img-fluid" alt="Image">
+                              </a>
+                              <div class="room-price">@{{numberFormat(value.don_gia)}}</div>
+                          </figure>
+                          <div class="room-info">
+                              <h2 class="room-title">
+                                  <a v-bind:href="'/detail-tour/' + value.id">@{{value.ten_tour}}</a>
+                              </h2>
+                              <p>Enjoy our single room</p>
+                          </div>
+                      </div>
                   </div>
-                </div>
+              @endif
+
             <!-- ITEM -->
           </div>
         </div>

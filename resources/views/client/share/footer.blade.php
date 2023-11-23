@@ -9,20 +9,15 @@
                         <div class="inner">
                             <ul class="useful-links">
                                 <li>
-                                    <a href="about-us.html">About Us</a>
+                                    <a href="/gioi-thieu">Về chúng tôi</a>
                                 </li>
                                 <li>
-                                    <a href="contact.html">Contact Us</a>
+                                    <a href="/contact">Liên Hệ</a>
                                 </li>
                                 <li>
-                                    <a href="shop.html">Shop</a>
+                                    <a href="/tour">Tour của chúng tôi</a>
                                 </li>
-                                <li>
-                                    <a href="gallery.html">Himara Gallery</a>
-                                </li>
-                                <li>
-                                    <a href="location.html">Our Location</a>
-                                </li>
+
                             </ul>
                         </div>
                     </div>
@@ -35,7 +30,7 @@
                             <ul class="contact-details">
                                 <li>
                                     <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                    Lorem ipsum dolor, 25, Himara
+                                    Hải Châu, Đà Nẵng
                                 </li>
                                 <li>
                                     <i class="fa fa-phone" aria-hidden="true"></i>
@@ -47,12 +42,12 @@
                                 </li>
                                 <li>
                                     <i class="fa fa-globe"></i>
-                                    Web: www.hotelhimara.com
+                                    Web: www.bookingtour.com
                                 </li>
                                 <li>
                                     <i class="fa fa-envelope"></i>
                                     Email:
-                                    <a href="mailto:info@site.com">contact@hotelhimara.com</a>
+                                    <a href="mailto:info@site.com">contact@bookingtour.com</a>
                                 </li>
                             </ul>
                         </div>

@@ -10,18 +10,35 @@
                     Thêm Mới Hóa Đơn
                 </div>
                 <div class="card-body">
+{{--                    <div class="form-group">--}}
+{{--                        <label>ID Tour</label>--}}
+{{--                        <input v-model="add.id_tour" type="text" class="form-control" placeholder="Nhập vào ID tour">--}}
+{{--                    </div>--}}
                     <div class="form-group">
                         <label>ID Tour</label>
-                        <input v-model="add.id_tour" type="text" class="form-control" placeholder="Nhập vào ID tour">
+                        <select  v-model="add.id_tour" class="form-control">
+                            @foreach($tour as $item)
+                                <option value="{{$item->id}}">{{$item->ten_tour}}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="form-group">
                         <label>ID Khách Hàng</label>
-                        <input v-model="add.id_khach_hang" type="text" class="form-control" placeholder="Nhập vào ID khách hàng">
+                        <select  v-model="add.id_khach_hang" class="form-control">
+                            @foreach($cus as $item)
+                                <option value="{{$item->id}}">{{$item->ho_va_ten}}</option>
+                            @endforeach
+                        </select>
                     </div>
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label>ID Nhân Viên</label>
-                        <input v-model="add.id_nhan_vien" type="text" class="form-control" placeholder="Nhập vào ID Nhân Viên">
-                    </div>
+                        <select  v-model="add.id_nhan_vien" class="form-control">
+                            @foreach($admin as $item)
+                                <option value="{{$item->id}}">{{$item->ho_va_ten}}</option>
+                            @endforeach
+                        </select>
+                    </div> --}}
+
                     <div class="form-group">
                         <label>Khuyến Mãi</label>
                         <input v-model="add.khuyen_mai" type="text" class="form-control" placeholder="Nhập vào Khuyến Mãi">
@@ -80,7 +97,7 @@
                                     <th class="text-center">#</th>
                                     <th class="text-center">ID Tour</th>
                                     <th class="text-center">ID Khách Hàng</th>
-                                    <th class="text-center">ID Nhân Viên</th>
+                                    {{-- <th class="text-center">ID Nhân Viên</th> --}}
                                     <th class="text-center">Khuyến Mãi</th>
                                     <th class="text-center">Ghi Chú</th>
                                     <th class="text-center">Ngày Bắt Đầu</th>
@@ -136,10 +153,10 @@
                                             <label>ID Khách Hàng</label>
                                             <input v-model="edit.id_khach_hang" type="text" class="form-control" placeholder="Nhập vào ID Khách Hàng">
                                         </div>
-                                        <div class="form-group">
+                                        {{-- <div class="form-group">
                                             <label>ID Nhân Viên</label>
                                             <input v-model="edit.id_nhan_vien" type="text" class="form-control" placeholder="Nhập vào ID Nhân Viên">
-                                        </div>
+                                        </div> --}}
                                         <div class="form-group">
                                             <label>Khuyến Mãi</label>
                                             <input v-model="edit.khuyen_mai" type="text" class="form-control" placeholder="Nhập vào Khuyễn Mãi">
@@ -183,7 +200,7 @@
                                     </div>
                                     <div class="modal-footer">
                                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                                      <button v-on:click="capNhatHoaDon()" class="btn btn-primary" data-dismiss="modal">Cập Nhật</button>
+                                      <button v-on:click="capNhatHoaDon()" class="btn btn-primary" >Cập Nhật</button>
                                     </div>
                                   </div>
                                 </div>
@@ -270,11 +287,13 @@
                         });
                 },
                 capNhatHoaDon(){
+                    console.log(1);
                     axios
                         .post('/admin/hoa-don/update', this.edit)
                         .then((res) => {
                             if(res.data.status == true) {
-                                // toastr.success("Đã cập nhật hoa-don thành công!");toastr chưa dung
+                                console.log(res);
+                                toastr.success("Đã cập nhật hoa-don thành công!");
                                 this.loadHoaDon();
                             }
                         })

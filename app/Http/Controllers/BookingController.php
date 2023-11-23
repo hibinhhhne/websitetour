@@ -4,22 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Models\Tours;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class BookingController extends Controller
 {
     public function processBooking(Request $request)
     {
+//        if(!Auth::guard('client')->check()){
+//            return redirect()->route('login');
+//        }
         $data = $request->all();
+        $query = Tours::query();
+       
+        if($data['tour_location'] != null){
+            $query->where('id_tinh_thanh', $data['tour_location']);
+        }
+        $tour = $query->get();
 
-        $tour = Tours::where('id_tour', $data['booking-local'])->first();
-
-        $data['booking-from']       = Str::substr($data['booking-date'], 0, 10);
-        $data['booking-to']         = Str::substr($data['booking-date'], 13);
-
-
-
-        dd($data);
-
+        return view('client.page.tour', compact('tour'));
     }
 }

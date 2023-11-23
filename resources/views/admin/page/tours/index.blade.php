@@ -3,7 +3,13 @@
     Quản Lý Tours
 @endsection
 @section('content')
-<div id="app" class="row">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <style>
+        .select2{
+            width: 100% !important;
+        }
+    </style>
+    <div id="app" class="row">
     <div class="col-md-4">
         <div class="card">
             <div class="card-header">
@@ -23,18 +29,34 @@
                         <label>Mô Tả</label>
                         <textarea v-model="add.mo_ta" class="form-control" cols="30" rows="5"></textarea>
                     </div>
+
                     <div class="form-group">
                         <label>ID Khách Sạn</label>
-                        <input v-model="add.id_khach_san" type="text" class="form-control" placeholder="Nhập vào ID Khách Sạn" >
+                        <select style="width: 300px"  v-model="add.id_khach_san" class="form-control">
+                            @foreach($hotel as $item)
+                                <option value="{{$item->id}}">{{$item->ten_khach_san}}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="form-group">
                         <label>List Địa Điểm Tham Quan</label>
-                        <textarea v-model="add.list_dia_diem_tham_quan" class="form-control" cols="30" rows="5"></textarea>
+                        <select class="select2"  multiple="multiple"  v-model="add.list_dia_diem_tham_quan" class="form-control">
+                            @foreach($place as $item)
+                                <option value="{{$item->ten_dia_diem}}">{{$item->ten_dia_diem}}</option>
+                            @endforeach
+                        </select>
                     </div>
+
                     <div class="form-group">
                         <label>ID Phương Tiện</label>
-                        <input v-model="add.id_phuong_tien" type="text" class="form-control" placeholder="Nhập vào ID Phương Tiện">
+                        <select   v-model="add.id_phuong_tien" class="form-control">
+                            @foreach($vehicle as $item)
+                                <option value="{{$item->id}}">{{$item->ten_phuong_tien}}</option>
+                            @endforeach
+                        </select>
                     </div>
+
+
                     <div class="form-group">
                         <label>ID Tỉnh Thành</label>
                         <select v-model="add.id_tinh_thanh" class="form-control">
@@ -43,6 +65,10 @@
                                 <option v-bind:value="v.id">@{{v.ten_tinh_thanh}}</option>
                             </template>
                         </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Ngày khởi hành</label>
+                        <input v-model="add.ngay_khoi_hanh" type="date" class="form-control">
                     </div>
                     <div class="form-group">
                         <label>Số Ngày</label>
@@ -61,8 +87,12 @@
                         <input v-model="add.ghi_chu" type="text" class="form-control" placeholder="Nhập vào Ghi Chú">
                     </div>
                     <div class="form-group">
-                        <label>Đơn Giá</label>
+                        <label>Đơn Giá Người Lớn</label>
                         <input v-model="add.don_gia" type="number" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Đơn Giá Trẻ Em</label>
+                        <input v-model="add.don_gia_2" type="number" class="form-control">
                     </div>
                     <div class="form-group">
                         <label>Hình Ảnh</label>
@@ -109,10 +139,12 @@
                                     <th class="text-center">ID Phương Tiện</th>
                                     <th class="text-center">ID Tỉnh Thành</th>
                                     <th class="text-center">Số Ngày</th>
+                                    <th class="text-center">Ngày khởi hành</th>
                                     <th class="text-center">Số Đêm</th>
                                     <th class="text-center">Số Người</th>
                                     <th class="text-center">Ghi Chú</th>
-                                    <th class="text-center">Đơn Giá</th>
+                                    <th class="text-center">Đơn Giá Người Lớn</th>
+                                    <th class="text-center">Đơn Giá Trẻ Em</th>
                                     <th class="text-center">Hình Ảnh</th>
                                     <th class="text-center">Trạng Thái</th>
                                     <th class="text-center">Action</th>
@@ -129,11 +161,14 @@
                                         <td class="align-middle">@{{ value.id_phuong_tien }}</td>
                                         <td class="align-middle">@{{ value.id_tinh_thanh }}</td>
                                         <td class="align-middle">@{{ value.so_ngay}}</td>
+                                        <td class="align-middle">@{{ value.ngay_khoi_hanh}}</td>
                                         <td class="align-middle">@{{ value.so_dem}}</td>
                                         <td class="align-middle">@{{ value.so_nguoi}}</td>
                                         <td class="align-middle">@{{ value.ghi_chu}}</td>
                                         <td class="align-middle">@{{ value.don_gia}}</td>
-                                        <td class="text-center">
+                                        <td class="align-middle">@{{ value.don_gia_2}}</td>
+
+                                    <td class="text-center">
                                             <img v-bind:src="value.hinh_anh" class="img-thumbnail" style="height: 100%">
                                         </td>
                                         <td class="text-center text-nowrap">
@@ -158,7 +193,6 @@
                                     </div>
                                     <div class="modal-body">
                                         <input type="hidden" v-model="edit.id" class="form-control">
-
                                             <div class="form-group">
                                                 <label>Tên Tour</label>
                                                 <input v-model="edit.ten_tour" type="text" class="form-control" placeholder="Nhập vào Tên Tour">
@@ -197,6 +231,10 @@
                                                 <input v-model="edit.so_ngay" type="number" class="form-control">
                                             </div>
                                             <div class="form-group">
+                                                <label>Ngày khởi hành</label>
+                                                <input v-model="edit.ngay_khoi_hanh" type="date" class="form-control">
+                                            </div>
+                                            <div class="form-group">
                                                 <label>Số Đêm</label>
                                                 <input v-model="edit.so_dem" type="number" class="form-control">
                                             </div>
@@ -209,8 +247,12 @@
                                                 <input v-model="edit.ghi_chu" type="text" class="form-control" placeholder="Nhập vào Ghi Chú">
                                             </div>
                                             <div class="form-group">
-                                                <label>Đơn Giá</label>
+                                                <label>Đơn Giá Người Lớn</label>
                                                 <input v-model="edit.don_gia" type="number" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Đơn Giá Trẻ Em</label>
+                                                <input v-model="edit.don_gia_2" type="number" class="form-control">
                                             </div>
                                             <div class="form-group">
                                                 <label>Hình Ảnh</label>
@@ -241,6 +283,7 @@
                                   </div>
                                 </div>
                             </div>
+                        </div>
                             <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                 <div class="modal-content">
@@ -306,6 +349,12 @@
                 },
                 themMoi()   {
                     this.add.hinh_anh = $("#hinh_anh").val();
+                    let $value = $('.selection .select2-selection__choice');
+                    let $text = [];
+                    $.each($value, function(k, v) {
+                        $text.push(v.title);
+                    });
+                    this.add.list_dia_diem_tham_quan = $text.join(',');
                     axios
                         .post('/admin/tour/create', this.add)
                         .then((res) => {
@@ -375,7 +424,9 @@
         });
     </script>
      <script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
      <script>
+         $('.select2').select2();
          $('#lfm').filemanager('image', { prefix: '/laravel-filemanager' });
      </script>
 

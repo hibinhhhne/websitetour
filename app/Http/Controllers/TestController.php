@@ -6,6 +6,7 @@ use App\Models\Config;
 use App\Models\DanhGia;
 use App\Models\Tours;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TestController extends Controller
 {
@@ -22,6 +23,8 @@ class TestController extends Controller
         $listConfig = Config::orderByDESC('id')->take(9)->get();
         $config = Config::orderByDESC('id')->first();
         $slide = explode(",", $config->slide);
+        $tour = DB::table('tinh_thanh')->get();
+
         $danhGia = DanhGia::join('khach_hang', 'khach_hang.id', 'danh_gia.id_khach_hang')
                         ->join('tours', 'tours.id', 'danh_gia.id_tour')
                         ->where('danh_gia.trang_thai', 1)
@@ -30,7 +33,7 @@ class TestController extends Controller
                         ->take(10)->get();
 
 
-        return view('client.share.master',compact('data', 'listConfig', 'slide', 'danhGia'));
+        return view('client.share.master',compact('data', 'listConfig', 'slide', 'danhGia', 'tour'));
 
     }
 
