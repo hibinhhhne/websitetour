@@ -75,7 +75,7 @@
                                     <button v-on:click="doiTrangThai(value)" v-else class="btn btn-warning">Chưa </button>
                                 </td>
                                 <td class="text-center text-nowrap">
-                                    <button class="btn btn-info" v-on:click="edit = value" data-toggle="modal" data-target="#editModal">Cập Nhật</button>
+                                    <button class="btn btn-primary" v-on:click="edit = value" data-toggle="modal" data-target="#editModal">Cập Nhật</button>
                                     <button class="btn btn-danger" v-on:click="del = value" data-toggle="modal" data-target="#deleteModal">Xóa</button>
                                 </td>
                             </tr>

@@ -95,7 +95,7 @@
                                     </button>
                                 </td>
                                 <td class="text-center text-nowrap">
-                                    <button class="btn btn-info" v-on:click="click_edit(value)" data-toggle="modal"
+                                    <button class="btn btn-primary" v-on:click="click_edit(value)" data-toggle="modal"
                                             data-target="#editModal">Cập Nhật
                                     </button>
                                     <button class="btn btn-danger" v-on:click="dele = value" data-toggle="modal"

@@ -220,10 +220,7 @@
                                     <button v-on:click="capNhatKhachHang()" class="btn btn-primary"
                                         data-dismiss="modal">Cập Nhật</button>
                                 </div>
-
-                                    </div>
-
-
+                                </div>
                             </div>
                         </div>
                     </div>
