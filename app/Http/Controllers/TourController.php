@@ -237,6 +237,8 @@ class TourController extends Controller
     public function getDataDetailTour(Request $request)
     {
         $tourData = Tours::find($request->id);
+        $timestamp = strtotime($tourData->ngay_khoi_hanh);
+        $tourData->format_day = date('d/m/Y', $timestamp);
         $tourData->khach_san = DB::table('khach_san')->where('id', $tourData->id_khach_san)->first()->ten_khach_san ?? 'chưa xác định';
         $tourData->phuong_tien = DB::table('phuong_tien')->where('id', $tourData->id_phuong_tien)->first()->ten_phuong_tien ?? 'chưa xác định';
         if($tourData) {

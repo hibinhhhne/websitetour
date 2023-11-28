@@ -211,11 +211,19 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>List Địa Điểm Tham Quan</label>
-                                                <input v-model="edit.list_dia_diem_tham_quan" type="text" class="form-control" placeholder="Nhập vào List Địa Điểm">
+                                                <select class="select2"  multiple="multiple"  v-model="edit.list_dia_diem_tham_quan" class="form-control">
+                                                    @foreach($place as $item)
+                                                        <option value="{{$item->ten_dia_diem}}">{{$item->ten_dia_diem}}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                             <div class="form-group">
                                                 <label>ID Phương Tiện</label>
-                                                <input v-model="edit.id_phuong_tien" type="text" class="form-control" placeholder="Nhập vào ID Phương Tiện">
+                                                <select   v-model="edit.id_phuong_tien" class="form-control">
+                                                    @foreach($vehicle as $item)
+                                                        <option value="{{$item->id}}">{{$item->ten_phuong_tien}}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                             <div class="form-group">
                                                 <label>ID Tỉnh Thành</label>
@@ -274,11 +282,11 @@
                                                 </select>
                                             </div>
                                         </div>
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                                          <button v-on:click="capNhatTour()" class="btn btn-primary" data-dismiss="modal">Cập Nhật</button>
                                         </div>
                                     </div>
-                                    <div class="modal-footer">
-                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                                      <button v-on:click="capNhatTour()" class="btn btn-primary" data-dismiss="modal">Cập Nhật</button>
                                     </div>
                                   </div>
                                 </div>

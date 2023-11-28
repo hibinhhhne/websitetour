@@ -50,35 +50,7 @@
                             @csrf
                             <!-- NAME -->
                             <div class="row">
-                                {{-- <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label>Tên
-                                            <a href="/client/#" title="Nhập Tên" data-toggle="popover"
-                                                data-placement="top" data-trigger="hover"
-                                                data-content="Please type your first name and last name">
-                                                <i class="fa fa-info-circle"></i>
-                                            </a>
-                                        </label>
-                                        <input class="form-control" name="booking-name" type="text"
-                                            data-trigger="hover" placeholder="Nhập Tên">
-                                    </div>
-                                </div> --}}
-                                <!-- EMAIL -->
-{{--                                <div class="col-md-2">--}}
-{{--                                    <div class="form-group">--}}
-{{--                                        <label>Email--}}
-{{--                                            <a href="/client/#" title="Nhập Email" data-toggle="popover"--}}
-{{--                                                data-placement="top" data-trigger="hover"--}}
-{{--                                                data-content="Nhập địa chỉ Email">--}}
-{{--                                                <i class="fa fa-info-circle"></i>--}}
-{{--                                            </a>--}}
-{{--                                        </label>--}}
-{{--                                        <input class="form-control" name="booking-email" type="email"--}}
-{{--                                            placeholder="Nhập Email">--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-
-                                <div class="col-md-8">
+                                <div class="col-md-5">
                                     <div class="form-group">
                                         <label>Địa Điểm
                                             <a href="/client/#" title="" data-toggle="popover"
@@ -95,54 +67,18 @@
 
                                                 @endforeach
                                             </select>
-{{--                                            <button v-on:click="callLoadAddres()" type="button"--}}
-{{--                                                class="btn dropdown-toggle bs-placeholder btn-info"--}}
-{{--                                                data-toggle="dropdown" role="button" title="Chọn Địa Điểm"--}}
-{{--                                                aria-expanded="true">--}}
-{{--                                                --}}{{-- <span class="filter-option pull-left">Chọn Địa Điểm</span> --}}
-
-{{--                                                <span class="filter-option pull-left">@{{ option_addres.ten_tour }}</span>--}}
-{{--                                                <span class="bs-caret">--}}
-{{--                                                    <span class="caret"></span>--}}
-{{--                                                </span>--}}
-{{--                                            </button>--}}
-{{--                                            <div class="dropdown-menu open" role="combobox" x-placement="bottom-start"--}}
-{{--                                                style="padding-top: 0px; position: absolute; transform: translate3d(0px, 44px, 0px); top: 0px; left: 0px; will-change: transform;">--}}
-{{--                                                <div class="popover-title">--}}
-{{--                                                    <button type="button" class="close"--}}
-{{--                                                        aria-hidden="true">×</button>Tour Type--}}
-{{--                                                </div>--}}
-{{--                                                <div class="dropdown-menu inner" role="listbox" aria-expanded="true">--}}
-{{--                                                    <template v-for="(value, key) in list_dia_diem">--}}
-{{--                                                        <a v-on:click="option_addres = value" tabindex="0"--}}
-{{--                                                            class="dropdown-item" data-original-index="2">--}}
-{{--                                                            <span class="dropdown-item-inner " data-tokens="null"--}}
-{{--                                                                role="option" tabindex="0" aria-disabled="false"--}}
-{{--                                                                aria-selected="false">--}}
-{{--                                                                <span class="text">@{{ value.ten_tour }}</span>--}}
-{{--                                                                <span class="fa fa-check check-mark"></span>--}}
-{{--                                                            </span>--}}
-{{--                                                        </a>--}}
-{{--                                                    </template>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
                                         </div>
                                     </div>
                                 </div>
                                 <!-- DATE -->
-                                {{-- <div class="col-md-3">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label>Ngày Đi
-                                            <a href="/client/#" title="Check-In / Check-Out" data-toggle="popover"
-                                                data-placement="top" data-trigger="hover"
-                                                data-content="Please select check-in and check-out date <br>*Check In from 11:00am">
-                                                <i class="fa fa-info-circle"></i>
-                                            </a>
                                         </label>
-                                        <input type="date" class="datepicker form-control" name="booking-date"
-                                            placeholder="Ngày " readonly="readonly">
+                                        <input min="{{ now()->format('Y-m-d') }}" type="date" class=" form-control" name="booking-date"
+                                            placeholder="Ngày ">
                                     </div>
-                                </div> --}}
+                                </div>
                                 <!-- GUESTS -->
                                 <!-- BOOKING BUTTON -->
                                 <div class="col-md-4">
@@ -210,7 +146,10 @@
                                 <a v-bind:href="'/detail-tour/' + value.id">
                                     <img v-bind:src="value.hinh_anh ? value.hinh_anh : '/tour_default.jpg'" class="img-fluid" alt="Image">
                                 </a>
-                                <div class="room-price">@{{ numberFormat(value.don_gia) }}</div>
+                                <div class="room-price">
+                                    @{{ numberFormat(value.don_gia) }} |
+                                    @{{ numberFormat(value.don_gia_2) }}
+                                </div>
                             </figure>
                             <div class="room-info">
                                 <h2 class="room-title">

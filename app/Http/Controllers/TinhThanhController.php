@@ -68,12 +68,12 @@ class TinhThanhController extends Controller
         ]);
     }
 
-    public function update(TinhThanhRequest $request)
-    {
-        $Tours = TinhThanh::where('id', $request->id)->first();
+//     public function update(TinhThanhRequest $request)
+//     {
+//         $Tours = TinhThanh::where('id', $request->id)->first();
 
-        $Tours->update($request->all());
+//         $Tours->update($request->all());
 
-        return response()->json(['status' => true]);
-    }
+//         return response()->json(['status' => true]);
+//     }
 }

@@ -2,29 +2,20 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BookingController;
-use App\Http\Controllers\ChiTietTourController;
-use App\Http\Controllers\ChucNangController;
 use App\Http\Controllers\ConfigController;
 use App\Http\Controllers\DanhGiaController;
 use App\Http\Controllers\DiadiemController;
-use App\Http\Controllers\DichVuController;
 use App\Http\Controllers\DonHangController;
-use App\Http\Controllers\GiamGiaController;
-use App\Http\Controllers\HinhAnhController;
 use App\Http\Controllers\HoaDonController;
 use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\KhachHangController;
 use App\Http\Controllers\KhachSanController;
-use App\Http\Controllers\MaGiamGiaController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PhuongTienController;
 use App\Http\Controllers\QuocTichController;
-use App\Http\Controllers\QuyenController;
-use App\Http\Controllers\TaiKhoanController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\TinhThanhController;
 use App\Http\Controllers\TourController;
-use App\Http\Controllers\ToursController;
 use Illuminate\Support\Facades\Route;
 use UniSharp\LaravelFilemanager\Lfm;
 
@@ -51,13 +42,7 @@ Route::group(['prefix' => '/admin'], function (){
     });
 
 
-    Route::group(['prefix' => '/tai-khoan'], function (){
-        Route::get('/', [TaiKhoanController::class, 'index']);
-        Route::post('/create', [TaiKhoanController::class, 'store']);
-        Route::get('/data', [TaiKhoanController::class, 'data']);
-        Route::post('/delete', [TaiKhoanController::class, 'destroy']);
-        Route::post('/update', [TaiKhoanController::class, 'update']);
-    });
+
     Route::group(['prefix' => '/tinh-thanh'], function (){
         Route::get('/', [TinhThanhController::class, 'index']);
         Route::post('/create', [TinhThanhController::class, 'store']);
@@ -66,22 +51,9 @@ Route::group(['prefix' => '/admin'], function (){
         Route::post('/update', [TinhThanhController::class, 'update']);
     });
 
-    Route::group(['prefix' => '/chuc-nang'], function (){
-        Route::get('/', [ChucNangController::class, 'index']);
-        Route::post('/create', [ChucNangController::class, 'store']);
-        Route::get('/data', [ChucNangController::class, 'data']);
-        Route::post('/delete', [ChucNangController::class, 'destroy']);
-        Route::post('/update', [ChucNangController::class, 'update']);
-    });
 
-    Route::group(['prefix' => '/quyen'], function (){
-        Route::get('/', [QuyenController::class, 'index']);
-        Route::post('/create', [QuyenController::class, 'store']);
-        Route::get('/data', [QuyenController::class, 'data']);
-        Route::post('/delete', [QuyenController::class, 'destroy']);
-        Route::post('/update', [QuyenController::class, 'update']);
-        Route::post('/change-status', [QuyenController::class, 'changeStatus']);
-    });
+
+
 
     Route::group(['prefix' => '/hoa-don'], function (){
         Route::get('/', [HoaDonController::class, 'index']);
@@ -100,14 +72,7 @@ Route::group(['prefix' => '/admin'], function (){
         Route::post('/delete', [TourController::class, 'destroy']);
         Route::post('/change-status', [TourController::class, 'changeStatus']);
     });
-    Route::group(['prefix' => '/chi-tiet-tour'], function (){
-        Route::get('/', [ChiTietTourController::class, 'index']);
-        Route::post('/create', [ChiTietTourController::class, 'store']);
-        Route::get('/data', [ChiTietTourController::class, 'data']);
-        Route::post('/update', [ChiTietTourController::class, 'update']);
-        Route::post('/delete', [ChiTietTourController::class, 'destroy']);
-        Route::post('/change-status', [ChiTietTourController::class, 'changeStatus']);
-    });
+
 
     Route::group(['prefix' => '/danh-gia'], function (){
         Route::get('/', [DanhGiaController::class, 'index']);

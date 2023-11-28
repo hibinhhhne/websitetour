@@ -31,8 +31,35 @@
           <div class="row">
             <!-- ITEM -->
               @if(isset($tour))
+                @if($tour->count() > 0)
                   @foreach($tour as $item)
+                  {{-- @dd($item) --}}
                       <div class="col-lg-4 col-md-6 d-flex">
+                          <div class="room-grid-item">
+                            <figure class="gradient-overlay-hover link-icon">
+
+                              <a href="/detail-tour/{{$item->id}}">
+                                  <img src="{{$item->hinh_anh ?? 'tour_default.jpg'}} " class="img-fluid" alt="Image">
+                                </a>
+                                <div class="room-price">{{number_format($item->don_gia, 0, ',', '.') . " vnđ"}}</div>
+                            </figure>
+
+                              <div class="room-info">
+                                  <h2 class="room-title">
+                                      <a href="/detail-tour/{{$item->id}}">{{$item->ten_tour}}</a>
+                                  </h2>
+                                  <p>Enjoy our single room</p>
+                              </div>
+                          </div>
+                      </div>
+                  @endforeach
+                  @else
+                  <div class="d-flex justify-center w-100" style="width:100%;flex-direction:column;align-items:center">
+                            <img  style="width:300px;margin:0 auto" src="https://dpauls.com/_nuxt/img/package-not-found.1b62f33.png">
+                            <h4 style="display:flex;margin-top:10px">Không có tour nào được tìm thấy !</h4>
+                        </div>
+                  @endif
+                      {{-- <div class="col-lg-4 col-md-6 d-flex">
                           <div class="room-grid-item">
                               <a href="/detail-tour/{{$item->id}}">
                                   <img src="{{$item->hinh_anh ?? 'tour_default.jpg'}} " class="img-fluid" alt="Image">
@@ -45,7 +72,7 @@
                               </div>
                           </div>
                       </div>
-                  @endforeach
+                  @endforeach --}}
               @else
                   <div class="col-lg-4 col-md-6 d-flex" v-for="(value, key) in list">
                       <div class="room-grid-item">

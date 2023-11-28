@@ -69,12 +69,19 @@
                                         <h2 class="product-title">
                                             <a href="product-details.html">@{{detail_addres.ten_tour}}</a>
                                         </h2>
+
+                                        <div>
+                                            <span class="product-price">Giá vé Người Lớn : @{{numberFormat(detail_addres.don_gia)}} </span>
+                                        </div>
+                                        <div>
+                                            <span class="product-price"> Giá vé Trẻ Em : @{{numberFormat(detail_addres.don_gia_2)}}</span>
+                                        </div>
                                         <div class="product-price">
-                                            <span class="product-price">@{{numberFormat(detail_addres.don_gia)}}</span>
+                                            <span class="product-price">Ngày Khởi Hành :  @{{detail_addres.format_day}}</span>
                                         </div>
-                                        <div class="product-description">
+                                        {{-- <div class="product-description">
                                             <span class="product-description">@{{detail_addres.mo_ta}}</span>
-                                        </div>
+                                        </div> --}}
 
 
                                         <div class="product-rating mt30">
@@ -222,26 +229,26 @@
                                                     </li> --}}
 
                                                     <li>
-                                                        - @{{detail_addres.so_ngay}} ngày - @{{detail_addres.so_dem}} đêm
+                                                         @{{detail_addres.so_ngay}} ngày - @{{detail_addres.so_dem}} đêm
                                                     </li>
                                                     <li>
-                                                        - @{{detail_addres.ngay_khoi_hanh}}
+                                                         @{{detail_addres.format_day}}
                                                     </li>
                                                     <li>
-                                                        - Người lớn: @{{numberFormat(detail_addres.don_gia)}} |
+                                                         Người lớn: @{{numberFormat(detail_addres.don_gia)}} |
                                                         Trẻ em: @{{numberFormat(detail_addres.don_gia_2)}}
                                                     </li>
                                                     <li>
-                                                        - @{{detail_addres.list_dia_diem_tham_quan}}
+                                                         @{{detail_addres.list_dia_diem_tham_quan}}
                                                     </li>
                                                     <li>
-                                                        - @{{detail_addres.phuong_tien}}
+                                                         @{{detail_addres.phuong_tien}}
                                                     </li>
                                                     <li>
-                                                        - @{{detail_addres.khach_san}}
+                                                         @{{detail_addres.khach_san}}
                                                     </li>
                                                     <li>
-                                                        - 10% cho khách hàng quen
+                                                         10% cho khách hàng quen
                                                     </li>
                                                 </ul>
                                             </div>
@@ -258,7 +265,7 @@
                         </div>
                         <div class="row">
                             <!-- ITEM -->
-                            <template v-for="(value, key) in list_dia_diem" v-if="key <= 4">
+                            <template v-for="(value, key) in list_dia_diem" v-if="key <= 6">
                                 <div class="col-md-3">
                                     <div class="shop-item">
                                         <figure class="color-overlay-hover">

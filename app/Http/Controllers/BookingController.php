@@ -14,9 +14,13 @@ class BookingController extends Controller
 //        if(!Auth::guard('client')->check()){
 //            return redirect()->route('login');
 //        }
+
         $data = $request->all();
         $query = Tours::query();
-       
+
+        if($data['booking-date'] != null){
+            $query->whereDate('ngay_khoi_hanh', $data['booking-date']);
+        }
         if($data['tour_location'] != null){
             $query->where('id_tinh_thanh', $data['tour_location']);
         }

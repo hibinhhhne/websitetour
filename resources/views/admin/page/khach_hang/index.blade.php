@@ -174,77 +174,35 @@
                                             placeholder="Nhập vào bình luận">
                                     </div>
                                     <div class="form-group">
+                                        <label>Email</label>
+                                        <input v-model="edit.email" type="email" class="form-control"
+                                            placeholder="Nhập vào ID">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Password</label>
+                                        <input v-model="edit.password" type="password" class="form-control"
+                                            placeholder="Nhập vào bình luận">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Địa Chỉ</label>
+                                        <input v-model="edit.dia_chi" type="text" class="form-control"
+                                            placeholder="Nhập vào bình luận">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Ngày Sinh</label>
+                                        <input v-model="edit.ngay_sinh" type="date" class="form-control"
+                                            placeholder="Nhập vào bình luận">
+                                    </div>
+                                    <div class="form-group">
                                         <label>Giới Tính</label>
                                         <select v-model="edit.gioi_tinh" class="form-control">
                                             <option value="">Chọn Giới Tinh</option>
                                             <option value="1">Nam</option>
-                                            <option value="0">Nũ</option>
+                                            <option value="0">Nữ</option>
                                             <option value="2">Khác</option>
-                                            <div class="form-group">
-                                                <label>Họ và Tên</label>
-                                                <input v-model="edit.ho_va_ten" type="text" class="form-control"
-                                                    placeholder="Nhập vào ID">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Email</label>
-                                                <input v-model="edit.email" type="email" class="form-control"
-                                                    placeholder="Nhập vào ID">
-                                            </div>
 
-                                            <div class="form-group">
-                                                <label>Password</label>
-                                                <input v-model="edit.password" type="password" class="form-control"
-                                                    placeholder="Nhập vào bình luận">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Số Điện Thoại</label>
-                                                <input v-model="edit.so_dien_thoai" type="tel" class="form-control"
-                                                    placeholder="Nhập vào bình luận">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Địa Chỉ</label>
-                                                <input v-model="edit.dia_chi" type="text" class="form-control"
-                                                    placeholder="Nhập vào bình luận">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Quốc Tịch</label>
-                                                <select v-model="edit.quoc_tich" class="form-control">
-                                                    <option value="0">Chọn Quốc Tịch</option>
-                                                    <template v-for="(v,k) in list_qt">
-                                                        <option v-bind:value="v.id">@{{v.ten_quoc_tich}}</option>
-                                                    </template>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Ngày Sinh</label>
-                                                <input v-model="edit.ngay_sinh" type="date" class="form-control"
-                                                    placeholder="Nhập vào bình luận">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Giới Tính</label>
-                                                <select v-model="edit.gioi_tinh" class="form-control">
-                                                    <option value="">Chọn Giới Tinh</option>
-                                                    <option value="1">Nam</option>
-                                                    <option value="0">Nũ</option>
-                                                    <option value="2">Khác</option>
-
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Loại Tài Khoản</label>
-                                                <select v-model="edit.loai_tai_khoan" class="form-control">
-                                                    <option value="">Chọn Loại Tài Khoản</option>
-                                                    <option value="1">Khách Hàng Mới</option>
-                                                    <option value="0">Khách Hàng Thân Thiết</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary"
-                                                data-dismiss="modal">Đóng</button>
-                                            <button v-on:click="capNhatKhachHang()" class="btn btn-primary"
-                                                data-dismiss="modal">Cập Nhật</button>
-                                        </div>
                                         </select>
                                     </div>
                                     <div class="form-group">
@@ -262,6 +220,10 @@
                                     <button v-on:click="capNhatKhachHang()" class="btn btn-primary"
                                         data-dismiss="modal">Cập Nhật</button>
                                 </div>
+
+                                    </div>
+
+
                             </div>
                         </div>
                     </div>

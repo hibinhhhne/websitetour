@@ -115,12 +115,12 @@
                     .post('/client/login', this.login)
                     .then((res) => {
                         if(res.data.status == 1) {
-                            // toastr.success(res.data.message);
+                            toastr.success(res.data.message);
                             setTimeout(() => {
                                 window.location.href = '/'
                             }, 1000);
                         } else {
-                            // toastr.error(res.data.massage);
+                            toastr.error(res.data.massage);
                             setTimeout(() => {
                                 window.location.href = '/login-register'
                             }, 1000);

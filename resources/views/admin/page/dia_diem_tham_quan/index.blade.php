@@ -204,14 +204,14 @@
                         .post('/admin/dia-diem/create', this.add)
                         .then((res) => {
                             if(res.data.status) {
-                                // toastr.success("Đã thêm mới thành công!");
+                                toastr.success("Đã thêm mới thành công!");
                                 this.loadDiaDiem();
                             }
                         })
                         .catch((res) => {
                             var errors = res.response.data.errors;
                             $.each(errors, function(k, v) {
-                                // toastr.error(v[0]);
+                                toastr.error(v[0]);
                             });
                         });
                 },
