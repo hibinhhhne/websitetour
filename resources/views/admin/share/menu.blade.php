@@ -62,7 +62,7 @@
                     <a href="/admin/phuong-tien" class="nav-link">
                         <i class="fa-solid fa-truck-plane"></i>
                         <p>
-                            Quản Lý Phương Tiện
+                            Quản Lý Dịch Vụ
                         </p>
                     </a>
                 </li>

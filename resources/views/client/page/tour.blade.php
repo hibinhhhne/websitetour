@@ -4,28 +4,9 @@
     @include('client.share.css')
   </head>
   <body>
-    <!-- ========== MOBILE MENU ========== -->
     <nav id="mobile-menu"></nav>
-    <!-- ========== WRAPPER ========== -->
     <div class="wrapper">
-      <!-- ========== TOP MENU ========== -->
       @include('client.share.header')
-      <!-- ========== PAGE TITLE ========== -->
-      {{-- <div class="page-title gradient-overlay op6" style="background: url(images/breadcrumb.jpg); background-repeat: no-repeat;
-      background-size: cover;">
-        <div class="container">
-          <div class="inner">
-            <h1>ROOMS</h1>
-            <ol class="breadcrumb">
-              <li>
-                <a href="index.html">Home</a>
-              </li>
-              <li>Rooms</li>
-            </ol>
-          </div>
-        </div>
-      </div> --}}
-      <!-- ========== MAIN ========== -->
       <main class="rooms-grid-view" id="app">
         <div class="container">
           <div class="row">
@@ -33,7 +14,6 @@
               @if(isset($tour))
                 @if($tour->count() > 0)
                   @foreach($tour as $item)
-                  {{-- @dd($item) --}}
                       <div class="col-lg-4 col-md-6 d-flex">
                           <div class="room-grid-item">
                             <figure class="gradient-overlay-hover link-icon">
@@ -41,14 +21,14 @@
                               <a href="/detail-tour/{{$item->id}}">
                                   <img src="{{$item->hinh_anh ?? 'tour_default.jpg'}} " class="img-fluid" alt="Image">
                                 </a>
-                                <div class="room-price">{{number_format($item->don_gia, 0, ',', '.') . " vnđ"}}</div>
+                                <div class="room-price">{{number_format($item->don_gia, 0, ',', '.') . " VNĐ"}} | {{number_format($item->don_gia_2, 0, ',', '.') . " VNĐ"}}</div>
                             </figure>
 
                               <div class="room-info">
                                   <h2 class="room-title">
                                       <a href="/detail-tour/{{$item->id}}">{{$item->ten_tour}}</a>
                                   </h2>
-                                  <p>Enjoy our single room</p>
+                                  <p>Tận hưởng kỳ nghỉ của bạn</p>
                               </div>
                           </div>
                       </div>
@@ -59,20 +39,7 @@
                             <h4 style="display:flex;margin-top:10px">Không có tour nào được tìm thấy !</h4>
                         </div>
                   @endif
-                      {{-- <div class="col-lg-4 col-md-6 d-flex">
-                          <div class="room-grid-item">
-                              <a href="/detail-tour/{{$item->id}}">
-                                  <img src="{{$item->hinh_anh ?? 'tour_default.jpg'}} " class="img-fluid" alt="Image">
-                              </a>
-                              <div class="room-info">
-                                  <h2 class="room-title">
-                                      <a href="/detail-tour/{{$item->id}}"></a>
-                                  </h2>
-                                  <p>Enjoy our single room</p>
-                              </div>
-                          </div>
-                      </div>
-                  @endforeach --}}
+
               @else
                   <div class="col-lg-4 col-md-6 d-flex" v-for="(value, key) in list">
                       <div class="room-grid-item">
@@ -80,19 +47,17 @@
                               <a v-bind:href="'/detail-tour/' + value.id">
                                   <img v-bind:src="value.hinh_anh ? value.hinh_anh : '/tour_default.jpg'" class="img-fluid" alt="Image">
                               </a>
-                              <div class="room-price">@{{numberFormat(value.don_gia)}}</div>
+                              <div class="room-price">@{{numberFormat(value.don_gia)}} | @{{numberFormat(value.don_gia_2)}} </div>
                           </figure>
                           <div class="room-info">
                               <h2 class="room-title">
                                   <a v-bind:href="'/detail-tour/' + value.id">@{{value.ten_tour}}</a>
                               </h2>
-                              <p>Enjoy our single room</p>
+                              <p>Tận hưởng kỳ nghỉ của bạn</p>
                           </div>
                       </div>
                   </div>
               @endif
-
-            <!-- ITEM -->
           </div>
         </div>
       </main>

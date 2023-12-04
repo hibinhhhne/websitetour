@@ -10,6 +10,7 @@ use App\Http\Controllers\HoaDonController;
 use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\KhachHangController;
 use App\Http\Controllers\KhachSanController;
+use App\Http\Controllers\MomopayCotroller;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PhuongTienController;
 use App\Http\Controllers\QuocTichController;
@@ -50,10 +51,6 @@ Route::group(['prefix' => '/admin'], function (){
         Route::post('/delete', [TinhThanhController::class, 'destroy']);
         Route::post('/update', [TinhThanhController::class, 'update']);
     });
-
-
-
-
 
     Route::group(['prefix' => '/hoa-don'], function (){
         Route::get('/', [HoaDonController::class, 'index']);
@@ -160,3 +157,4 @@ Route::get('/confirm/order', [TourController::class, 'confirm'])->name('confirmO
 
 Route::post('payment/vnpay', [PaymentController::class, 'vnpay'])->name('payment.vnpay');
 Route::get('payment/vnpay', [PaymentController::class, 'vnpayReturn'])->name('payment.vnpay.return');
+

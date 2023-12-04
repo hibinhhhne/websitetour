@@ -17,7 +17,7 @@
             <h1>Thông Tin Liên Hệ</h1>
             <ol class="breadcrumb">
               <li>
-                <a href="/">Home</a>
+                <a href="/">Trang Chủ</a>
               </li>
             </ol>
           </div>
@@ -29,7 +29,7 @@
           <div class="row">
             <div class="col-md-8">
               <div class="section-title">
-                <h4>Liên HỆ</h4>
+                <h4>Liên Hệ</h4>
                 <p class="section-subtitle">Liên hệ cho chúng tôi</p>
               </div>
               <p>Hãy để Booking Tour trở thành người bạn đồng hành đáng tin cậy trên mọi chuyến đi của bạn. Bắt đầu kế hoạch du lịch của bạn ngay hôm nay!</p>

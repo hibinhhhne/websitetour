@@ -29,7 +29,7 @@ class HomepageController extends Controller
 
         $data['password'] = bcrypt($data['password']);
         //gửi email kích hoạt tài khoản
-        $data['loai_tai_khoan'] = 1;//viết tạm
+        $data['loai_tai_khoan'] = 1;
         KhachHang::create($data);
 
         return response()->json([

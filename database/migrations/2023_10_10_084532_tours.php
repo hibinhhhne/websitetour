@@ -13,7 +13,7 @@ return new class extends Migration
             $table->id();
             $table->string('ten_tour');
             $table->string('slug');
-            $table->string('mo_ta');
+            $table->longText('mo_ta');
             $table->string('id_khach_san');
             $table->string('list_dia_diem_tham_quan');
             $table->string('id_phuong_tien');
@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('so_dem');
             $table->integer('so_nguoi');
             $table->string('ghi_chu');
+            $table->integer('don_gia');
             $table->integer('don_gia');
             $table->string('hinh_anh')->nullable();
             $table->integer('trang_thai');

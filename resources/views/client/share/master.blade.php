@@ -85,7 +85,7 @@
                                     <button type="submit" class="btn btn-book">Tìm Kiếm</button>
                                     <div class="advanced-form-link">
                                         <a href="/client/booking-form.html">
-                                            Advanced Booking Form
+                                            Tìm kiếm Tour của Bạn
                                         </a>
                                     </div>
                                 </div>

@@ -1,21 +1,21 @@
 @extends('admin.share.master')
 @section('title')
-    Quản Lý Phương Tiện
+    Quản Lý Dịch Vụ
 @endsection
 @section('content')
     <div id="app" class="row">
         <div class="col-md-5">
             <div class="card">
                 <div class="card-header">
-                    Thêm Mới Phương Tiện
+                    Thêm Mới Dịch Vụ
                 </div>
                 <div class="card-body">
                     <div class="form-group">
-                        <label>Tên Phương Tiện</label>
+                        <label>Tên Dịch Vụ</label>
                         <input v-model="add.ten_phuong_tien" type="text" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label>Loại Phương Tiện</label>
+                        <label>Loại Dịch Vụ</label>
                         <input v-model="add.loai_phuong_tien" type="text" class="form-control">
                     </div>
                     <div class="form-group">
@@ -34,8 +34,8 @@
                     <div class="form-group">
                         <label>Trạng Thái</label>
                         <select v-model="add.trang_thai" class="form-control">
-                            <option value="1">Đã </option>
-                            <option value="0">Chưa </option>
+                            <option value="1">Còn chỗ </option>
+                            <option value="0">Hết chỗ </option>
                         </select>
                     </div>
                 </div>
@@ -47,7 +47,7 @@
         <div class="col-md-7">
             <div class="card">
                 <div class="card-header">
-                    Danh Sách Phương Tiện
+                    Danh Sách Dịch Vụ
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -55,8 +55,8 @@
                         <thead>
                             <tr>
                                 <th class="text-center">#</th>
-                                <th class="text-center">Tên Phương Tiện</th>
-                                <th class="text-center">Loại Phương Tiện</th>
+                                <th class="text-center">Tên Dịch Vụ</th>
+                                <th class="text-center">Loại Dịch Vụ</th>
                                 <th class="text-center">Chỗ Ngồi</th>
                                 <th class="text-center">ID Tỉnh Thành</th>
                                 <th class="text-center">Trạng Thái</th>
@@ -71,8 +71,8 @@
                                 <td class="align-middle">@{{ value.cho_ngoi }}</td>
                                 <td class="align-middle">@{{ value.id_tinh_thanh }}</td>
                                 <td class="text-center text-nowrap">
-                                    <button v-on:click="doiTrangThai(value)" v-if="value.trang_thai == 1" class="btn btn-success">Đã </button>
-                                    <button v-on:click="doiTrangThai(value)" v-else class="btn btn-warning">Chưa </button>
+                                    <button v-on:click="doiTrangThai(value)" v-if="value.trang_thai == 1" class="btn btn-success">Còn chỗ</button>
+                                    <button v-on:click="doiTrangThai(value)" v-else class="btn btn-warning">Hết Chỗ </button>
                                 </td>
                                 <td class="text-center text-nowrap">
                                     <button class="btn btn-primary" v-on:click="edit = value" data-toggle="modal" data-target="#editModal">Cập Nhật</button>
@@ -84,7 +84,7 @@
                             <div class="modal-dialog modal-xl" role="document">
                               <div class="modal-content">
                                 <div class="modal-header">
-                                  <h5 class="modal-title" id="exampleModalLabel">Cập Nhật Phương Tiện</h5>
+                                  <h5 class="modal-title" id="exampleModalLabel">Cập Nhật Dịch Vụ</h5>
                                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                   </button>
@@ -92,11 +92,11 @@
                                 <div class="modal-body">
                                     <div class="card-body">
                                         <div class="form-group">
-                                            <label>Tên Phương Tiện</label>
+                                            <label>Tên Dịch Vụ</label>
                                             <input v-model="edit.ten_phuong_tien" type="text" class="form-control">
                                         </div>
                                         <div class="form-group">
-                                            <label>Loại Phương Tiện</label>
+                                            <label>Loại Dịch Vụ</label>
                                             <input v-model="edit.loai_phuong_tien" type="text" class="form-control">
                                         </div>
                                         <div class="form-group">
@@ -115,8 +115,8 @@
                                         <div class="form-group">
                                             <label>Trạng Thái</label>
                                             <select v-model="edit.trang_thai" class="form-control">
-                                                <option value="1">Đã </option>
-                                                <option value="0">Chưa </option>
+                                                <option value="1">Còn chỗ </option>
+                                                <option value="0">Hết chỗ </option>
                                             </select>
                                         </div>
                                     </div>
@@ -132,14 +132,14 @@
                             <div class="modal-dialog" role="document">
                               <div class="modal-content">
                                 <div class="modal-header">
-                                  <h5 class="modal-title" id="exampleModalLabel">Xóa Phương Tiện</h5>
+                                  <h5 class="modal-title" id="exampleModalLabel">Xóa Dịch Vụ</h5>
                                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                   </button>
                                 </div>
                                 <div class="modal-body">
                                     <div class="modal-body">
-                                        Bạn có chắc chắn muốn xóa phương tiện: @{{ del.ten_phuong_tien }} này không ?
+                                        Bạn có chắc chắn muốn xóa Dịch Vụ: @{{ del.ten_phuong_tien }} này không ?
                                     </div>
                                 </div>
                                 <div class="modal-footer">

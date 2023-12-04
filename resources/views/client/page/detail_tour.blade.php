@@ -27,22 +27,6 @@
     <div class="wrapper">
         <!-- ========== HEADER ========== -->
         @include('client.share.header')
-        <!-- ========== PAGE TITLE ========== -->
-        {{-- <div class="page-title gradient-overlay op6"
-            style="background: url(/client/images/breadcrumb.jpg); background-repeat: no-repeat;
-    background-size: cover;">
-            <div class="container">
-                <div class="inner">
-                    <h1>SHOP</h1>
-                    <ol class="breadcrumb">
-                        <li>
-                            <a href="index.html">Home</a>
-                        </li>
-                        <li>Shop</li>
-                    </ol>
-                </div>
-            </div>
-        </div> --}}
         <!-- ========== MAIN ========== -->
         <main class="shop-page" id="app">
             <div class="container">
@@ -50,7 +34,6 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="product-slider">
-                                    <!-- PRODUCT SLIDER -->
                                     <div class="owl-carousel big-images image-gallery">
                                         <!-- ITEM -->
                                         <div class="item">
@@ -79,19 +62,7 @@
                                         <div class="product-price">
                                             <span class="product-price">Ngày Khởi Hành :  @{{detail_addres.format_day}}</span>
                                         </div>
-                                        {{-- <div class="product-description">
-                                            <span class="product-description">@{{detail_addres.mo_ta}}</span>
-                                        </div> --}}
 
-
-                                        <div class="product-rating mt30">
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                                            <span>4.5 average based on 4 ratings.</span>
-                                        </div>
                                         <div class="share product-share mt30">
                                             <div class="social-media">
                                                 <a class="facebook" href="#" data-toggle="tooltip"
@@ -116,10 +87,6 @@
 
                                         </div>
                                         <div class="product-cart mt50 d-flex flex-column">
-{{--                                            <div class="input-group spinner product-quantity">--}}
-{{--                                                <label class="">Ngày khởi hành:</label>--}}
-{{--                                                <input style="width:160px" type="date" name="start_date" class="form-control">--}}
-{{--                                            </div>--}}
                                              <div class="input-group spinner product-quantity">
                                                 <label class="">Số lượng vé người lớn:</label>
                                                 <input type="text" name="quality1" class="form-control" value="0" min="0"
@@ -155,39 +122,27 @@
                         </div>
                     <div class="product-tabs mt80">
                         <ul class="nav nav-tabs" id="product-tab" role="tablist">
-                            <!-- TAB -->
                             <li class="nav-item">
                                 <a class="nav-link active" id="description-tab" data-toggle="tab"
                                     href="#description" role="tab" aria-controls="description"
                                     aria-selected="true">Mô Tả Chi Tiết</a>
                             </li>
-                            <!-- TAB -->
-
-                            <!-- TAB -->
                             <li class="nav-item">
                                 <a class="nav-link" id="reviews-tab" data-toggle="tab" href="#reviews"
                                     role="tab" aria-controls="reviews" aria-selected="false">Thông tin chi tiết</a>
                             </li>
                         </ul>
                         <div class="tab-content" id="product-tab-content">
-                            <!-- TAB -->
                             <div class="tab-pane fade show active" id="description" role="tabpanel"
                                 aria-labelledby="description-tab">
                                 <p>@{{detail_addres.mo_ta}}</p>
                             </div>
-                            <!-- TAB -->
-
-                            <!-- TAB -->
                             <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
                                 <div class="row">
                                     <div class="col-3">
                                         <div class="footer-widget">
                                             <div class="inner">
                                                 <ul class="contact-details detail-info-key">
-                                                    {{-- <li>
-                                                        <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                                        Địa điểm:
-                                                    </li> --}}
                                                     <li>
                                                         <i class="fa fa-clock-o" aria-hidden="true"></i>
                                                         Thời gian:
@@ -224,10 +179,6 @@
                                         <div class="footer-widget">
                                             <div class="inner">
                                                 <ul style="list-style-type: none" class="contact-details detail-info-item">
-                                                    {{-- <li>
-                                                        - @{{detail_addres.ten_tinh_thanh}}
-                                                    </li> --}}
-
                                                     <li>
                                                          @{{detail_addres.so_ngay}} ngày - @{{detail_addres.so_dem}} đêm
                                                     </li>
@@ -235,11 +186,15 @@
                                                          @{{detail_addres.format_day}}
                                                     </li>
                                                     <li>
-                                                         Người lớn: @{{numberFormat(detail_addres.don_gia)}} |
+                                                        Người lớn: @{{numberFormat(detail_addres.don_gia)}} |
                                                         Trẻ em: @{{numberFormat(detail_addres.don_gia_2)}}
                                                     </li>
                                                     <li>
                                                          @{{detail_addres.list_dia_diem_tham_quan}}
+
+                                                    </li>
+                                                    <li>
+
                                                     </li>
                                                     <li>
                                                          @{{detail_addres.phuong_tien}}
@@ -261,7 +216,7 @@
                         </div>
                         <!-- RELATED PRODUCTS -->
                         <div class="section-title sm mt50">
-                            <h4>Related Products</h4>
+                            <h4>Các Tours Khác</h4>
                         </div>
                         <div class="row">
                             <!-- ITEM -->
@@ -272,7 +227,6 @@
                                             <a>
                                                 <img v-bind:src="value.hinh_anh ? value.hinh_anh : '/tour_default.jpg'" class="img-fluid" alt="Image">
                                             </a>
-                                            {{-- <button class="btn btn-sm add-to-cart">Add to Cart</button> --}}
                                         </figure>
                                         <div class="product-details">
                                             <h4 class="product-title">

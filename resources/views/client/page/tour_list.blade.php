@@ -10,24 +10,6 @@
     <div class="wrapper">
         <!-- ========== HEADER ========== -->
         @include('client.share.header')
-        <!-- ========== PAGE TITLE ========== -->
-        {{-- <div class="page-title gradient-overlay op6"
-            style="background: url(/client/images/breadcrumb.jpg); background-repeat: no-repeat;
-    background-size: cover;">
-            <div class="container">
-                <div class="inner">
-                    <h1>SHOP</h1>
-                    <ol class="breadcrumb">
-                        <li>
-                            <a href="index.html">Home</a>
-                        </li>
-                        <li>Shop</li>
-                    </ol>
-                </div>
-            </div>
-        </div> --}}
-        <!-- ========== MAIN ========== -->
-          <!-- MAIN MENU -->
       <!-- ========== PAGE TITLE ========== -->
       <div class="page-title gradient-overlay op6" style="background: url(images/breadcrumb.jpg); background-repeat: no-repeat;
     background-size: cover;">
@@ -36,7 +18,7 @@
             <h1>TOURS</h1>
             <ol class="breadcrumb">
               <li>
-                <a href="index.html">Home</a>
+                <a href="index.html">Trang Chủ</a>
               </li>
               <li>Tours</li>
             </ol>
@@ -73,7 +55,7 @@
               </div>
               <div class="col-lg-2">
                 <div class="room-price">
-                  <span class="price">@{{numberFormat(detail_addres.don_gia)}}</span>
+                  <span class="price">@{{numberFormat(detail_addres.don_gia)}} | @{{numberFormat(value.don_gia_2)}}</span>
                   <a href="room.html" class="btn btn-sm">VIEW DETAILS</a>
                 </div>
               </div>

@@ -11,8 +11,6 @@ class KhachHangController extends Controller
 {
     public function index()
     {
-
-
         return view('admin.page.khach_hang.index');
     }
 
@@ -71,7 +69,6 @@ class KhachHangController extends Controller
 
     public function update(KhachHangRequest $request){
         $data = $request->all();
-        // dd($data);
         $khachHang = KhachHang::where('id',$request->id)->first();
         if($khachHang){
             $khachHang->update($data);

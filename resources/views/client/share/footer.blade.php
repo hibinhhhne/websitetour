@@ -5,7 +5,7 @@
                 <!-- WIDGET -->
                 <div class="col-md-3">
                     <div class="footer-widget">
-                        <h3>USEFUL LINKS</h3>
+                        <h3>KHÁC</h3>
                         <div class="inner">
                             <ul class="useful-links">
                                 <li>
@@ -25,7 +25,7 @@
                 <!-- WIDGET -->
                 <div class="col-md-3">
                     <div class="footer-widget">
-                        <h3>Contact Info</h3>
+                        <h3>Thông Tin của Chúng tôi</h3>
                         <div class="inner">
                             <ul class="contact-details">
                                 <li>
@@ -61,7 +61,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <div class="copyrights">&copy; 2018 Hotel Himara. Designed by
+                    <div class="copyrights">&copy; 2023 Booking Tour. Designed by
                         <a href="https://eagle-themes.com/" target="_blank">Eagle-Themes</a>.
                     </div>
                 </div>

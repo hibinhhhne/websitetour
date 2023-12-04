@@ -32,7 +32,7 @@
 
                     <div class="form-group">
                         <label>ID Khách Sạn</label>
-                        <select style="width: 300px"  v-model="add.id_khach_san" class="form-control">
+                        <select v-model="add.id_khach_san" class="form-control">
                             @foreach($hotel as $item)
                                 <option value="{{$item->id}}">{{$item->ten_khach_san}}</option>
                             @endforeach
@@ -55,12 +55,9 @@
                             @endforeach
                         </select>
                     </div>
-
-
                     <div class="form-group">
                         <label>ID Tỉnh Thành</label>
                         <select v-model="add.id_tinh_thanh" class="form-control">
-                            <option value="0">Chọn Tỉnh Thành</option>
                             <template v-for="(v,k) in list_tt">
                                 <option v-bind:value="v.id">@{{v.ten_tinh_thanh}}</option>
                             </template>
@@ -235,12 +232,12 @@
                                                 </select>
                                             </div>
                                             <div class="form-group">
-                                                <label>Số Ngày</label>
-                                                <input v-model="edit.so_ngay" type="number" class="form-control">
-                                            </div>
-                                            <div class="form-group">
                                                 <label>Ngày khởi hành</label>
                                                 <input v-model="edit.ngay_khoi_hanh" type="date" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Số Ngày</label>
+                                                <input v-model="edit.so_ngay" type="number" class="form-control">
                                             </div>
                                             <div class="form-group">
                                                 <label>Số Đêm</label>

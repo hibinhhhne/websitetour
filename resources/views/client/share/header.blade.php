@@ -30,10 +30,10 @@
                     <ul class="submenu">
                       <li class="menu-item">
                         <a href="/client/checkout">
-                            CART</a>
+                            Giỏ Hàng</a>
                       </li>
                       <li class="menu-item">
-                        <a href="/logout">LOGOUT</a>
+                        <a href="/logout">Đăng Xuất</a>
                       </li>
                     </ul>
                   </li>
@@ -41,7 +41,7 @@
                 <li class="menu-item menu-btn">
                     <a href="/login-register" class="btn">
                         <i class="fa fa-calendar"></i>
-                        LOGIN</a>
+                        Đăng Nhập</a>
                 @endif
             </ul>
         </nav>

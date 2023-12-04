@@ -9,20 +9,6 @@
     <!-- ========== WRAPPER ========== -->
     <div class="wrapper">
       @include('client.share.header')
-      <!-- ========== PAGE TITLE ========== -->
-      {{-- <div class="page-title gradient-overlay op6" style="background: url(images/breadcrumb.jpg); background-repeat: no-repeat;
-    background-size: cover;">
-        <div class="container">
-          <div class="inner">
-            <h1>Booking Form</h1>
-            <ol class="breadcrumb">
-              <li>
-                <a href="index.html">Home</a>
-              </li>
-              <li>Booking Form</li>
-            </ol>
-          </div>
-        </div> --}}
       </div>
       <!-- ========== MAIN ========== -->
       <main id="app">
@@ -31,54 +17,61 @@
             <!-- CONTENT -->
             <div class="col-lg-9 col-12">
               <div class="section-title">
-                <h4>BOOK YOUR TOURs</h4>
-                <p class="section-subtitle">Book your Tour Now</p>
+                <h4>ĐẶT TOUR CỦA BẠN</h4>
+
               </div>
-              <p class="mb30">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia deleniti fuga recusandae perferendis modi voluptate, ad ratione saepe voluptas nam provident reiciendis velit nulla repellendus illo consequuntur amet similique hic.</p>
+              <p class="mb30">Hãy để Booking Tour trở thành người bạn đồng hành đáng tin cậy trên mọi chuyến đi của bạn. Bắt đầu kế hoạch du lịch của bạn ngay hôm nay!</p>
               <!-- BOOKING FORM -->
               <form class="booking-form-advanced" id="booking-form">
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label>Your Name</label>
-                      <input v-model="add.ten_nguoi_nhan" name="booking-name" type="text" class="form-control" placeholder="Your Name">
+                      <label>Họ và Tên</label>
+                      <input v-model="add.ten_nguoi_nhan" name="booking-name" type="text" class="form-control" placeholder="Họ và Tên">
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label>Email Address</label>
-                      <input v-model="add.email" class="form-control" name="booking-email" type="email" placeholder="Your Email Address">
+                      <label>Email </label>
+                      <input v-model="add.email" class="form-control" name="booking-email" type="email" placeholder=" Email ">
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label>Phone Number</label>
-                      <input v-model="add.so_dien_thoai" name="booking-phone" type="text" class="form-control" placeholder="Your Phone Number">
+                      <label>Số Điện Thoại</label>
+                      <input v-model="add.so_dien_thoai" name="booking-phone" type="text" class="form-control" placeholder="Số Điện Thoại">
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label>Address</label>
-                      <input type="text" class="form-control" v-model="add.dia_chi" placeholder="Your Address">
+                      <label>Địa Chỉ</label>
+                      <input type="text" class="form-control" v-model="add.dia_chi" placeholder="Địa Chỉ">
                     </div>
                   </div>
-                    <div class="col-md-6"></div>
+                    <div class="col-md-12" >
+                    </div>
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>Thanh toán trực tiếp</label>
-                            <input value="1" type="radio" name="payment_type" class=""  placeholder="Your Address">
+                            <input value="1" type="radio" name="payment_type" class=""  >
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
-                            <label>Thanh toán online</label>
-                            <input value="2" type="radio" name="payment_type" class=""  placeholder="Your Address">
+                            <label>Thanh toán VNPAY</label>
+                            <input value="2" type="radio" name="payment_type" class="" >
                         </div>
                     </div>
+                    {{-- <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Thanh toán MOMO</label>
+                            <input value="3" type="radio" name="redirect" class="" >
+                        </div>
+                    </div> --}}
                   <div class="col-md-12">
                     <button v-on:click="datHang()" type="button" class="btn mt50 float-right">
                       <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
-                      BOOK A TOUR NOW
+                      ĐẶT TOUR NGAY
                     </button>
                   </div>
                 </div>
@@ -90,7 +83,7 @@
                 <div class="contact-details">
                   <div class="section-title">
                     <h4>TOURS</h4>
-                    <p class="section-subtitle">CHECK OUT OUR SPECIAL TOURS</p>
+                    <p class="section-subtitle">KIỂM TRA CÁC TOUR CỦA MÌNH</p>
                   </div>
                   <template v-for="(value, key) in list_don_hang">
                       <div class="offer-item sm mb50">
@@ -107,12 +100,11 @@
                   </template>
                   <hr>
                   <div class="row">
-                    <div class="col-12">
-
-                        <h3>TOTAL: <span class="float-right">@{{total}} vnđ </span></h3>
+                    <div class="col-15">
+                        <h3>TỔNG CỘNG: <span class="float-right">@{{total}} vnđ </span></h3>
                         @if(isset($sale) && $sale == true)
-                            <span style="float:right;display:flex;width:100%;justify-content: flex-end">Được giảm giá: 10%</span>
-                            <h3>Giá cuối: <span class="float-right">@{{total * 0.9}} vnđ </span></h3>
+                            <span style="float:right;display:flex;width:100%;justify-content: flex-end">Khuyến Mãi: 10%</span>
+                            <h3>TỔNG: <span class="float-right">@{{total * 0.9}} vnđ </span></h3>
 
                         @endif
 
@@ -186,14 +178,6 @@
                             .post('{{ Route("payment.vnpay") }}', this.add)
                             .then((res) => {
                                 document.location.href = res.data.data;
-                                // if(res.data.status) {
-
-                                // toastr.success(res.data.message);
-                                // this.loadData();
-                                // this.add = {};
-                                // } else {
-                                //     toastr.error(res.data.message);
-                                // }
                             })
                             .catch((res) => {
                                 $.each(res.response.data.errors, function(k, v) {

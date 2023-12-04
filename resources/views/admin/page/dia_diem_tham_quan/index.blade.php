@@ -94,10 +94,7 @@
                                   </button>
                                 </div>
                                 <div class="modal-body">
-                                    <div class="form-group">
-{{--                                        <label>ID Địa Điểm</label>--}}
-                                        <input v-model="edit.id_dia_diem" type="hidden" class="form-control">
-                                    </div>
+
                                     <div class="form-group">
                                         <label>Tên Địa Điểm</label>
                                         <input v-model="edit.ten_dia_diem" v-on:keyup="toSlug(edit.ten_dia_diem)" type="text" class="form-control">

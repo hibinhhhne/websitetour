@@ -256,8 +256,6 @@ class TourController extends Controller
         //     ->select('tours.*', 'chi_tiet_tour.*')
         //     ->where('tours.id', $tourId)
         //     ->get();
-
-
     }
 
     public function datHang(DatHangRequest $request)
@@ -316,11 +314,6 @@ class TourController extends Controller
                 DB::table('gio_hangs')->where('id_tour', $value['id_tour'])->where('id_khach_hang', $nguoi_login->id)->delete();
 
             }
-
-
-
-
-
             return response()->json([
                 'status'    => 1,
                 'message'   => 'Đã đặt đơn hàng thành công!',

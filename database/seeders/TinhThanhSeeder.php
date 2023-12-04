@@ -26,6 +26,38 @@ class TinhThanhSeeder extends Seeder
                     'ten_tinh_thanh' => 'Quảng Nam',
                     'slug' => Str::slug('Quảng Nam'),
                 ],
+                [
+                    'ten_tinh_thanh' => 'Hà Nội',
+                    'slug' => Str::slug('Hà Nội'),
+                ],
+                [
+                    'ten_tinh_thanh' => 'TP Hồ Chí Minh',
+                    'slug' => Str::slug('TP Hồ Chí Minh'),
+                ],
+                [
+                    'ten_tinh_thanh' => 'Quảng Bình',
+                    'slug' => Str::slug('Quảng Bình'),
+                ],
+                [
+                    'ten_tinh_thanh' => 'Nha Trang',
+                    'slug' => Str::slug('Nha Trang'),
+                ],
+                [
+                    'ten_tinh_thanh' => 'Đà Lạt',
+                    'slug' => Str::slug('Đà Lạt'),
+                ],
+                [
+                    'ten_tinh_thanh' => 'Phú Quốc',
+                    'slug' => Str::slug('Phú Quốc'),
+                ],
+                [
+                    'ten_tinh_thanh' => 'Quy Nhơn',
+                    'slug' => Str::slug('Quy Nhơn'),
+                ],
+                [
+                    'ten_tinh_thanh' => 'Đà Lạt',
+                    'slug' => Str::slug('Đà Lạt'),
+                ],
             ]
         );
     }

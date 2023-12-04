@@ -21,7 +21,6 @@
                     <div class="form-group">
                         <label>ID Tỉnh Thành</label>
                         <select v-model="add.id_tinh_thanh" class="form-control">
-                            <option value="0">Chọn Tỉnh Thành</option>
                             <template v-for="(v,k) in list_tt">
                                 <option v-bind:value="v.id">@{{v.ten_tinh_thanh}}</option>
                             </template>
@@ -248,14 +247,14 @@
                         .post('/admin/khach-san/create', this.add)
                         .then((res) => {
                             if (res.data.status == true) {
-                                // toastr.success("Đã thêm mới tour thành công!");toastr chưa dung
+                                toastr.success("Đã thêm mới tour thành công!")
                                 this.loadKhachSan();
                             }
                         })
                         .catch((res) => {
                             var errors = res.response.data.errors;
                             $.each(errors, function (k, v) {
-                                // toastr.error(v[0]);
+                                toastr.error(v[0]);
                             });
                         });
                 },
@@ -264,7 +263,7 @@
                         .post('/admin/khach-san/change-status', payload)
                         .then((res) => {
                             if (res.data.status) {
-                                // toastr.success('Đã thay đổi trạng thái thành công!');
+                                toastr.success('Đã thay đổi trạng thái thành công!');
                                 this.loadKhachSan();
                             }
 
@@ -294,7 +293,7 @@
 
                             var errors = res.response.data.errors;
                             $.each(errors, function (k, v) {
-                                // toastr.error(v[0]);
+                                toastr.error(v[0]);
                             });
                         });
                 },
@@ -303,7 +302,7 @@
                         .post('/admin/khach-san/delete', this.del)
                         .then((res) => {
                             if (res.data.status == true) {
-                                // toastr.success("Đã xóa tour thành công!");toastr chưa dung
+                                toastr.success("Đã xóa tour thành công!");
                                 this.loadKhachSan();
                             }
                         })

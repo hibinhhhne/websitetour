@@ -14,10 +14,10 @@
     background-size: cover;">
         <div class="container">
           <div class="inner">
-            <h1>Login & Register</h1>
+            <h1>Đăng Nhập & Đăng Ký</h1>
             <ol class="breadcrumb">
               <li>
-                <a href="/">Home</a>
+                <a href="/">Trang Chủ</a>
               </li>
             </ol>
           </div>
@@ -30,28 +30,28 @@
                 <div class="col-lg-6">
                     <div class="card">
                         <div class="card-header">
-                            Login
+                            Đăng Nhập
                         </div>
                         <div class="card-body">
                             <label for="">Email</label>
                             <input class="form-control" v-model="login.email" type="email">
-                            <label for="">Password</label>
+                            <label for="">Mật Khẩu</label>
                             <input class="form-control" v-model="login.password" type="password">
                         </div>
-                        <div class="card-footer text-right"><button type="button" class="btn btn-primary" v-on:click="loginClient()">Login</button></div>
+                        <div class="card-footer text-right"><button type="button" class="btn btn-primary" v-on:click="loginClient()">Đăng Nhập</button></div>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="card">
                         <div class="card-header">
-                            Register
+                            Đăng Ký
                         </div>
                         <div class="card-body">
                             <label for="">Họ Và Tên</label>
                             <input class="form-control" v-model="create_kh.ho_va_ten" type="email">
                             <label for="">Email</label>
                             <input class="form-control" v-model="create_kh.email" type="email">
-                            <label for="">Password</label>
+                            <label for="">Mật Khẩu</label>
                             <input class="form-control" v-model="create_kh.password" type="password">
                             <label for="">Địa Chỉ</label>
                             <input class="form-control" v-model="create_kh.dia_chi" type="email">
@@ -107,6 +107,7 @@
                 axios
                     .post('/client/register', this.create_kh)
                     .then((res) => {
+
 
                     });
             },

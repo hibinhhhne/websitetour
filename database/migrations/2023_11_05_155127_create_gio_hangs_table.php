@@ -18,8 +18,11 @@ return new class extends Migration
             $table->integer('id_don_hang')->nullable();
             $table->double('don_gia');
             $table->integer('so_luong')->default(1);
+            $table->integer('so_luong_2')->default(1);
             $table->double('thanh_tien')->default(0);
             $table->integer('tinh_trang')->default(0);
+            $table->integer('start_date')->default(0);
+
             $table->timestamps();
         });
     }

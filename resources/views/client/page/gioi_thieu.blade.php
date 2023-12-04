@@ -17,7 +17,7 @@
             <h1>Giới Thiệu về Booking Tour</h1>
             <ol class="breadcrumb">
               <li>
-                <a href="/">Home</a>
+                <a href="/">Trang Chủ</a>
               </li>
             </ol>
           </div>
